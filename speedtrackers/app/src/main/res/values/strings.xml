@@ -1,3 +1,53 @@
-<resources>
-    <string name="app_name">SpeedTrackers</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">RackIT</string>
+    <string name="comecar">Começar</string>
+    <string name="textoWelcome">O RackIT é um sistema de gestão de inventario doméstico feito para facilitar a vida do utilizador. Pretende poupar tempo e dinheiro do utilizador</string>
+    <string name="rackIT">rackIT</string>
+    <string name="login">Iniciar Sessão</string>
+    <string name="register">Criar conta</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="noAccount">Ainda não tens uma conta?</string>
+    <string name="registHere">Cria aqui</string>
+    <string name="enter_your_email">Insere aqui o teu email…</string>
+    <string name="password_insert">Insere aqui a tua password…</string>
+    <string name="remember_me">Mantenha-me conectado</string>
+    <string name="welcome">Bem-vindo</string>
+    <string name="enter_your_username">Insere aqui o teu username...</string>
+    <string name="haveAccount">Ja tens conta?</string>
+    <string name="loginHere">Inicia sessão aqui.</string>
+    <string name="esquecer_password">Esqueceu-se da password?</string>
+    <string name="criar_conta">Criar conta</string>
+
+    <!--    Password-->
+    <string name="password_strength_caption">Password Strength: {0}</string>
+    <string name="password_strength_weak">Weak</string>
+    <string name="password_strength_medium">Medium</string>
+    <string name="password_strength_strong">Strong</string>
+    <string name="password_strength_very_strong">Very Strong</string>
+    <string name="confirmar_password">Confirmar password</string>
+    <string name="confirma_a_password">Confirma a password...</string>
+    <string name="aceitar_termos">Aceitar <u><font color='#0F6DD2'>termos e condições</font></u></string>
+    <string name="nome_de_utilizador">Nome de utilizador</string>
+    <string name="weak">Weak</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_do_produto">Nome do Produto</string>
+    <string name="introduza_o_nome_do_produto">Introduza o nome do produto...</string>
+    <string name="c_digo_de_barras">Código de Barras</string>
+    <string name="introduza_o_c_digo_de_barras">Introduza o código de barras...</string>
+    <string name="pre_o_de_compra">Preço de compra</string>
+    <string name="introduza_o_pre_o_de_compra">Introduza o preço de compra...</string>
+    <string name="data_de_validade">Data de validade</string>
+    <string name="introduza_a_imagem">Introduza a imagem...</string>
+    <string name="adicionar_produto">Adicionar Produto</string>
+    <string name="home">Home</string>
+    <string name="apagar_produto">Apagar Produto</string>
+    <string name="atualizar_dados">Atualizar Dados</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="introduza_a_quantidade">Introduza a quantidade...</string>
+    <string name="quantidade">Quantidade</string>
+    <string name="adicionar_produto_lista_de_compras">Adicionar Produto Lista de Compras</string>
+    <string name="ver_mais">Ver mais</string>
+
 </resources>

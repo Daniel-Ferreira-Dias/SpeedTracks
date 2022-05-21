@@ -4,23 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0B1E3E"
     tools:context="com.cme.speedtrackers.LoginActivity">
 
-    <TextView
-        android:id="@+id/loginText"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SpeedTrackIT"
-        android:textColor="@color/defaultText"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sneakerplug"
+        app:layout_constraintBottom_toTopOf="@id/relativeLayoutView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayoutView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/imageView"
+        android:background="@drawable/background_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintVertical_bias="1">
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -38,12 +48,12 @@
         android:paddingRight="26dp"
         android:textColor="@color/defaultText"
         android:textColorHint="@color/colorPlaceholder"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/relativeLayoutView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginText"
-        app:layout_constraintVertical_bias="0.11"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
         tools:ignore="Autofill,UnusedAttribute" />
 
     <EditText
@@ -87,27 +97,23 @@
         app:layout_constraintVertical_bias="0.041" />
 
 
-    <TextView
-
-        android:id="@+id/codBarrasText"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/seg_ui_semibold"
-        android:text="@string/email"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginText"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/codBarrasText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/seg_ui_semibold"
+            android:text="@string/email"
+            app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     <TextView
 
         android:id="@+id/precoCompraText"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
         android:fontFamily="@font/seg_ui_semibold"
         android:text="@string/password"
@@ -196,5 +202,7 @@
             android:textColor="@color/primary"
             android:textSize="18sp" />
     </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

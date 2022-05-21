@@ -24,6 +24,12 @@ class LoginActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // Redirect to Register
+        binding.registHereTextView.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
         // Login button
         binding.loginButton.setOnClickListener {
             checkConditions()

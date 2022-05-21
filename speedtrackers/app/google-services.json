@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "140495385572",
+    "project_id": "speedtrackerit",
+    "storage_bucket": "speedtrackerit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140495385572:android:907ac74061589982f84df1",
+        "android_client_info": {
+          "package_name": "com.cme.speedtrackers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140495385572-b4l9169hpiuq02umju5re4o2f3e675pg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDogRXICFLPFaO33VdOw54L4NMBELcIevM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140495385572-b4l9169hpiuq02umju5re4o2f3e675pg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

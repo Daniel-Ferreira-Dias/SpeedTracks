@@ -25,9 +25,10 @@ class RegisterActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+
         // Already has an account
         binding.loginHereTextView.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, AddShoeActivity::class.java)
             startActivity(intent)
         }
 
@@ -65,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(this, "Utilizador registado!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, AddShoeActivity::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(

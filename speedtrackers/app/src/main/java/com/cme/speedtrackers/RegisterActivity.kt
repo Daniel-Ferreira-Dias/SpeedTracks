@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.cme.speedtrackers.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -28,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
 
         // Already has an account
         binding.loginHereTextView.setOnClickListener {
-            val intent = Intent(this, AddShoeActivity::class.java)
+            val intent = Intent(this, OptionActivity::class.java)
             startActivity(intent)
         }
 
@@ -66,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(this, "Utilizador registado!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, AddShoeActivity::class.java)
+                val intent = Intent(this, OptionActivity::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(

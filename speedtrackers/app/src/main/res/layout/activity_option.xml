@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient"
-    tools:context=".AddShoeActivity">
+   android:background="#0B1E3E"
+    tools:context=".OptionActivity">
 
     <TextView
         android:id="@+id/textChoose"
@@ -66,15 +66,16 @@
             android:id="@+id/addShoe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp"
             android:background="@drawable/ripple_button"
+            android:backgroundTint="@color/white"
             android:elevation="10dp"
             android:text="Adicionar Calçado"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </RelativeLayout>
 

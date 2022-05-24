@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.GridLayoutMarcasItemBinding
 import com.cme.speedtrackers.model.Marcas
@@ -34,7 +33,6 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
     private lateinit var mDbRef: DatabaseReference
 
 
-
     // construtor
     constructor(context: Context, marcasArrayList: ArrayList<Marcas>) {
         this.context = context
@@ -51,17 +49,14 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
     override fun onBindViewHolder(holder: HolderMarcas, position: Int) {
         // get data
         val model = marcasArrayList[position]
-        val id = model.marcaId
-        val name = model.marcaName
-        val image = model.marcaImage
+        val id = model.ID
+        val name = model.Nome
+        val image = model.Imagem
 
         mDbRef = FirebaseDatabase.getInstance().reference
 
-        loadMarcas(model, holder)
-
         //set
         holder.textViewMarcas.text = name
-
 
 
     }
@@ -71,38 +66,8 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
     }
 
     inner class HolderMarcas(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageViewMarcas = binding.iconImageView
-        var textViewMarcas = binding.titleTextView
-    }
-
-
-    // Load Information from Database
-    private fun loadMarcas(model: Marcas, holder: HolderMarcas ){
-        val ref = FirebaseDatabase.getInstance().getReference("Marcas")
-        ref.child(model.marcaName)
-            .addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val profile = "${snapshot.child("Imagem").value}"
-                val name = "${snapshot.child("Nome").value}"
-
-                // set image
-                try {
-                    Glide.with(context)
-                        .load(profile)
-                        .placeholder(R.drawable.ic_baseline_person_24_red)
-                        .into(holder.imageViewMarcas)
-                } catch (e: Exception) {
-                    holder.imageViewMarcas.setImageResource(R.drawable.ic_baseline_person_24_red)
-                }
-
-                holder.textViewMarcas.text = name
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
+        val imageViewMarcas = binding.iconImageView
+        val textViewMarcas = binding.titleTextView
     }
 
 }

@@ -14,13 +14,12 @@ class MarcasActivity : AppCompatActivity() {
     private lateinit var marcasList : ArrayList<Marcas>
     private lateinit var adapter : MarcasAdapter
 
-    private lateinit var mDbRef : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_marca)
 
-        mDbRef = FirebaseDatabase.getInstance().getReference()
+
 
         // Marcas
         marcasList = ArrayList()
@@ -33,13 +32,14 @@ class MarcasActivity : AppCompatActivity() {
     }
 
     private fun loadMarcas(){
-        mDbRef.child("Marcas").addValueEventListener(object : ValueEventListener {
+        val ref = FirebaseDatabase.getInstance().getReference("Marcas")
+            ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 marcasList.clear()
-                for (postSnapshot in snapshot.children){
-                    val marca = postSnapshot.getValue(Marcas::class.java)
+                for (ds in snapshot.children){
+                    val model = ds.getValue(Marcas::class.java)
 
-                    marcasList.add(marca!!)
+                    marcasList.add(model!!)
                 }
                 marcasRecyclerView.adapter = adapter
             }

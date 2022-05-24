@@ -5,15 +5,19 @@ import android.widget.ImageView
 
 class Marcas {
 
-    var marcaId : Int = 0
-    var marcaName : String = ""
-    var marcaImage : String = ""
+    var ID:Long = 0
+    var Nome: String = ""
+    var Imagem: String = ""
 
-    constructor(){}
+    constructor()
 
-    constructor(marcaId: Int, marcaName: String, marcaImage: String){
-        this.marcaId = marcaId
-        this.marcaName = marcaName
-        this.marcaImage = marcaImage
+    constructor(
+        ID: Long
+        , Imagem: String
+        , Nome: String
+    ) {
+        this.ID = ID
+        this.Imagem = Imagem
+        this.Nome = Nome
     }
 }

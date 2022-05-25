@@ -14,7 +14,26 @@
         <!-- Customize your theme here. -->
     </style>
 
+
     <style name="Button.White" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@android:color/white</item>
+    </style>
+    <style name="Theme.SpeedTrackers.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.SpeedTrackers.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.SpeedTrackers.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Mytheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+
+    <style name="AppTheme.speedtrackers.ActionBar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary_logo</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/WhiteGray</item>
     </style>
 </resources>

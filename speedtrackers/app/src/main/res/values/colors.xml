@@ -3,6 +3,8 @@
     <color name="primary">#0756F1</color>
     <color name="primaryDark">#04318B</color>
     <color name="colorAccent">#04318B</color>
+    <color name="WhiteGray">#CCD1D1</color>
+    <color name="primary_logo">#0b1e3e</color>
 
     <color name="primaryLight">#6982FF</color>
     <color name="colorEditText">#14000000</color>

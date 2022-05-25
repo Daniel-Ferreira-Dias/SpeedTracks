@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.GridLayoutMarcasItemBinding
 import com.cme.speedtrackers.model.Marcas
@@ -53,11 +54,12 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
         val name = model.Nome
         val image = model.Imagem
 
-        mDbRef = FirebaseDatabase.getInstance().reference
+        mDbRef = FirebaseDatabase.getInstance().getReference("Marcas")
 
         //set
         holder.textViewMarcas.text = name
 
+        loadImage(model, holder)
 
     }
 
@@ -70,4 +72,21 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
         val textViewMarcas = binding.titleTextView
     }
 
+
+    private fun loadImage(model: Marcas, holder: HolderMarcas) {
+        mDbRef.child(model.ID.toString())
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    try {
+                        Glide.with(context).load(model.Imagem)
+                            .placeholder(R.drawable.progress_animation)
+                            .into(holder.imageViewMarcas)
+                    } catch (e: Exception) {
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+    }
 }

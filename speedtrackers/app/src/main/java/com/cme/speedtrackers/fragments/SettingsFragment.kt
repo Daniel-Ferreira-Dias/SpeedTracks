@@ -11,13 +11,7 @@ import com.cme.speedtrackers.R
 import com.cme.speedtrackers.adapters.SettingsAdapter
 import com.cme.speedtrackers.databinding.FragmentSettingsBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
 

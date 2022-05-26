@@ -21,5 +21,10 @@ class OptionActivity : AppCompatActivity() {
             val intent = Intent(this, MarcasActivity::class.java)
             startActivity(intent)
         }
+        binding.goToStore.setOnClickListener {
+            val intent = Intent(this, BottomNavigationActivity::class.java)
+            intent.putExtra("Store", 1)
+            startActivity(intent)
+        }
     }
 }

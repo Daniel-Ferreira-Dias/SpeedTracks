@@ -76,4 +76,7 @@
     <string name="privacy_policy_desc">Consult information that you share with us</string>
     <string name="sign_out_desc">End your session. Log Out</string>
 
+    <string name="content_description">image</string>
+    <string name="title_settings">Settings</string>
+
 </resources>

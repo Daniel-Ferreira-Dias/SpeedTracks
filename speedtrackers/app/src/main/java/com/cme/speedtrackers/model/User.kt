@@ -2,6 +2,8 @@ package com.example.bookapplicationv1.classes
 
 class User {
     var userName: String? = null
+    var userFirstName: String? = null
+    var userLastName: String? = null
     var userEmail: String? = null
     var userType: String? = null
     var userTimestamp: Long? = null

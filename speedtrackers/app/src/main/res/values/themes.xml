@@ -48,4 +48,7 @@
         <item name="android:textSize">11sp</item>
     </style>
 
+    <style name="btn_style" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+    </style>
 </resources>

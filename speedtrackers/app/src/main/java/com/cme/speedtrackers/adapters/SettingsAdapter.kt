@@ -1,14 +1,18 @@
 package com.cme.speedtrackers.adapters
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.cme.speedtrackers.AuthenticationActivity
 import com.cme.speedtrackers.LoginActivity
+import com.cme.speedtrackers.ProfileViewActivity
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.classes.SettingsClass
+import com.cme.speedtrackers.databinding.FragmentSettingsBinding
 import com.cme.speedtrackers.databinding.ItemSettingsBinding
 import java.util.ArrayList
 import com.google.firebase.auth.FirebaseAuth
@@ -46,7 +50,12 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
         binding.btnAction.setOnClickListener {
             if (currentView.id == 7){
                 FirebaseAuth.getInstance().signOut() // User sign out
-                deployIntent() // Redirect to Login Activity
+                var intent = Intent(context, AuthenticationActivity::class.java)
+                context.startActivity(intent)
+            }
+            if (currentView.id == 1){
+                var intent = Intent(context, ProfileViewActivity::class.java)
+                context.startActivity(intent)
             }
         }
     }
@@ -59,10 +68,6 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
     }
 
     // Intent to Login Activity
-    private fun deployIntent(){
-        var intent = Intent(context, LoginActivity::class.java)
-        context.startActivity(intent)
-    }
 }
 
 // Create list of Settings Items

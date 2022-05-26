@@ -22,5 +22,8 @@
     <color name="red">#FF0000</color>
     <color name="green">#09B000</color>
 
+    <color name="Branco">#FFFFFf</color>
+    <color name="Cinza">#989898</color>
+
 
 </resources>

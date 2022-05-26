@@ -24,7 +24,12 @@
             android:exported="false" />
         <activity
             android:name=".BottomNavigationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ProfileViewActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MarcasActivity"
             android:exported="false" />

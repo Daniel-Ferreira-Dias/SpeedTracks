@@ -1,79 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btn_action"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/btn_action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:id="@+id/cl_edit_my_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/iv_edit_my_profile"
+            <RelativeLayout
+                android:id="@+id/constraint_icon"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_edit_my_profile"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/settings"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/constraint_text"
+                android:layout_width="280dp"
+                android:layout_marginEnd="0dp"
+                android:layout_height="50dp"
+                android:layout_toEndOf="@id/constraint_icon">
+
+                <TextView
+                    android:id="@+id/tv_edit_my_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_my_profile"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notifications_desc"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="normal"
+                    android:layout_below="@id/tv_edit_my_profile"/>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:padding="2dp"
-                android:src="@drawable/settings"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="50dp"
+                android:layout_toEndOf="@id/constraint_text"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/tv_edit_my_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_3"
-                android:layout_marginLeft="@dimen/dp_3"
-                android:text="@string/edit_my_profile"
-                android:textColor="@color/black"
-                android:textSize="@dimen/sp_17"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_edit_my_profile"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/iv_sign_out_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/next" />
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/iv_edit_my_profile_view"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginRight="40dp"
-                android:padding="5dp"
-                android:src="@drawable/next"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <RelativeLayout
+                android:id="@+id/relative_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@id/constraint_text"
+                android:layout_marginStart="70dp"
+                android:gravity="bottom">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:layout_goneMarginRight="30dp"
-                android:background="@color/WhiteGray"
-                android:foregroundTint="@color/WhiteGray"
-                android:backgroundTint="@color/WhiteGray"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_edit_my_profile"
-                android:layout_marginRight="30dp"/>
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/WhiteGray"
+                    android:backgroundTint="@color/WhiteGray"
+                    android:foregroundGravity="center"
+                    android:foregroundTint="@color/WhiteGray"
+                    android:layout_marginEnd="@dimen/dp_20"/>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+</androidx.cardview.widget.CardView>
 

@@ -2,37 +2,33 @@ package com.cme.speedtrackers.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.cme.speedtrackers.MarcasActivity
-import com.cme.speedtrackers.ModelosActivity
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.GridLayoutMarcasItemBinding
+import com.cme.speedtrackers.databinding.GridLayoutModelosItemBinding
 import com.cme.speedtrackers.model.Marcas
+import com.cme.speedtrackers.model.Modelos
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.lang.Exception
-import kotlin.math.log
 
-class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
+class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
 
     // context, get using construtor
-    private var context: MarcasActivity
+    private var context: Context
 
     //arraylist to hold pdfs
-    private var marcasArrayList: ArrayList<Marcas>
+    private var modelosArrayList: ArrayList<Modelos>
 
     //viewbinding row_pdf_user.xml
-    private lateinit var binding: GridLayoutMarcasItemBinding
+    private lateinit var binding: GridLayoutModelosItemBinding
 
     //firebase
     private val mAuth = FirebaseAuth.getInstance()
@@ -42,61 +38,53 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
 
 
     // construtor
-    constructor(context: MarcasActivity, marcasArrayList: ArrayList<Marcas>) {
+    constructor(context: Context, modelosArrayList: ArrayList<Modelos>) {
         this.context = context
-        this.marcasArrayList = marcasArrayList
+        this.modelosArrayList = modelosArrayList
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderMarcas {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderModelos {
         // inflate layout
-        binding = GridLayoutMarcasItemBinding.inflate(LayoutInflater.from(context), parent, false)
+        binding = GridLayoutModelosItemBinding.inflate(LayoutInflater.from(context), parent, false)
 
-        return HolderMarcas(binding.root)
+        return HolderModelos(binding.root)
     }
 
-    override fun onBindViewHolder(holder: HolderMarcas, position: Int) {
+    override fun onBindViewHolder(holder: HolderModelos, position: Int) {
         // get data
-        val model = marcasArrayList[position]
-        val marcaId = model.ID
-        val name = model.Nome
-        val image = model.Imagem
+        val model = modelosArrayList[position]
+        val nome = model.Nome_Modelo
 
         mDbRef = FirebaseDatabase.getInstance().getReference("Marcas")
 
         //set
-        holder.textViewMarcas.text = name
+        holder.textViewMarcas.text = nome
 
         loadImage(model, holder)
 
-
-        binding.selectBrand.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("marcaId", marcaId.toString())
-
-            val intent = Intent(context, ModelosActivity::class.java)
-            Log.d("Diogo", marcaId.toString())
-            intent.putExtra("marcaId", marcaId.toString()) // Loads respective brand
-            context.startActivity(intent)
+        // Handle Click
+        binding.selectModel.setOnClickListener {
+            Toast.makeText( context, "Selecionaste o modelo ${nome}!", Toast.LENGTH_SHORT).show()
         }
 
     }
 
     override fun getItemCount(): Int {
-        return marcasArrayList.size // number of records
+        return modelosArrayList.size // number of records
     }
 
-    inner class HolderMarcas(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class HolderModelos(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewMarcas = binding.iconImageView
         val textViewMarcas = binding.titleTextView
     }
 
 
-    private fun loadImage(model: Marcas, holder: HolderMarcas) {
-        mDbRef.child(model.ID.toString())
+    private fun loadImage(model: Modelos, holder: HolderModelos) {
+        mDbRef.child(model.ID_Modelo.toString())
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     try {
-                        Glide.with(context).load(model.Imagem)
+                        Glide.with(context).load(model.Imagem_Modelo)
                             .placeholder(R.drawable.progress_animation)
                             .into(holder.imageViewMarcas)
                     } catch (e: Exception) {

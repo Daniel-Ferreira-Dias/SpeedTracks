@@ -39,6 +39,7 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
 
         // set Item to Value
         currentView.name?.let { holder.tvText.setText(it) }
+        currentView.description?.let { holder.tvDescription.setText(it) }
         currentView.icon?.let { holder.ivIcon.setImageResource(it) }
 
         // set ClickListener
@@ -54,6 +55,7 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvText = binding.tvEditMyProfile
         val ivIcon = binding.ivEditMyProfile
+        val tvDescription = binding.tvDescription
     }
 
     // Intent to Login Activity
@@ -66,13 +68,14 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
 // Create list of Settings Items
 private fun addItemsToList(): ArrayList<SettingsClass> {
     val settingsList = ArrayList<SettingsClass>()
-    settingsList.add(SettingsClass(1, R.string.edit_my_profile, R.drawable.settings))
-    settingsList.add(SettingsClass(2, R.string.change_password, R.drawable.key))
-    settingsList.add(SettingsClass(3, R.string.notifications, R.drawable.bell))
-    settingsList.add(SettingsClass(4, R.string.contact_us, R.drawable.email))
-    settingsList.add(SettingsClass(5, R.string.terms_conditions, R.drawable.clipboard))
-    settingsList.add(SettingsClass(6, R.string.privacy_policy, R.drawable.verified))
-    settingsList.add(SettingsClass(7, R.string.sign_out, R.drawable.logout))
+
+    settingsList.add(SettingsClass(1, R.string.edit_my_profile, R.drawable.settings, R.string.edit_profile_desc))
+    settingsList.add(SettingsClass(2, R.string.change_password, R.drawable.key, R.string.change_password_desc))
+    settingsList.add(SettingsClass(3, R.string.notifications, R.drawable.bell, R.string.notifications_desc))
+    settingsList.add(SettingsClass(4, R.string.contact_us, R.drawable.email, R.string.contact_us_desc))
+    settingsList.add(SettingsClass(5, R.string.terms_conditions, R.drawable.clipboard, R.string.terms_conditions_desc))
+    settingsList.add(SettingsClass(6, R.string.privacy_policy, R.drawable.verified, R.string.privacy_policy_desc))
+    settingsList.add(SettingsClass(7, R.string.sign_out, R.drawable.logout, R.string.sign_out_desc))
 
     return settingsList
 }

@@ -51,4 +51,15 @@
     <style name="btn_style" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@null</item>
     </style>
+
+
+    <!-- Shapable to make it Circular. -->
+    <style name="CustomBottomSheetStyle" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- Background dialog. -->
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+    </style>
 </resources>

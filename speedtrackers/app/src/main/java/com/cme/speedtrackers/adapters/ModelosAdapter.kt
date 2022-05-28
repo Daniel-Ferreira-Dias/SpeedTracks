@@ -1,20 +1,21 @@
 package com.cme.speedtrackers.adapters
 
-import android.content.Context
-import android.content.Intent
+import android.content.ContentValues
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cme.speedtrackers.ModelosActivity
 import com.cme.speedtrackers.R
-import com.cme.speedtrackers.databinding.GridLayoutMarcasItemBinding
+import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.GridLayoutModelosItemBinding
-import com.cme.speedtrackers.model.Marcas
+import com.cme.speedtrackers.dialogs.BottomSheetColorFragment
 import com.cme.speedtrackers.model.Modelos
+import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.lang.Exception
@@ -22,7 +23,7 @@ import java.lang.Exception
 class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
 
     // context, get using construtor
-    private var context: Context
+    private var context: ModelosActivity
 
     //arraylist to hold pdfs
     private var modelosArrayList: ArrayList<Modelos>
@@ -36,9 +37,11 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
     //firebase database
     private lateinit var mDbRef: DatabaseReference
 
+    // GlobalClass
+    val compObj = GlobalClass.Companion
 
     // construtor
-    constructor(context: Context, modelosArrayList: ArrayList<Modelos>) {
+    constructor(context: ModelosActivity, modelosArrayList: ArrayList<Modelos>) {
         this.context = context
         this.modelosArrayList = modelosArrayList
     }
@@ -46,7 +49,6 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderModelos {
         // inflate layout
         binding = GridLayoutModelosItemBinding.inflate(LayoutInflater.from(context), parent, false)
-
         return HolderModelos(binding.root)
     }
 
@@ -54,8 +56,11 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
         // get data
         val model = modelosArrayList[position]
         val nome = model.Nome_Modelo
+        val id = model.ID_Modelo
 
         mDbRef = FirebaseDatabase.getInstance().getReference("Marcas")
+
+
 
         //set
         holder.textViewMarcas.text = nome
@@ -63,11 +68,25 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
         loadImage(model, holder)
 
         // Handle Click
-        binding.selectModel.setOnClickListener {
-            Toast.makeText( context, "Selecionaste o modelo ${nome}!", Toast.LENGTH_SHORT).show()
+        binding.selectModel.setOnClickListener { v ->
+            compObj.Model_Name = model.Nome_Modelo
+            compObj.Model_ID = model.ID_Modelo.toString()
+
+            Log.d("Inseriu", compObj.Model_ID)
+
+            val bundle = Bundle()
+            bundle.putString("modeloId", id.toString())
+
+            val dialog = BottomSheetColorFragment()
+            val ft = context.supportFragmentManager.beginTransaction()
+            dialog.arguments = bundle
+            dialog.show(ft, ContentValues.TAG)
+
+            Toast.makeText(context, "Selecionaste o modelo ${GlobalClass.Model_Name}!", Toast.LENGTH_SHORT).show()
         }
 
     }
+
 
     override fun getItemCount(): Int {
         return modelosArrayList.size // number of records
@@ -95,4 +114,5 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
                 }
             })
     }
+
 }

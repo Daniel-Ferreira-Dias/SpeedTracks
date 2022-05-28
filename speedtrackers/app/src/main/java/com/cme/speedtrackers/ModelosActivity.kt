@@ -1,15 +1,12 @@
 package com.cme.speedtrackers
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cme.speedtrackers.adapters.MarcasAdapter
 import com.cme.speedtrackers.adapters.ModelosAdapter
+import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.ActivityModelosBinding
-import com.cme.speedtrackers.model.Marcas
 import com.cme.speedtrackers.model.Modelos
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -22,20 +19,30 @@ class ModelosActivity : AppCompatActivity() {
     private lateinit var modelosList : ArrayList<Modelos>
     private lateinit var adapter : ModelosAdapter
 
-    //book id
+    //Marca id
     public var marcaId = ""
+    public var marcaNome = ""
+
+    public var marcaId_Global = ""
+    public var marcaNome_Global = ""
 
     //view binding
     private lateinit var binding: ActivityModelosBinding
+
+    // Global
+    val compObj = GlobalClass.Companion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityModelosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Gets intent
+        //Gets intent
         marcaId = intent.getStringExtra("marcaId")!!
-        Log.d("Daniel", marcaId)
+
+        //Global
+        marcaId_Global = compObj.Brand_ID
+        marcaNome_Global = compObj.Brand_Name
 
         // Marcas
         modelosList = ArrayList()
@@ -44,6 +51,13 @@ class ModelosActivity : AppCompatActivity() {
         modelosRecyclerView.layoutManager = GridLayoutManager(this, 2)
         modelosRecyclerView.adapter = adapter
         loadModelos()
+
+
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
+
+
     }
 
 

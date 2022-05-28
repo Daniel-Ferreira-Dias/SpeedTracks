@@ -1,27 +1,23 @@
 package com.cme.speedtrackers.adapters
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cme.speedtrackers.MarcasActivity
 import com.cme.speedtrackers.ModelosActivity
 import com.cme.speedtrackers.R
+import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.GridLayoutMarcasItemBinding
 import com.cme.speedtrackers.model.Marcas
+import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.lang.Exception
-import kotlin.math.log
 
 class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
 
@@ -39,6 +35,10 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
 
     //firebase database
     private lateinit var mDbRef: DatabaseReference
+
+
+    // GlobalClass
+    val compObj = GlobalClass.Companion
 
 
     // construtor
@@ -70,11 +70,13 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
 
 
         binding.selectBrand.setOnClickListener {
+            compObj.Brand_Name = model.Nome
+            compObj.Brand_ID = model.ID.toString()
+
             val bundle = Bundle()
             bundle.putString("marcaId", marcaId.toString())
 
             val intent = Intent(context, ModelosActivity::class.java)
-            Log.d("Diogo", marcaId.toString())
             intent.putExtra("marcaId", marcaId.toString()) // Loads respective brand
             context.startActivity(intent)
         }

@@ -4,6 +4,7 @@
     package="com.cme.speedtrackers">
 
     <application
+        android:name=".classes.GlobalClass"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -35,6 +36,10 @@
             android:exported="false" />
         <activity
             android:name=".OptionActivity"
+            android:exported="false" />
+        <activity
+
+            android:name=".ModelosActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

@@ -2,6 +2,8 @@ package com.cme.speedtrackers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cme.speedtrackers.adapters.MarcasAdapter
@@ -13,6 +15,8 @@ class MarcasActivity : AppCompatActivity() {
     private lateinit var marcasRecyclerView : RecyclerView
     private lateinit var marcasList : ArrayList<Marcas>
     private lateinit var adapter : MarcasAdapter
+
+    private lateinit var backButton: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,12 @@ class MarcasActivity : AppCompatActivity() {
         marcasRecyclerView.layoutManager = GridLayoutManager(this, 2)
         marcasRecyclerView.adapter = adapter
         loadMarcas()
+
+        backButton = findViewById(R.id.backButton)
+
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
 
     }
 

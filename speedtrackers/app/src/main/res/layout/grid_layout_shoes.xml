@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/icon_image_view"
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/air_force"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius_bottom_left="20dip"
+            app:riv_corner_radius_bottom_right="20dip" />
+
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:alpha="200"
+            android:background="@drawable/forhomeview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon_image_view"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:gravity="center"
+            android:text="Nike Air Force"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/icon_image_view"
+            app:layout_constraintEnd_toEndOf="@+id/icon_image_view"
+            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintStart_toStartOf="@+id/icon_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/tvDistacia"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <TextView
+            android:id="@+id/tvDistacia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon_image_view"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/icon_image_view"
+            app:layout_constraintEnd_toEndOf="@+id/icon_image_view"
+            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintStart_toStartOf="@+id/icon_image_view"
+            app:layout_constraintTop_toTopOf="@+id/icon_image_view"
+            app:layout_constraintVertical_bias="0.74" />
+
+        <TextView
+            android:id="@+id/KMsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon_image_view"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:gravity="center"
+            android:text="KMs"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/title_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/icon_image_view"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDistacia"
+            app:layout_constraintTop_toTopOf="@+id/icon_image_view"
+            app:layout_constraintVertical_bias="0.926" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

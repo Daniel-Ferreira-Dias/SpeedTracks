@@ -11,5 +11,6 @@ class GlobalClass : Application() {
         var Model_Name = ""
         var Color_ID = ""
         var currentProduto = Shoes()
+        var shoe_Imagem = ""
     }
 }

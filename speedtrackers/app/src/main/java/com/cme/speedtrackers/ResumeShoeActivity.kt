@@ -161,6 +161,8 @@ class ResumeShoeActivity : AppCompatActivity() {
         hashMap["Shoe_ID"] = timestamp
         hashMap["Shoe_TimeStamp"] = timestamp
         hashMap["Shoe_User_UID"] = mAuth.uid.toString()
+        hashMap["ImageURL"] = compObj.shoe_Imagem
+        hashMap["KmTraveled"] = 0.0
 
         // Save to DB
         val ref = FirebaseDatabase.getInstance().getReference("Sapatilhas")

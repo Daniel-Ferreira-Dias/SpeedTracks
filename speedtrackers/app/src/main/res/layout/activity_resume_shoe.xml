@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F4"
+    tools:context=".ResumeShoeActivity">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imagemShoe"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/air_force"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.456"
+        app:riv_border_color="#DFE1E4"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="30dip"
+        app:riv_mutate_background="true" />
+
+    <View
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#DFE1E4"
+        android:backgroundTint="#EFF0F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/fragmentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="Está prestes a adicionar"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/navigation_view"
+        app:layout_constraintEnd_toEndOf="@+id/navigation_view"
+        app:layout_constraintStart_toStartOf="@+id/navigation_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:backgroundTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.018" />
+
+    <TextView
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="Cancelar"
+        android:textColor="@color/primary"
+        android:textSize="15sp"
+        android:textStyle="bold"
+
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/navigation_view"
+        app:layout_constraintEnd_toEndOf="@+id/navigation_view"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="@+id/navigation_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="200dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="#B2B3B6"
+        android:backgroundTint="#B2B3B6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragmentName"
+        app:layout_constraintVertical_bias="0" />
+
+
+    <TextView
+        android:id="@+id/colorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/seg_ui_semibold"
+        android:text="Castanho"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagemShoe"
+        app:layout_constraintEnd_toStartOf="@+id/colorPicture"
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imagemShoe"
+        app:layout_constraintTop_toTopOf="@+id/imagemShoe"
+        app:layout_constraintVertical_bias="0.929" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorPicture"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/brown"
+        app:layout_constraintBottom_toBottomOf="@+id/imagemShoe"
+        app:layout_constraintEnd_toEndOf="@+id/imagemShoe"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imagemShoe"
+        app:layout_constraintTop_toTopOf="@+id/imagemShoe"
+        app:layout_constraintVertical_bias="0.951"
+        app:riv_border_color="#DFE1E4"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="100dip" />
+
+    <TextView
+        android:id="@+id/shoeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="Nike Air Force"
+        android:textColor="@color/black"
+        android:textSize="21dp"
+        android:textStyle="bold"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagemShoe"
+        app:layout_constraintEnd_toEndOf="@+id/imagemShoe"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imagemShoe"
+        app:layout_constraintTop_toTopOf="@+id/imagemShoe"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <ImageView
+        android:id="@+id/imageBrand"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/pngwing"
+        app:layout_constraintBottom_toBottomOf="@+id/imagemShoe"
+        app:layout_constraintEnd_toEndOf="@+id/imagemShoe"
+        app:layout_constraintTop_toTopOf="@+id/imagemShoe"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/addShoe"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Adicionar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagemShoe"
+        app:layout_constraintVertical_bias="0.157" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

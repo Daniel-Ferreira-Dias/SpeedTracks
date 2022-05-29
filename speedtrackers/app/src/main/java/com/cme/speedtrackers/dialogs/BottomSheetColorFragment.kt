@@ -65,12 +65,7 @@ class BottomSheetColorFragment : BottomSheetDialogFragment {
 
         val data = arguments
         modeloId = data!!.get("modeloId").toString()
-        Log.d("Check", modeloId)
 
-        textView = view.findViewById(R.id.textView)
-        textView.setOnClickListener {
-            Toast.makeText(context, "${modeloId}", Toast.LENGTH_SHORT).show()
-        }
 
         // Load cores
         loadCores()

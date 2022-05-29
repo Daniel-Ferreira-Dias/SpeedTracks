@@ -1,17 +1,24 @@
 package com.cme.speedtrackers.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cme.speedtrackers.ModelosActivity
 import com.cme.speedtrackers.R
+import com.cme.speedtrackers.ResumeShoeActivity
+import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.GridLayoutCoresItemBinding
-import com.cme.speedtrackers.interfaces.Communicator
 import com.cme.speedtrackers.model.Cores
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
 
@@ -24,6 +31,8 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
     //viewbinding row_pdf_user.xml
     private lateinit var binding: GridLayoutCoresItemBinding
 
+    // GlobalClass
+    val compObj = GlobalClass.Companion
 
 
     // construtor
@@ -47,11 +56,22 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
         val model = coresArrayList[position]
         val id = model.ID_Cor
 
-        holder.corText.text = model.Nome_Cor
         loadImage(model, holder)
 
+
         holder.imageViewMarcas.setOnClickListener {
-            Toast.makeText(context, "${model.Nome_Cor}", Toast.LENGTH_SHORT).show()
+            compObj.Color_ID = model.ID_Cor.toString()
+            if (compObj.Color_ID == "") {
+                Toast.makeText(context, "Tem que selecionar uma cor", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    context,
+                    "${model.Nome_Cor} " + " ${compObj.Color_ID}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                val intent = Intent(context, ResumeShoeActivity::class.java)
+                context.startActivity(intent)
+            }
         }
 
     }
@@ -62,7 +82,8 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
 
     inner class HolderCores(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewMarcas = binding.iconImageView
-        val corText = binding.textColor
+
+
     }
 
 

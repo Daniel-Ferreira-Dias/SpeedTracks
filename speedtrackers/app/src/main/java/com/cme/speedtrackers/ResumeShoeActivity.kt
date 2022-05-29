@@ -1,5 +1,6 @@
 package com.cme.speedtrackers
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -7,6 +8,8 @@ import com.bumptech.glide.Glide
 import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.ActivityModelosBinding
 import com.cme.speedtrackers.databinding.ActivityResumeShoeBinding
+import com.cme.speedtrackers.databinding.FragmentActivityBinding
+import com.cme.speedtrackers.fragments.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -46,21 +49,31 @@ class ResumeShoeActivity : AppCompatActivity() {
         loadColor()
         loadImageBrand()
 
+        binding.cancelButton.setOnClickListener {
+            Toast.makeText(this, "Processo cancelado", Toast.LENGTH_SHORT)
+            startActivity(Intent(this, BottomNavigationActivity::class.java))
+            finish()
+        }
+
         binding.backButton.setOnClickListener {
             onBackPressed()
         }
 
         binding.addShoe.setOnClickListener {
-            if (mAuth.currentUser != null){
+            if (mAuth.currentUser != null) {
                 addShoe()
-            }else{
-                Toast.makeText(this, "Tens que estar logado para adicionar a sapatilha", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Tens que estar logado para adicionar a sapatilha",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
     }
 
-    private fun loadImageBrand(){
+    private fun loadImageBrand() {
         val ref = FirebaseDatabase.getInstance().getReference("Marcas")
         ref.child(marcaId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -72,6 +85,7 @@ class ResumeShoeActivity : AppCompatActivity() {
                 } catch (e: Exception) {
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
             }
         })
@@ -120,12 +134,13 @@ class ResumeShoeActivity : AppCompatActivity() {
                     } catch (e: Exception) {
                     }
                 }
+
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
     }
 
-    private fun addShoe(){
+    private fun addShoe() {
         val timestamp = System.currentTimeMillis()
 
         // set up data
@@ -143,5 +158,10 @@ class ResumeShoeActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("Sapatilhas")
         ref.child(timestamp.toString())
             .setValue(hashMap)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Sapatilha adicionada com sucesso", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, BottomNavigationActivity::class.java))
+                finish()
+            }
     }
 }

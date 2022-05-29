@@ -15,6 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#90F1F1F1"
         android:paddingBottom="8dp">
 
         <com.makeramen.roundedimageview.RoundedImageView

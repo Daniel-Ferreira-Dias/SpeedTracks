@@ -15,9 +15,8 @@
         android:theme="@style/Theme.SpeedTrackers"
         tools:targetApi="31">
         <activity
-            android:name=".AddActivity"
-            android:exported="false"
-            />
+            android:name=".ResumeShoeActivity"
+            android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="false" />

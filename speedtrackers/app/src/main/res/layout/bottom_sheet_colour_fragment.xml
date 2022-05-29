@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="600dp"
     android:background="@drawable/bottomsheet_color_corner"
     android:orientation="vertical">
 
@@ -13,10 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="serif"
         android:gravity="center"
         android:text="Escolha a sua cor"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <View
@@ -36,15 +37,6 @@
         android:layout_height="150dp"
         android:layout_below="@id/view"
         tools:listitem="@layout/grid_layout_cores_item" />
-
-    <Button
-        android:id="@+id/submitComment"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/colorRecycler"
-        android:layout_centerHorizontal="true"
-        android:text="Confirmar"
-        android:textColor="@color/white" />
 
 
 </RelativeLayout>

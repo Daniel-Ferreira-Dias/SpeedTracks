@@ -1,5 +1,6 @@
 package com.cme.speedtrackers.classes
 
+import java.text.SimpleDateFormat
 import java.util.*
 
 data class InfoShoe(
@@ -12,4 +13,12 @@ data class InfoShoe(
     var Shoe_User_UID: Long?=0,
     var Color_Nome: String?= null,
     var Shoe_ID: Long?=0,
+    var KmTraveled: Double? = 0.0,
+    var FirstUsage : String?= getCurrentDate(),
+    var EquipamentoAtivo: Boolean? = true
 )
+private fun getCurrentDate(): String{
+    val sdf = SimpleDateFormat("dd-mm-yyyy")
+    val currentDate = sdf.format(Date())
+    return currentDate
+}

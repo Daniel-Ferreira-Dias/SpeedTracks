@@ -1,22 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ActivityFragment">
 
+    <RelativeLayout
+        android:id="@+id/cl_activity_header"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true">
 
-    <TextView
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Atividade"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:background="@color/primary"
+            android:foregroundTint="@color/primary" />
+    </RelativeLayout>
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:iconifiedByDefault="false"
+        android:searchIcon="@null"
+        android:queryHint="Search..."
+        android:background="@drawable/ripple_button_stroke"
+        android:elevation="@dimen/dp_10"
+        android:layout_below="@id/cl_activity_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop="@dimen/dp_15">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_activities" />
+
+        <TextView
+            android:id="@+id/tv_carregando"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:text="Carregando a tua atividade..."
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_not_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:text="Você não possue nenhuma atividade"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity Fragment"
-        android:textSize="20sp"
-        android:textColor="@color/primary"
-        style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:backgroundTint="@color/primary"
+        android:clickable="true"
+        android:enabled="false"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/addwhite"
+        app:tint="@android:color/white"/>
+</RelativeLayout>

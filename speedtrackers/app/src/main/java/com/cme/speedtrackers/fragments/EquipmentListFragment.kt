@@ -9,14 +9,14 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.databinding.FragmentEquipmentListBinding
-import com.cme.speedtrackers.model.UserEquipment
+import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.database.*
 import java.util.ArrayList
 
 
 class EquipmentListFragment : Fragment() {
     private lateinit var binding: FragmentEquipmentListBinding
-    private lateinit var equipmentList: ArrayList<UserEquipment>
+    private lateinit var equipmentList: ArrayList<Shoes>
     private lateinit var dbRef: DatabaseReference
     lateinit var adapter: EquipmentListAdapter
 
@@ -32,7 +32,7 @@ class EquipmentListFragment : Fragment() {
         binding.rvEquipment.hasFixedSize()
         binding.rvEquipment.layoutManager = LinearLayoutManager(requireContext())
 
-        equipmentList = arrayListOf<UserEquipment>()
+        equipmentList = arrayListOf<Shoes>()
         adapter = EquipmentListAdapter(equipmentList)
         binding.rvEquipment.adapter = adapter
         getUserEquipments()
@@ -42,23 +42,10 @@ class EquipmentListFragment : Fragment() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query.toString().isEmpty()){
-                    binding.rvEquipment.clearFocus()
-                    getUserEquipments()
-                }
-                else{
-                    filter(query.toString())
-                }
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                /*if (newText.toString().isEmpty()){
-                    getUserEquipments()
-                }
-                else{
-                    filter(newText.toString())
-                }*/
                 filter(newText.toString())
                 return true
             }
@@ -71,15 +58,15 @@ class EquipmentListFragment : Fragment() {
         binding.rvEquipment.visibility = View.GONE
         binding.tvCarregando.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Equipments")
+        dbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas")
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 equipmentList.clear()
                 if (snapshot.exists()){
                     for (equiSnap in snapshot.children){
-                        val equipData = equiSnap.getValue(UserEquipment::class.java)
+                        val equipData = equiSnap.getValue(Shoes::class.java)
 
-                        if (equipData?.equipamentoAtivo == true){
+                        if (equipData?.EquipamentoAtivo == true){
                             equipmentList.add(equipData)
                             /*if (equipData?.UserUID == FirebaseAuth.getInstance().uid){
                             equipmentList.add(equipData!!)
@@ -107,11 +94,11 @@ class EquipmentListFragment : Fragment() {
 
     private  fun filter(e: String) {
         //Declare the array list that holds the filtered values
-        var filteredItem = ArrayList<UserEquipment>()
+        var filteredItem = ArrayList<Shoes>()
         // loop through the array list to obtain the required value
         for (item in equipmentList) {
 
-            if (item.modeloNome.toString().lowercase().contains(e.lowercase())) {
+            if (item.Model_Nome.toString().filterNot { it.isWhitespace() }.lowercase().contains(e.lowercase().filterNot { it.isWhitespace() })) {
                 filteredItem.add(item)
             }
         }

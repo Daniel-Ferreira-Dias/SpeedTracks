@@ -34,13 +34,11 @@
                     android:layout_gravity="center"
                     android:background="@drawable/air_force"/>
 
-
-
             </FrameLayout>
 
             <View
                 android:layout_width="1dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
@@ -58,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="NIKE AIR FORCE"
+                android:text="Corrida no Porto"
                 android:textColor="@color/defaultText"
                 android:textSize="18sp" />
             <TextView
@@ -87,25 +85,32 @@
                 android:textSize="14sp"
                 android:layout_toRightOf="@id/tv_distacia"
                 android:layout_below="@id/tv_name"/>
+            <ImageView
+                android:id="@+id/timer_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/tv_distacia"
+                android:src="@drawable/timer_icon"/>
 
             <TextView
-                android:id="@+id/tv_first_use"
+                android:id="@+id/tv_duracao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Primeiro Uso: "
+                android:layout_below="@id/tv_distacia"
+                android:layout_marginStart="@dimen/dp_3"
+                android:layout_toRightOf="@id/timer_icon"
+                android:text="40min"
                 android:textColor="@color/Cinza"
-                android:textSize="14sp"
-                android:layout_below="@id/tv_defaultText"/>
-            <TextView
-                android:id="@+id/tv_first_use_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="28-05-2022"
-                android:textColor="@color/Cinza"
-                android:textSize="14sp"
-                android:layout_toRightOf="@id/tv_first_use"
-                android:layout_below="@id/tv_defaultText"/>
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/location_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_3"/>
+
         </RelativeLayout>
     </RelativeLayout>
-
 </androidx.cardview.widget.CardView>

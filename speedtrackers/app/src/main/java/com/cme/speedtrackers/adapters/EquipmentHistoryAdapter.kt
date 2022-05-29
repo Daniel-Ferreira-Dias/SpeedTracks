@@ -9,18 +9,22 @@ import com.bumptech.glide.Glide
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.ItemEquipmentListBinding
 import com.cme.speedtrackers.model.Modelos
-import com.cme.speedtrackers.model.UserEquipment
+import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.database.*
 import java.lang.Exception
 import java.util.ArrayList
 
-class EquipmentHistoryAdapter(private val equipmentList: ArrayList<UserEquipment>) : RecyclerView.Adapter<EquipmentHistoryAdapter.CustomViewHolder>()  {
+class EquipmentHistoryAdapter(private var equipmentList: ArrayList<Shoes>) : RecyclerView.Adapter<EquipmentHistoryAdapter.CustomViewHolder>()  {
 
     //Essential Variables
     private lateinit var binding: ItemEquipmentListBinding //View Binding
     private lateinit var context: Context //Context from Parent
     private lateinit var dbRef: DatabaseReference
 
+    public fun setFilteredList(filteredList: ArrayList<Shoes>) {
+        this.equipmentList = filteredList
+        notifyDataSetChanged()
+    }
 
     // Number of rows in display
     override fun getItemCount(): Int {
@@ -39,13 +43,12 @@ class EquipmentHistoryAdapter(private val equipmentList: ArrayList<UserEquipment
         val currentView = equipmentList[position] // Current ViewItem
 
         // set Item to Value
-        setModeloNameAndImage(currentView.ModeloID, currentView.MarcaID, holder)
-        currentView.firstUsage?.let { holder.tvData.setText(it) }
-        currentView.kmTraveled?.toString().let { holder.tvDistancia.setText(it) }
+        setModeloNameAndImage(currentView.Model_ID, currentView.Brand_ID, holder)
+        currentView.FirstUsage?.let { holder.tvData.setText(it) }
+        currentView.KmTraveled?.toString().let { holder.tvDistancia.setText(it) }
     }
 
-    private fun setModeloNameAndImage(modeloID: Long?, marcaID:Long?, holder: EquipmentHistoryAdapter.CustomViewHolder) {
-        var modelo: Modelos = Modelos()
+    private fun setModeloNameAndImage(modeloID: String?, marcaID:String?, holder: EquipmentHistoryAdapter.CustomViewHolder) {
         dbRef = FirebaseDatabase.getInstance().getReference("Marcas/${marcaID}/Modelos/${modeloID}")
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -55,7 +58,6 @@ class EquipmentHistoryAdapter(private val equipmentList: ArrayList<UserEquipment
                     holder.tvName.text = model?.Nome_Modelo.toString()
                     println("Modelo: ${model?.Nome_Modelo} de id ${model?.ID_Modelo} - $modeloID")
                     loadImage(holder, model?.Imagem_Modelo.toString())
-                    modelo = model!!
                 }
             }
             override fun onCancelled(error: DatabaseError) {

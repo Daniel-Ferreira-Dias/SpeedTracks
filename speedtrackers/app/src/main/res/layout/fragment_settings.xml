@@ -22,11 +22,11 @@
 
             <TextView
                 android:id="@+id/tv_title"
-                android:layout_width="91dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
                 android:gravity="center"
-                android:text="Settings"
+                android:text="Configurações"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold"

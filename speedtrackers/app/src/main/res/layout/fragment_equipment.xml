@@ -57,5 +57,6 @@
         android:enabled="false"
         app:fabSize="mini"
         app:srcCompat="@drawable/addwhite"
-        app:tint="@android:color/white"/>
+        app:tint="@android:color/white"
+        app:layout_behavior="com.cme.speedtrackers.classes.ScrollAwareFABBehavior"/>
 </RelativeLayout>

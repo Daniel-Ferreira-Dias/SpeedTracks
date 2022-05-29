@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fillViewport="true"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+tools:context=".AddActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_settings_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        >
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="15dp"
+            android:text="Atividade"
+            android:textColor="@color/white"
+            android:textSize="@dimen/toolbar_title_TS"
+            android:textStyle="bold"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/cl_activity_header"
+        android:layout_below="@id/toolbar_settings_activity"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Adicionar Atividade"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:background="@color/primary"
+            android:foregroundTint="@color/primary" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cl_activity_header"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Nome da Atividade"
+            app:hintEnabled="true"
+            android:textColorHint="@color/Cinza">
+
+            <EditText
+                android:id="@+id/et_nome_atividade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:enabled="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_firsName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_username"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Tipo de Atividade"
+            android:textColorHint="@color/Cinza">
+
+            <EditText
+                android:id="@+id/et_tipo_atividade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:enabled="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_lastName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_firsName"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Duração da Atividade"
+            android:textColorHint="@color/Cinza">
+
+            <EditText
+                android:id="@+id/et_duracao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:enabled="true" />
+            <TextView
+                android:id="@+id/text_sample2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="min"
+                android:layout_gravity=""/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_lastName"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Distância Percorrida"
+            android:textColorHint="@color/Cinza"
+            >
+
+            <EditText
+                android:id="@+id/et_distacia_percorrida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:enabled="true" />
+
+            <TextView
+                android:id="@+id/text_sample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kilometers"
+                android:layout_gravity=""/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_date"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_email"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Data da Atividade"
+            app:helperText="Data da Atividade"
+            android:textColorHint="@color/Cinza"
+            >
+
+            <Button
+                android:id="@+id/et_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Seleciona a Data"
+                android:drawableEnd="@drawable/arrow_down"
+                android:textAlignment="center"
+                android:enabled="true"
+                android:textColor="@color/primary"
+                style="?android:spinnerStyle"
+                android:cursorVisible="false"
+                android:background="@drawable/ripple_button_stroke"
+                android:foregroundTint="@drawable/ripple_button_stroke"
+                app:backgroundTint="@null" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarTextColor="@color/primary"
+            android:spinnersShown="false"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fields"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ripple_button"
+            android:text="Adicionar" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/btn_style"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/btn_save"
+            android:background="@drawable/ripple_button_stroke"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="cancel"
+            android:textColor="@color/primary"/>
+
+    </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

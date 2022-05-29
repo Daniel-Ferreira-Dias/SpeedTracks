@@ -1,5 +1,6 @@
 package com.cme.speedtrackers.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,15 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cme.speedtrackers.AddActivity
 import com.cme.speedtrackers.adapters.ActivityListAdapter
-import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.databinding.FragmentActivityBinding
 import com.cme.speedtrackers.model.Atividade
-import com.cme.speedtrackers.model.Shoes
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
-
 
 class ActivityFragment : Fragment() {
     private lateinit var binding: FragmentActivityBinding
@@ -30,6 +28,13 @@ class ActivityFragment : Fragment() {
         binding = FragmentActivityBinding.inflate(layoutInflater)
 
         //Type your code
+        binding.floatingBtn2.isEnabled = true
+        binding.floatingBtn2.isClickable = true
+        binding.floatingBtn2.setOnClickListener {
+            val intent = Intent(this.requireContext(), AddActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.tvNotFound.visibility = View.GONE
         binding.rvActivity.hasFixedSize()
         binding.rvActivity.layoutManager = LinearLayoutManager(requireContext())

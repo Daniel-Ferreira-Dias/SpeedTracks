@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cme.speedtrackers.R
+import com.cme.speedtrackers.adapters.ActivityListAdapter
 import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.adapters.ShoeAdapater
 import com.cme.speedtrackers.databinding.FragmentHomeBinding
+import com.cme.speedtrackers.model.Atividade
 import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -20,9 +22,9 @@ import java.util.ArrayList
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
-    private lateinit var equipmentList: ArrayList<Shoes>
+    private lateinit var equipmentList: ArrayList<Atividade>
     private lateinit var dbRef: DatabaseReference
-    lateinit var equipamentAdapater: EquipmentListAdapter
+    lateinit var equipamentAdapater: ActivityListAdapter
 
     private lateinit var shoeList : ArrayList<Shoes>
     lateinit var shoeAdapter: ShoeAdapater
@@ -38,8 +40,8 @@ class HomeFragment : Fragment() {
         binding.shoeRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         //TYPE YOUR CODE HERE
-        equipmentList = arrayListOf<Shoes>()
-        equipamentAdapater = EquipmentListAdapter(equipmentList)
+        equipmentList = arrayListOf<Atividade>()
+        equipamentAdapater = ActivityListAdapter(equipmentList)
         binding.shoeRecycler.adapter = equipamentAdapater
         getUserEquipments()
 
@@ -58,13 +60,13 @@ class HomeFragment : Fragment() {
 
     private fun getUserEquipments() {
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas")
+        dbRef = FirebaseDatabase.getInstance().getReference("Atividades")
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 equipmentList.clear()
                 for (ds in snapshot.children) {
-                    val model = ds.getValue(Shoes::class.java)
-                    if (model?.Shoe_User_UID == FirebaseAuth.getInstance().uid) {
+                    val model = ds.getValue(Atividade::class.java)
+                    if (model?.User_UID == FirebaseAuth.getInstance().uid) {
                         equipmentList.add(model!!)
                     }
                 }

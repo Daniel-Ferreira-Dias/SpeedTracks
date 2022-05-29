@@ -52,15 +52,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     // System login user
-
     private fun userLogin(){
         firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(this, "Login com sucesso !", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, BottomNavigationActivity::class.java)
                 startActivity(intent)
             }else{
-                Toast.makeText(this, "Autenticaçãi sem sucesso:" + it.exception.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Autenticação sem sucesso:" + it.exception.toString(), Toast.LENGTH_SHORT).show()
             }
 
         }

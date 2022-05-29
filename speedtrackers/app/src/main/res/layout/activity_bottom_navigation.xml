@@ -17,45 +17,47 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:tabMaxWidth="0dp"
-        app:tabGravity="fill"
-        app:tabMode="fixed"
-        app:tabIndicator="@color/WhiteGray"
-        android:background="@color/white"
         android:layout_alignParentBottom="true"
-        app:tabSelectedTextColor="@color/primary"
+        android:background="@color/white"
         android:outlineAmbientShadowColor="@color/primary"
         android:outlineSpotShadowColor="@color/primary"
+        app:tabGravity="fill"
+        app:tabIndicator="@color/WhiteGray"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
         app:tabRippleColor="@color/primary"
-        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-        >
+        app:tabSelectedTextColor="@color/primary"
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Home"
-            android:icon="@drawable/home"/>
+            android:icon="@drawable/home"
+            android:text="Home" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shop"
-            android:icon="@drawable/shop"/>
+            android:icon="@drawable/shop"
+            android:text="Loja" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Equipment"
-            android:icon="@drawable/equipment"/>
+            android:icon="@drawable/equipment"
+            android:text="Equipmento" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activity"
-            android:icon="@drawable/activity"/>
+            android:icon="@drawable/activity"
+            android:text="Atividade" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Moree"
-            android:icon="@drawable/more"/>
+            android:icon="@drawable/more"
+            android:text="Mais" />
 
     </com.google.android.material.tabs.TabLayout>
 </RelativeLayout>

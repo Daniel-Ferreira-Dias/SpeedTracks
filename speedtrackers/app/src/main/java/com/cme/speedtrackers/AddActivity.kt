@@ -92,9 +92,6 @@ class AddActivity : AppCompatActivity() {
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)).show()
         }
-        binding.etDistaciaPercorrida.setOnClickListener {
-            binding.etDistaciaPercorrida.isCursorVisible = true
-        }
     }
 
 

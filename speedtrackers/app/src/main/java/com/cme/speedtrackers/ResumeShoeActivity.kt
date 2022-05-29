@@ -31,6 +31,7 @@ class ResumeShoeActivity : AppCompatActivity() {
     var modelId = ""
     var corId = ""
     var corNome = ""
+    var shoeSize = ""
 
     // Get user
     private val mAuth = FirebaseAuth.getInstance()
@@ -60,14 +61,20 @@ class ResumeShoeActivity : AppCompatActivity() {
         }
 
         binding.addShoe.setOnClickListener {
-            if (mAuth.currentUser != null) {
-                addShoe()
-            } else {
-                Toast.makeText(
-                    this,
-                    "Tens que estar logado para adicionar a sapatilha",
-                    Toast.LENGTH_SHORT
-                ).show()
+            shoeSize = binding.ShoeSize.text.toString()
+
+            if (shoeSize.isEmpty()){
+                Toast.makeText(this, "Insira o tamanho da sapatilha", Toast.LENGTH_SHORT).show()
+            }else{
+                if (mAuth.currentUser != null) {
+                    addShoe()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Tens que estar logado para adicionar a sapatilha",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 
@@ -150,6 +157,7 @@ class ResumeShoeActivity : AppCompatActivity() {
         hashMap["Color_Nome"] = corNome
         hashMap["Brand_ID"] = marcaId
         hashMap["Model_ID"] = modelId
+        hashMap["Shoe_Size"] = shoeSize.toLong()
         hashMap["Shoe_ID"] = timestamp
         hashMap["Shoe_TimeStamp"] = timestamp
         hashMap["Shoe_User_UID"] = mAuth.uid.toString()

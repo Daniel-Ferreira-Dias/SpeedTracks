@@ -18,6 +18,7 @@ class Shoes(
     var FirstUsage : String?= getCurrentDate(),
     var EquipamentoAtivo: Boolean? = true,
     var ImageURL: String = "",
+    var Shoe_Size: Long= 0,
     var listaShoeInfo: ArrayList<InfoShoe> = ArrayList()
 )
 {

@@ -1,5 +1,6 @@
 package com.cme.speedtrackers.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.cme.speedtrackers.MarcasActivity
 import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.databinding.FragmentEquipmentListBinding
 import com.cme.speedtrackers.model.Shoes
@@ -49,6 +52,23 @@ class EquipmentListFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 filter(newText.toString())
                 return true
+            }
+        })
+
+        binding.floatingBtn.isEnabled = true
+        binding.floatingBtn.setOnClickListener {
+            val intent = Intent(this.requireContext(), MarcasActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.rvEquipment.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0 || dy < 0 && binding.floatingBtn.isShown()) binding.floatingBtn.hide()
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) binding.floatingBtn.show()
+                super.onScrollStateChanged(recyclerView, newState)
             }
         })
 

@@ -3,6 +3,7 @@ package com.cme.speedtrackers
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -29,6 +30,16 @@ private lateinit var binding: ActivityAddBinding
 private lateinit var datePickerDialog: DatePickerDialog
 // GlobalClass
 val compObj = GlobalClass.Companion
+
+// Variables for Activity creation
+var nome = ""
+var tipo = ""
+var duracao = 0
+var data = ""
+var distancia = 0.0
+var id = 0L
+var shoeID = 0L
+var userUID = ""
 
 class AddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,23 +106,33 @@ class AddActivity : AppCompatActivity() {
         }
 
         binding.tvAdd.setOnClickListener {
-            if (checkConditions()){
-                println("Pronto para submeter na base de dados")
-                var nome = binding.etNomeAtividade.text.toString()
-                var tipo = binding.etTipoAtividade.text.toString()
-                var duracao = binding.etDuracao.text
-                var data = binding.etDate.text.toString()
-                var distancia = binding.etDistaciaPercorrida.text.toString().toDouble()
-                var id = System.currentTimeMillis()
-                var shoeID = compObj.activityShoe.Shoe_ID
-                var userUID = FirebaseAuth.getInstance().uid
-                var currentKM: Double? = compObj.activityShoe.KmTraveled
-                var finalKM = currentKM?.plus(distancia)
-                println("Objeto Atividade($nome, $tipo, $duracao, $data, $distancia, $id, $shoeID, $userUID)")
-                FirebaseDatabase.getInstance().getReference("Sapatilhas").child(compObj.activityShoe.Shoe_ID.toString()).child("KmTraveled")
-                    .setValue(finalKM)
+            if (FirebaseAuth.getInstance().currentUser != null) {
+                if (checkConditions()){
+                    println("Pronto para submeter na base de dados")
+                    nome = binding.etNomeAtividade.text.toString()
+                    tipo = binding.etTipoAtividade.text.toString()
+                    duracao = binding.etDuracao.text.toString().toInt()
+                    data = binding.etDate.text.toString()
+                    distancia = binding.etDistaciaPercorrida.text.toString().toDouble()
+                    id = System.currentTimeMillis()
+                    shoeID = compObj.activityShoe.Shoe_ID
+                    userUID = FirebaseAuth.getInstance().uid.toString()
+                    var currentKM: Double? = compObj.activityShoe.KmTraveled
+                    var finalKM = currentKM?.plus(distancia)
+                    println("Objeto Atividade($nome, $tipo, $duracao, $data, $distancia, $id, $shoeID, $userUID)")
+                    FirebaseDatabase.getInstance().getReference("Sapatilhas").child(compObj.activityShoe.Shoe_ID.toString()).child("KmTraveled")
+                        .setValue(finalKM) // Atualizar kilometragem
 
-                //CONTINUAR AQUI
+                    //CONTINUAR AQUI
+                    addActivity()
+                }
+
+            } else {
+                Toast.makeText(
+                    this,
+                    "É necessário estar numa sessão válida!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -193,5 +214,31 @@ class AddActivity : AppCompatActivity() {
         super.onBackPressed()
         finish()
         compObj.activityShoe.Shoe_ID = 0L
+    }
+
+    private fun addActivity() {
+        // set up data
+        val hashMap = HashMap<String, Any>()
+        hashMap["NomeAtividade"] = nome
+        hashMap["TipoExercicio"] = tipo
+        hashMap["DistanciaPercorrida"] = distancia
+        hashMap["Duracao"] = duracao
+        hashMap["Data"] = data
+        hashMap["Shoe_ID"] = shoeID
+        hashMap["ID"] = id
+        hashMap["User_UID"] = userUID
+
+        // Save to DB
+        val ref = FirebaseDatabase.getInstance().getReference("Atividades")
+        ref.child(id.toString())
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Atividade adicionada com sucesso", Toast.LENGTH_SHORT).show()
+                finish()
+            }.addOnCanceledListener {
+                Toast.makeText(this, "Não foi possível criar Atividade. Tente Novamente!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+
     }
 }

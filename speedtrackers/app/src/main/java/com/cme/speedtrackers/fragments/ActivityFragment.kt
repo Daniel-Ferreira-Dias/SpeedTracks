@@ -2,19 +2,20 @@ package com.cme.speedtrackers.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cme.speedtrackers.AddActivity
 import com.cme.speedtrackers.adapters.ActivityListAdapter
 import com.cme.speedtrackers.databinding.FragmentActivityBinding
 import com.cme.speedtrackers.model.Atividade
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import java.util.ArrayList
+
 
 class ActivityFragment : Fragment() {
     private lateinit var binding: FragmentActivityBinding
@@ -59,6 +60,17 @@ class ActivityFragment : Fragment() {
             }
         })
 
+        binding.rvActivity.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0 || dy < 0 && binding.floatingBtn2.isShown()) binding.floatingBtn2.hide()
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) binding.floatingBtn2.show()
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+        })
+
 
         return binding.root
     }
@@ -85,6 +97,7 @@ class ActivityFragment : Fragment() {
                         binding.tvNotFound.visibility = View.VISIBLE
                     }
                     else{
+                        activityList.reverse()
                         binding.rvActivity.adapter = adapter
                         binding.rvActivity.visibility = View.VISIBLE
                         binding.tvCarregando.visibility = View.GONE

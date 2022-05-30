@@ -53,4 +53,8 @@ class BottomNavigationActivity : AppCompatActivity() {
 
         })
     }
+
+    public fun modificarPosicao(posicao : Int){
+        binding.viewPager.currentItem = posicao
+    }
 }

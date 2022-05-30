@@ -43,20 +43,5 @@
             android:text="Histórico" />
     </com.google.android.material.tabs.TabLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/dp_15"
-        android:layout_marginBottom="@dimen/dp_15"
-        android:backgroundTint="@color/primary"
-        android:clickable="true"
-        android:enabled="false"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/addwhite"
-        app:tint="@android:color/white"
-        app:layout_behavior="com.cme.speedtrackers.classes.ScrollAwareFABBehavior"/>
+
 </RelativeLayout>

@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:text="A sua atividade"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/recylcerEquipament"
+        app:layout_constraintBottom_toTopOf="@id/activityEquipament"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,17 +88,19 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userName"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.636"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recylcerEquipament"
+        android:id="@+id/activityEquipament"
         android:layout_width="match_parent"
         android:layout_height="340dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:listitem="@layout/grid_activities_home" />
+        tools:listitem="@layout/item_activities" />
 
     <TextView
         android:id="@+id/seeMoreActivities"
@@ -107,12 +109,14 @@
         android:text="Ver mais"
         android:textColor="@color/primary"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/recylcerEquipament"
+        app:layout_constraintBottom_toTopOf="@+id/activityEquipament"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/shoeRecycler"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.55"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

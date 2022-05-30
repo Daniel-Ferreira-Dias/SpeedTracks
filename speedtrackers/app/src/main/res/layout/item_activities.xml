@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="90dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/dp_10"
     app:cardElevation="3dp"
     android:layout_margin="10dp"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:clickable="true">
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
 
     <RelativeLayout
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="90dp"
         android:layout_marginStart="@dimen/dp_10"
         android:layout_marginBottom="@dimen/dp_3">
 
@@ -23,8 +23,8 @@
             android:layout_height="match_parent">
 
             <FrameLayout
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
                 android:layout_gravity="center_horizontal">
 
                 <ImageView
@@ -38,59 +38,64 @@
 
             <View
                 android:layout_width="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:background="@color/primary"/>
+                android:background="@color/primary"
+                android:backgroundTint="@color/primary"/>
         </FrameLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="69dp"
-            android:layout_toRightOf="@id/fl_image"
-            android:layout_marginStart="@dimen/dp_10">
+            android:layout_height="90dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_toRightOf="@id/fl_image">
 
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:text="Corrida no Porto"
                 android:textColor="@color/defaultText"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tv_defaultText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
                 android:text="Distância Total Percorrida: "
                 android:textColor="@color/Cinza"
-                android:textSize="14sp"
-                android:layout_below="@id/tv_name"/>
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tv_distacia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_toRightOf="@id/tv_defaultText"
                 android:text="20"
                 android:textColor="@color/Cinza"
-                android:textSize="14sp"
-                android:layout_toRightOf="@id/tv_defaultText"
-                android:layout_below="@id/tv_name"/>
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tv_distacia_km"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_toRightOf="@id/tv_distacia"
                 android:text="km"
                 android:textColor="@color/Cinza"
-                android:textSize="14sp"
-                android:layout_toRightOf="@id/tv_distacia"
-                android:layout_below="@id/tv_name"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:id="@+id/timer_icon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_below="@id/tv_distacia"
-                android:src="@drawable/timer_icon"/>
+                android:src="@drawable/timer_icon" />
 
             <TextView
                 android:id="@+id/tv_duracao"
@@ -99,17 +104,28 @@
                 android:layout_below="@id/tv_distacia"
                 android:layout_marginStart="@dimen/dp_3"
                 android:layout_toRightOf="@id/timer_icon"
-                android:text="40min"
+                android:text="40"
                 android:textColor="@color/Cinza"
                 android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_distacia"
+                android:layout_marginStart="@dimen/dp_3"
+                android:layout_toRightOf="@id/tv_duracao"
+                android:text="min"
+                android:textColor="@color/Cinza"
+                android:textSize="14sp" />
+
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/location_icon"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/dp_3"/>
+                android:layout_marginEnd="@dimen/dp_3"
+                android:src="@drawable/location_icon" />
 
         </RelativeLayout>
     </RelativeLayout>

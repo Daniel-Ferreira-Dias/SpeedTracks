@@ -163,6 +163,7 @@ class ResumeShoeActivity : AppCompatActivity() {
         hashMap["Shoe_User_UID"] = mAuth.uid.toString()
         hashMap["ImageURL"] = compObj.shoe_Imagem
         hashMap["KmTraveled"] = 0.0
+        hashMap["EquipamentoAtivo"] = true
 
         // Save to DB
         val ref = FirebaseDatabase.getInstance().getReference("Sapatilhas")

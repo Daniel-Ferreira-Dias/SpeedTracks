@@ -123,7 +123,7 @@ class AddActivity : AppCompatActivity() {
         var data = binding.etDate.text.toString()
         var distancia = binding.etDistaciaPercorrida.text
 
-        if (nome.isEmpty() and tipo.isEmpty() and duracao.isEmpty() and data.isEmpty() and distancia.isEmpty()){
+        if (nome.isEmpty() and tipo.isEmpty() and duracao.isEmpty() and distancia.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
         }
         if (nome.isEmpty()) {
@@ -191,6 +191,7 @@ class AddActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+        finish()
         compObj.activityShoe.Shoe_ID = 0L
     }
 }

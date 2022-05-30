@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.databinding.FragmentEquipmentListBinding
 import com.cme.speedtrackers.model.Shoes
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 
@@ -65,12 +66,10 @@ class EquipmentListFragment : Fragment() {
                 if (snapshot.exists()){
                     for (equiSnap in snapshot.children){
                         val equipData = equiSnap.getValue(Shoes::class.java)
-
                         if (equipData?.EquipamentoAtivo == true){
-                            equipmentList.add(equipData)
-                            /*if (equipData?.UserUID == FirebaseAuth.getInstance().uid){
-                            equipmentList.add(equipData!!)
-                        }*/
+                            if (equipData?.Shoe_User_UID == FirebaseAuth.getInstance().uid){
+                                equipmentList.add(equipData!!)
+                            }
                         }
                     }
                     if (equipmentList.size == 0){
@@ -90,6 +89,10 @@ class EquipmentListFragment : Fragment() {
 
             }
         })
+    }
+    override fun onResume() {
+        super.onResume()
+        binding.searchView.clearFocus()
     }
 
     private  fun filter(e: String) {

@@ -21,6 +21,7 @@ import com.cme.speedtrackers.compObj
 import com.cme.speedtrackers.databinding.ActivityAddBinding
 import com.cme.speedtrackers.databinding.BottomSheetShoesFragmentBinding
 import com.cme.speedtrackers.model.Shoes
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.lang.Exception
 
@@ -96,7 +97,11 @@ class BottomSheetShoesFragment : BottomSheetDialogFragment() {
                 equipmentList.clear()
                 for (ds in snapshot.children){
                     val model = ds.getValue(Shoes::class.java)
-                    equipmentList.add(model as Shoes)
+                    if (model?.EquipamentoAtivo == true){
+                        if (model?.Shoe_User_UID == FirebaseAuth.getInstance().uid){
+                            equipmentList.add(model!!)
+                        }
+                    }
                 }
                 binding.rvEquipment.adapter = adapter
             }

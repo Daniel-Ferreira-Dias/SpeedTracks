@@ -11,6 +11,7 @@ import com.cme.speedtrackers.adapters.EquipmentHistoryAdapter
 import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.databinding.FragmentEquipmentHistoryBinding
 import com.cme.speedtrackers.model.Shoes
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 
@@ -69,10 +70,9 @@ class EquipmentHistoryFragment : Fragment() {
                     for (equiSnap in snapshot.children){
                         val equipData = equiSnap.getValue(Shoes::class.java)
                         if (equipData?.EquipamentoAtivo == false){
-                            /*if (equipData?.UserUID == FirebaseAuth.getInstance().uid){
-                            equipmentList.add(equipData!!)
-                        }*/
-                            equipmentList.add(equipData!!)
+                            if (equipData?.Shoe_User_UID == FirebaseAuth.getInstance().uid){
+                                equipmentList.add(equipData!!)
+                            }
                         }
                     }
                     if (equipmentList.size == 0){

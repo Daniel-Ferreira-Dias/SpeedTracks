@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.ColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.cme.speedtrackers.adapters.TabPageAdapter
@@ -20,6 +21,11 @@ class BottomNavigationActivity : AppCompatActivity() {
         setUpBar()
         var page: Int = intent.getIntExtra("Store", 0)
         binding.viewPager.currentItem = page
+    }
+
+    override fun onResume() {
+        super.onResume()
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 
     private fun setUpBar() {

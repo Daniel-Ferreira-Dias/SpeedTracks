@@ -12,6 +12,7 @@ import com.cme.speedtrackers.AddActivity
 import com.cme.speedtrackers.adapters.ActivityListAdapter
 import com.cme.speedtrackers.databinding.FragmentActivityBinding
 import com.cme.speedtrackers.model.Atividade
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 
@@ -74,10 +75,9 @@ class ActivityFragment : Fragment() {
                 if (snapshot.exists()){
                     for (atividadeSnap in snapshot.children){
                         val atividadeData = atividadeSnap.getValue(Atividade::class.java)
-                        /*if (atividadeData?.User_UID == FirebaseAuth.getInstance().uid){
+                        if (atividadeData?.User_UID == FirebaseAuth.getInstance().uid){
                             activityList.add(atividadeData!!)
-                        }*/
-                        activityList.add(atividadeData!!)
+                        }
                     }
                     if (activityList.size == 0){
                         //binding.rvEquipment.visibility = View.VISIBLE
@@ -120,5 +120,10 @@ class ActivityFragment : Fragment() {
             binding.rvActivity.visibility = View.VISIBLE
             binding.tvNotFound.visibility = View.GONE
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.searchView.clearFocus()
     }
 }

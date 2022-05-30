@@ -1,13 +1,16 @@
 package com.cme.speedtrackers.adapters
 
+import android.content.ContentValues
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cme.speedtrackers.BottomNavigationActivity
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.ItemActivitiesBinding
+import com.cme.speedtrackers.dialogs.ModalDisplayActivity
 import com.cme.speedtrackers.model.Atividade
 import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.database.*
@@ -49,6 +52,12 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
         currentView.Duracao?.toString().let { holder.tvDuracao.setText(it) }
         currentView.DistanciaPercorrida?.toString().let { holder.tvDistancia.setText(it) }
         holder.tvData.setText(getDataStringFormatted(currentView.Data))
+
+        binding.cardView.setOnClickListener {
+            var dialogInfo = ModalDisplayActivity(currentView)
+            val activity = context as BottomNavigationActivity
+            dialogInfo.show(activity.supportFragmentManager, ContentValues.TAG)
+        }
     }
 
     private fun setModeloNameAndImage(

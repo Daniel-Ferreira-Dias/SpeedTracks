@@ -8,9 +8,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo_app_icon"
+        android:icon="@mipmap/ic_launcher_speedtracker_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo_app_icon"
+        android:roundIcon="@mipmap/ic_launcher_speedtracker_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpeedTrackers"
         tools:targetApi="31">

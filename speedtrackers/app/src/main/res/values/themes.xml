@@ -67,6 +67,11 @@
         <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
     </style>
 
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="dialogCornerRadius">@dimen/dp_20</item>
+        <item name="background">@null</item>
+    </style>
+
     <!-- Splash Screen -->
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--<item name="android:windowBackground">@drawable/sneakerplug</item>-->

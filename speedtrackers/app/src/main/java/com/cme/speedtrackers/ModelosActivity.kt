@@ -56,8 +56,6 @@ class ModelosActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             onBackPressed()
         }
-
-
     }
 
 
@@ -69,7 +67,6 @@ class ModelosActivity : AppCompatActivity() {
                 modelosList.clear()
                 for (ds in snapshot.children){
                     val model = ds.getValue(Modelos::class.java)
-
                     modelosList.add(model!!)
                 }
                 modelosRecyclerView.adapter = adapter

@@ -40,31 +40,59 @@ tools:context=".AddActivity">
 
     <RelativeLayout
         android:id="@+id/cl_activity_header"
-        android:layout_below="@id/toolbar_settings_activity"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/toolbar_settings_activity"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true">
 
+        <ImageView
+            android:id="@+id/iv_imagem"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_15"
+            android:src="@drawable/air_force" />
+
         <TextView
-            android:id="@+id/tv_title2"
+            android:id="@+id/tv_modelo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Adicionar Atividade"
-            android:textColor="@color/black"
-            android:textSize="22sp"
+            android:layout_below="@id/iv_imagem"
+            android:layout_centerHorizontal="true"
+            android:text="Nike Air Force"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/dp_20"
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dp_15"
             android:layout_marginEnd="@dimen/dp_20"
-            android:background="@color/primary"
-            android:foregroundTint="@color/primary" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:text="Cancelar"
+            android:textColor="@color/primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_15"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:text="Confirmar"
+            android:textColor="@color/primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
     </RelativeLayout>
 
 
@@ -175,7 +203,7 @@ tools:context=".AddActivity">
                 android:id="@+id/text_sample"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kilometers"
+                android:text="kilometros"
                 android:layout_gravity=""/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -188,26 +216,31 @@ tools:context=".AddActivity">
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:hint="Data da Atividade"
-            app:helperText="Data da Atividade"
             android:textColorHint="@color/Cinza"
             >
 
             <Button
                 android:id="@+id/et_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Seleciona a Data"
-                android:drawableEnd="@drawable/arrow_down"
-                android:textAlignment="center"
-                android:enabled="true"
-                android:textColor="@color/primary"
                 style="?android:spinnerStyle"
-                android:cursorVisible="false"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
                 android:background="@drawable/ripple_button_stroke"
+                android:cursorVisible="false"
+                android:drawableEnd="@drawable/arrow_down"
+                android:enabled="true"
                 android:foregroundTint="@drawable/ripple_button_stroke"
-                app:backgroundTint="@null" />
+                android:text="Seleciona a Data"
+                android:textAlignment="center"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
+            <TextView
+                android:id="@+id/text_sample3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data da Atividade"
+                />
+
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -220,7 +253,9 @@ tools:context=".AddActivity">
 
 
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/rl_botoes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/fields"
@@ -233,7 +268,8 @@ tools:context=".AddActivity">
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/ripple_button"
-            android:text="Adicionar" />
+            android:text="Seguinte"
+            android:enabled="true"/>
 
         <Button
             android:id="@+id/btn_cancel"
@@ -246,7 +282,7 @@ tools:context=".AddActivity">
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:text="cancel"
-            android:textColor="@color/primary"/>
+            android:textColor="@color/primary" />
 
     </RelativeLayout>
     </RelativeLayout>

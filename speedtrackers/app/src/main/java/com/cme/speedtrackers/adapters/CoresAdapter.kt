@@ -1,5 +1,6 @@
 package com.cme.speedtrackers.adapters
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -57,8 +58,6 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
         val id = model.ID_Cor
 
         loadImage(model, holder)
-
-
         holder.imageViewMarcas.setOnClickListener {
             compObj.Color_ID = model.ID_Cor.toString()
             if (compObj.Color_ID == "") {
@@ -82,8 +81,6 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
 
     inner class HolderCores(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewMarcas = binding.iconImageView
-
-
     }
 
 

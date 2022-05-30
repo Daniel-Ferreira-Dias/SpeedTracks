@@ -17,9 +17,9 @@
         android:background="@drawable/ripple_button_stroke"
         android:elevation="@dimen/dp_10"
         android:iconifiedByDefault="false"
+        android:queryBackground="@android:color/transparent"
         android:queryHint="Search..."
-        android:searchIcon="@null"
-        android:queryBackground="@android:color/transparent" />
+        android:searchIcon="@null" />
 
     <RelativeLayout
         android:layout_width="match_parent"

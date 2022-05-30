@@ -15,6 +15,7 @@ data class InfoShoe(
     var Shoe_ID: Long?=0,
     var KmTraveled: Double? = 0.0,
     var FirstUsage : String?= getCurrentDate(),
+    var ImagemURL : String?= "None",
     var EquipamentoAtivo: Boolean? = true
 )
 private fun getCurrentDate(): String{

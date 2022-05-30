@@ -48,7 +48,7 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
         // set Item to Value
         setModeloNameAndImage(currentView.Shoe_ID, holder, currentView)
         currentView.NomeAtividade?.let { holder.tvName.setText(it) }
-        currentView.Duracao?.let { holder.tvDuracao.setText(it) }
+        currentView.Duracao?.toString().let { holder.tvDuracao.setText(it) }
         currentView.DistanciaPercorrida?.toString().let { holder.tvDistancia.setText(it) }
     }
 

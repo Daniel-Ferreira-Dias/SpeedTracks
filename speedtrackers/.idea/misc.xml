@@ -3,56 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/addwhite.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/bg_gradient.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/bottomsheet_color_corner.xml" value="0.321" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/edit_text_background.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/forhomeview.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/forview.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/grid_layout_modelos_item.xml" value="0.321" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/imagesresume.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/round_selector.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/selection.xml" value="0.321" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/drawable/textinput_white.xml" value="0.349" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_add_marca.xml" value="0.14572127139364302" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_main.xml" value="0.14572127139364302" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_modelos.xml" value="0.19462102689486552" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_option.xml" value="0.3009833262077811" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_resume_shoe.xml" value="0.2955575702629193" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/bottom_sheet_colour_fragment.xml" value="0.19462102689486552" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_activity.xml" value="0.19462102689486552" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_home.xml" value="0.3009833262077811" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_settings.xml" value="0.18" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_activities_home.xml" value="0.3009833262077811" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_cores_item.xml" value="0.3605072463768116" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_marcas_item.xml" value="0.25" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_modelos_item.xml" value="0.5" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_shoes.xml" value="0.33" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/item_activities.xml" value="0.3009833262077811" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/item_equipment_list.xml" value="0.3009833262077811" />
-        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/item_settings.xml" value="0.19462102689486552" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/add.xml" value="0.2575" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/color_selector_tab_item.xml" value="0.2275" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/edit.xml" value="0.2575" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/edit_pressable.xml" value="0.1695" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/ripple_button.xml" value="0.2575" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/ripple_button_stroke.xml" value="0.2575" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/round_selector.xml" value="0.2575" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/round_white.xml" value="0.2575" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/user_image_background.xml" value="0.2575" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_add.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_add_marca.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_authentication.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_main.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_meaw_bottom_navigation.xml" value="0.3359375" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_modelos.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_option.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_profile_view.xml" value="0.3359375" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_splash_screen.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_test.xml" value="0.3359375" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/bottom_sheet_colour_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/bottom_sheet_shoes_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/bottom_sheet_shoes_item.xml" value="0.33" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/content_testing.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_activity.xml" value="0.3359375" />
-        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_equipment.xml" value="0.3359375" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_equipment.xml" value="0.33" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_equipment_history.xml" value="0.31875" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_equipment_list.xml" value="0.33" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_home.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_settings.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_shop.xml" value="0.3359375" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_cores_item.xml" value="0.33" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_marcas_item.xml" value="0.3359375" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_modelos_item.xml" value="0.3359375" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/item_activities.xml" value="0.6103723404255319" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/item_equipment_list.xml" value="0.33" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/item_settings.xml" value="0.5" />
+        <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/round_white.xml" value="0.3359375" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/layout/settings_code.xml" value="0.3359375" />
       </map>
     </option>

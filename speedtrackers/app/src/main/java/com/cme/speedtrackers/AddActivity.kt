@@ -92,16 +92,16 @@ class AddActivity : AppCompatActivity() {
 
         //Get Values
         binding.btnSave.setOnClickListener {
-            println("Tentei")
             if (checkConditions()){
+                binding.etDistaciaPercorrida.clearFocus()
+                binding.etNomeAtividade.clearFocus()
+                binding.etTipoAtividade.clearFocus()
+                binding.etDuracao.clearFocus()
+
                 val dialog = BottomSheetShoesFragment()
                 val ft = this.supportFragmentManager.beginTransaction()
                 dialog.show(ft, ContentValues.TAG)
                 compObj.currentDialog = dialog
-                println("Existo")
-            }
-            else{
-                println("Else")
             }
         }
 

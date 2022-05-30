@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.ItemActivitiesBinding
-import com.cme.speedtrackers.databinding.ItemEquipmentListBinding
 import com.cme.speedtrackers.model.Atividade
-import com.cme.speedtrackers.model.Modelos
 import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.database.*
 import java.lang.Exception
@@ -50,6 +48,7 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
         currentView.NomeAtividade?.let { holder.tvName.setText(it) }
         currentView.Duracao?.toString().let { holder.tvDuracao.setText(it) }
         currentView.DistanciaPercorrida?.toString().let { holder.tvDistancia.setText(it) }
+        holder.tvData.setText(getDataStringFormatted(currentView.Data))
     }
 
     private fun setModeloNameAndImage(
@@ -85,11 +84,39 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
         }
     }
 
+    private fun getDataStringFormatted(string: String) : String{
+        var result: String = ""
+        var replacedString = string.replace("-", "")
+        var dia = replacedString.subSequence(0, 2)
+        var mes = replacedString.subSequence(2, 4)
+        var ano = replacedString.subSequence(4, 8)
+        var mesName = ""
+
+        when (mes){
+            "01" -> mesName = "Jan"
+            "02" -> mesName = "Fev"
+            "03" -> mesName = "Mar"
+            "04" -> mesName = "Abr"
+            "05" -> mesName = "Maio"
+            "06" -> mesName = "Jun"
+            "07" -> mesName = "Jul"
+            "08" -> mesName = "Ago"
+            "09" -> mesName = "Set"
+            "10" -> mesName = "Out"
+            "11" -> mesName = "Nov"
+            "12" -> mesName = "Dez"
+        }
+
+        result = "$dia, $mesName de $ano"
+        return result
+    }
+
     // Set items Variables
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvName = binding.tvName
         val tvDistancia = binding.tvDistacia
         val tvDuracao = binding.tvDuracao
         val ivImagem = binding.ivImagem
+        val tvData = binding.tvData
     }
 }

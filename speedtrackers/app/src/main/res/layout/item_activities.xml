@@ -109,6 +109,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_min"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_distacia"
@@ -117,6 +118,18 @@
                 android:text="min"
                 android:textColor="@color/Cinza"
                 android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_distacia"
+                android:layout_marginStart="10dp"
+                android:text="25-05-2022"
+                android:textColor="@color/Cinza"
+                android:textSize="14sp"
+                android:layout_toRightOf="@id/tv_min"
+                android:layout_marginEnd="@dimen/dp_10"/>
 
 
             <ImageView

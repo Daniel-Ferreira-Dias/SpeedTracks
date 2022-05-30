@@ -111,11 +111,21 @@ class HomeFragment : Fragment() {
                 }
                 tempList.sortByDescending { it.KmTraveled }
                 for (shoe in tempList){
-                    shoeList.add(shoe)
+                    var exists = false
+                    for (shoe2 in shoeList){
+                        if (shoe.Shoe_ID == shoe2.Shoe_ID){
+                            exists = true
+                        }
+                    }
+                    if (!exists){
+                        shoeList.add(shoe)
+                    }
                     if (shoeList.size == 3) {
                         break
                     }
                 }
+
+
                 binding.shoeRecycler.adapter = shoeAdapter
             }
 

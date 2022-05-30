@@ -1,6 +1,7 @@
 package com.cme.speedtrackers.fragments
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,15 +22,14 @@ import java.util.ArrayList
 
 
 class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
 
+    //Latenit variables
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var activityList: ArrayList<Atividade>
     private lateinit var dbRef: DatabaseReference
-    lateinit var activityAdapater: ActivityListAdapter
-
+    private lateinit var activityAdapater: ActivityListAdapter
     private lateinit var shoeList : ArrayList<Shoes>
-    lateinit var shoeAdapter: ShoeAdapater
-
+    private lateinit var shoeAdapter: ShoeAdapater
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,25 +37,24 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
-        binding.shoeRecycler.hasFixedSize()
-        binding.shoeRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         //TYPE YOUR CODE HERE
         activityList = arrayListOf<Atividade>()
         binding.activityEquipament.layoutManager = LinearLayoutManager(requireContext())
+        binding.activityEquipament.hasFixedSize()
         activityAdapater = ActivityListAdapter(activityList)
         binding.activityEquipament.adapter = activityAdapater
-        getUserActivities()
-
-
 
         shoeList = arrayListOf<Shoes>()
+        binding.shoeRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.shoeRecycler.hasFixedSize()
         shoeAdapter = ShoeAdapater(requireContext(), shoeList)
         binding.shoeRecycler.adapter = shoeAdapter
-        getUserShoes()
 
         getUserName()
+        getUserShoes()
+        getUserActivities()
+
 
         binding.seeMoreShoes.setOnClickListener {
             var viewPagerActivity: BottomNavigationActivity = activity as BottomNavigationActivity
@@ -65,6 +64,7 @@ class HomeFragment : Fragment() {
             var viewPagerActivity: BottomNavigationActivity = activity as BottomNavigationActivity
             viewPagerActivity.modificarPosicao(3)
         }
+
 
         return binding.root
     }
@@ -97,7 +97,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun getUserShoes() {
-
         dbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas")
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -124,11 +123,8 @@ class HomeFragment : Fragment() {
                         break
                     }
                 }
-
-
                 binding.shoeRecycler.adapter = shoeAdapter
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -136,7 +132,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun getUserName() {
-
         dbRef = FirebaseDatabase.getInstance().getReference("Users")
         dbRef.child(FirebaseAuth.getInstance().uid.toString())
             .addValueEventListener(object : ValueEventListener {
@@ -144,12 +139,10 @@ class HomeFragment : Fragment() {
                     val userName = "${snapshot.child("userName").value}"
                     binding.userName.text = userName
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
             })
     }
-
 
 }

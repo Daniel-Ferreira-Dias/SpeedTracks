@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">RackIT</string>
+    <string name="app_name">SpeedTracker</string>
     <string name="comecar">Começar</string>
-    <string name="textoWelcome">O RackIT é um sistema de gestão de inventario doméstico feito para facilitar a vida do utilizador. Pretende poupar tempo e dinheiro do utilizador</string>
-    <string name="rackIT">rackIT</string>
+    <string name="textoWelcome">O SpeedTracker é um sistema de gestão de Calçados feito para facilitar a vida do utilizador monitorando os seus calçados. É possível comprar novos calçados apartir da loja da Aplicação.</string>
+    <string name="rackIT">SpeedTracker</string>
     <string name="login">Iniciar Sessão</string>
     <string name="register">Criar conta</string>
     <string name="email">Email</string>

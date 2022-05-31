@@ -7,6 +7,7 @@ class Atividade(
     var TipoExercicio: String = "",
     var Duracao: Int = 0,
     var Data: String = "",
+    var ImageURL: String = "",
     var Shoe_ID: Long = 0,
     var User_UID: String = ""
 )

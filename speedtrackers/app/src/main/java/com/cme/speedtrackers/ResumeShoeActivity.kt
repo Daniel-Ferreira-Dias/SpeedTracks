@@ -16,6 +16,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class ResumeShoeActivity : AppCompatActivity() {
@@ -163,6 +166,8 @@ class ResumeShoeActivity : AppCompatActivity() {
         hashMap["Shoe_User_UID"] = mAuth.uid.toString()
         hashMap["ImageURL"] = compObj.shoe_Imagem
         hashMap["KmTraveled"] = 0.0
+        hashMap["FirstUsage"] = getCurrentDate()
+        println(getCurrentDate())
         hashMap["EquipamentoAtivo"] = true
 
         // Save to DB
@@ -174,5 +179,11 @@ class ResumeShoeActivity : AppCompatActivity() {
                 startActivity(Intent(this, BottomNavigationActivity::class.java))
                 finish()
             }
+
+    }
+    private fun getCurrentDate(): String{
+        val sdf = SimpleDateFormat("dd-MM-yyyy")
+        val currentDate = sdf.format(Date())
+        return currentDate
     }
 }

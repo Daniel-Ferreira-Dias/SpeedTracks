@@ -227,6 +227,7 @@ class AddActivity : AppCompatActivity() {
         hashMap["Shoe_ID"] = shoeID
         hashMap["ID"] = id
         hashMap["User_UID"] = userUID
+        hashMap["ImageURL"] = compObj.activityShoe.ImageURL
 
         // Save to DB
         val ref = FirebaseDatabase.getInstance().getReference("Atividades")

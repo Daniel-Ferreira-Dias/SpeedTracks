@@ -19,8 +19,6 @@
         <item name="colorPrimary">@color/WhiteGray</item>
         <item name="colorOnPrimary">@color/primary</item>
     </style>
-
-
     <style name="Button.White" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@android:color/white</item>
     </style>
@@ -39,7 +37,7 @@
 
     <style name="AppTheme.speedtrackers.ActionBar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/primary_logo</item>
+        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/WhiteGray</item>
     </style>

@@ -63,11 +63,6 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
             if (compObj.Color_ID == "") {
                 Toast.makeText(context, "Tem que selecionar uma cor", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(
-                    context,
-                    "${model.Nome_Cor} " + " ${compObj.Color_ID}",
-                    Toast.LENGTH_SHORT
-                ).show()
                 val intent = Intent(context, ResumeShoeActivity::class.java)
                 context.startActivity(intent)
             }

@@ -75,12 +75,8 @@ class EquipmentHistoryFragment : Fragment() {
                             }
                         }
                     }
-                    if (equipmentList.size == 0){
-                        //binding.rvEquipment.visibility = View.VISIBLE
-                        binding.tvCarregando.visibility = View.GONE
-                        binding.tvNotFound.visibility = View.VISIBLE
-                    }
-                    else{
+                    if(!equipmentList.isEmpty()){
+                        equipmentList.reverse()
                         binding.rvEquipment.adapter = adapter
                         binding.rvEquipment.visibility = View.VISIBLE
                         binding.tvCarregando.visibility = View.GONE
@@ -94,6 +90,11 @@ class EquipmentHistoryFragment : Fragment() {
             }
 
         })
+        if (equipmentList.isEmpty()){
+            println("IS EMPTY")
+            binding.tvCarregando.visibility = View.GONE
+            binding.tvNotFound.visibility = View.VISIBLE
+        }
     }
 
     private  fun filter(e: String) {

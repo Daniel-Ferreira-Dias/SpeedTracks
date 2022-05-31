@@ -83,8 +83,6 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
             val ft = context.supportFragmentManager.beginTransaction()
             dialog.arguments = bundle
             dialog.show(ft, ContentValues.TAG)
-
-            Toast.makeText(context, "Selecionaste o modelo ${GlobalClass.Model_Name}!", Toast.LENGTH_SHORT).show()
         }
 
     }

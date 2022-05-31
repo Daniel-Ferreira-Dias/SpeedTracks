@@ -91,12 +91,7 @@ class ActivityFragment : Fragment() {
                             activityList.add(atividadeData!!)
                         }
                     }
-                    if (activityList.size == 0){
-                        //binding.rvEquipment.visibility = View.VISIBLE
-                        binding.tvCarregando.visibility = View.GONE
-                        binding.tvNotFound.visibility = View.VISIBLE
-                    }
-                    else{
+                    if(activityList.isNotEmpty()){
                         activityList.reverse()
                         binding.rvActivity.adapter = adapter
                         binding.rvActivity.visibility = View.VISIBLE
@@ -109,6 +104,11 @@ class ActivityFragment : Fragment() {
 
             }
         })
+        if (activityList.isEmpty()){
+            println("IS EMPTY")
+            binding.tvCarregando.visibility = View.GONE
+            binding.tvNotFound.visibility = View.VISIBLE
+        }
     }
 
     private  fun filter(e: String) {

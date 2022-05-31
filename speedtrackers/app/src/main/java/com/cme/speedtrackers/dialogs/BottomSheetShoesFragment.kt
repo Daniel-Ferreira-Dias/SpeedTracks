@@ -63,7 +63,8 @@ class BottomSheetShoesFragment : BottomSheetDialogFragment() {
                 compObj.activityShoe.Shoe_ID = 0
             }
         }
-        binding.tvNotFound.visibility = View.GONE
+        binding.tvNotFound.visibility = View.VISIBLE
+        binding.rvEquipment.visibility = View.VISIBLE
         binding.searchView.clearFocus()
 
         binding.searchView.setOnClickListener {
@@ -103,11 +104,20 @@ class BottomSheetShoesFragment : BottomSheetDialogFragment() {
                         }
                     }
                 }
-                binding.rvEquipment.adapter = adapter
+                if(equipmentList.isNotEmpty()){
+                    equipmentList.reverse()
+                    binding.rvEquipment.adapter = adapter
+                    binding.rvEquipment.visibility = View.VISIBLE
+                    binding.tvNotFound.visibility = View.GONE
+                }
             }
             override fun onCancelled(error: DatabaseError) {
             }
         })
+        if (equipmentList.isEmpty()){
+            binding.rvEquipment.visibility = View.GONE
+            binding.tvNotFound.visibility = View.VISIBLE
+        }
     }
 
     private  fun filter(e: String) {

@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
         //TYPE YOUR CODE HERE
+        binding.tvNotFoundShoes.visibility = View.GONE
         activityList = arrayListOf<Atividade>()
         binding.activityEquipament.layoutManager = LinearLayoutManager(requireContext())
         binding.activityEquipament.hasFixedSize()
@@ -94,6 +95,12 @@ class HomeFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
+        if (activityList.isEmpty()){
+            binding.tvNotFoundActivity.visibility = View.VISIBLE
+        }
+        else{
+            binding.tvNotFoundActivity.visibility = View.GONE
+        }
     }
 
     private fun getUserShoes() {
@@ -104,7 +111,7 @@ class HomeFragment : Fragment() {
                 var tempList = ArrayList<Shoes>()
                 for (ds in snapshot.children) {
                     val model = ds.getValue(Shoes::class.java)
-                    if (model?.Shoe_User_UID == FirebaseAuth.getInstance().uid) {
+                    if (model?.Shoe_User_UID == FirebaseAuth.getInstance().uid && model?.EquipamentoAtivo == true) {
                         tempList.add(model!!)
                     }
                 }
@@ -118,6 +125,7 @@ class HomeFragment : Fragment() {
                     }
                     if (!exists){
                         shoeList.add(shoe)
+                        binding.tvNotFoundShoes.visibility = View.GONE
                     }
                     if (shoeList.size == 3) {
                         break
@@ -129,6 +137,12 @@ class HomeFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
+        if (shoeList.isEmpty()){
+            binding.tvNotFoundShoes.visibility = View.VISIBLE
+        }
+        else{
+            binding.tvNotFoundShoes.visibility = View.GONE
+        }
     }
 
     private fun getUserName() {

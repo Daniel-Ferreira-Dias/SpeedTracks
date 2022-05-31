@@ -76,8 +76,7 @@
             android:id="@+id/rv_equipment"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            tools:listitem="@layout/bottom_sheet_shoes_item"
-            />
+            tools:listitem="@layout/bottom_sheet_shoes_item" />
 
     </RelativeLayout>
 

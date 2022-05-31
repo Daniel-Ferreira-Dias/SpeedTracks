@@ -47,7 +47,7 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
         val currentView = activityList[position] // Current ViewItem
 
         // set Item to Value
-        setModeloNameAndImage(currentView.Shoe_ID, holder, currentView)
+        loadImage(holder, currentView.ImageURL)
         currentView.NomeAtividade?.let { holder.tvName.setText(it) }
         currentView.Duracao?.toString().let { holder.tvDuracao.setText(it) }
         currentView.DistanciaPercorrida?.toString().let { holder.tvDistancia.setText(it) }
@@ -58,29 +58,6 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
             val activity = context as BottomNavigationActivity
             dialogInfo.show(activity.supportFragmentManager, ContentValues.TAG)
         }
-    }
-
-    private fun setModeloNameAndImage(
-        shoeID: Long?,
-        holder: ActivityListAdapter.CustomViewHolder,
-        currentItem: Atividade
-    ) {
-        dbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas/${shoeID}")
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var model = snapshot.getValue(Shoes::class.java)
-                    /*if (model?.ImageURL.toString().length.compareTo(10) <= 0 ){
-                        FirebaseDatabase.getInstance().getReference("Sapatilhas").child(currentItem.Shoe_ID.toString()).child("ImageURL")
-                            .setValue(model?.Imagem_Modelo.toString())
-                    }*/
-                    loadImage(holder, model?.ImageURL.toString())
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
     }
 
     //Carregar uma imagem recebendo o URL

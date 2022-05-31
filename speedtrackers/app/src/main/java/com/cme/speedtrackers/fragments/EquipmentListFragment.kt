@@ -33,6 +33,7 @@ class EquipmentListFragment : Fragment() {
 
         //Type your code
         binding.tvNotFound.visibility = View.GONE
+        binding.tvCarregando.visibility = View.GONE
         binding.rvEquipment.hasFixedSize()
         binding.rvEquipment.layoutManager = LinearLayoutManager(requireContext())
 
@@ -89,15 +90,12 @@ class EquipmentListFragment : Fragment() {
                         if (equipData?.EquipamentoAtivo == true){
                             if (equipData?.Shoe_User_UID == FirebaseAuth.getInstance().uid){
                                 equipmentList.add(equipData!!)
+                                adapter.setFilteredList(equipmentList)
                             }
                         }
                     }
-                    if (equipmentList.size == 0){
-                        //binding.rvEquipment.visibility = View.VISIBLE
-                        binding.tvCarregando.visibility = View.GONE
-                        binding.tvNotFound.visibility = View.VISIBLE
-                    }
-                    else{
+                    if(!equipmentList.isEmpty()){
+                        equipmentList.reverse()
                         binding.rvEquipment.adapter = adapter
                         binding.rvEquipment.visibility = View.VISIBLE
                         binding.tvCarregando.visibility = View.GONE
@@ -106,9 +104,14 @@ class EquipmentListFragment : Fragment() {
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-
+                println("Couldnt...")
             }
         })
+        if (equipmentList.isEmpty()){
+            println("IS EMPTY")
+            binding.tvCarregando.visibility = View.GONE
+            binding.tvNotFound.visibility = View.VISIBLE
+        }
     }
     override fun onResume() {
         super.onResume()

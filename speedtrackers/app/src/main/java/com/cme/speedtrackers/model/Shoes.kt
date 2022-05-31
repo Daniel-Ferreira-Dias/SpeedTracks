@@ -15,7 +15,7 @@ class Shoes(
     var Shoe_TimeStamp: Long = 0,
     var Shoe_User_UID: String = "",
     var KmTraveled: Double? = 0.0,
-    var FirstUsage : String?= getCurrentDate(),
+    var FirstUsage : String?= "",
     var EquipamentoAtivo: Boolean? = true,
     var ImageURL: String = "",
     var Shoe_Size: Long= 0,
@@ -25,9 +25,4 @@ class Shoes(
     fun adicionarInfoProduto(listaShoe: InfoShoe) {
         listaShoeInfo.add(listaShoe)
 }
-}
-private fun getCurrentDate(): String{
-    val sdf = SimpleDateFormat("dd-mm-yyyy")
-    val currentDate = sdf.format(Date())
-    return currentDate
 }

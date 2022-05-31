@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_20"
             android:text="Carregando o teu equipamento..."
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_not_found"

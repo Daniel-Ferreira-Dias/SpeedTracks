@@ -75,12 +75,18 @@ class EquipmentHistoryFragment : Fragment() {
                             }
                         }
                     }
-                    if(!equipmentList.isEmpty()){
+                    adapter.setFilteredList(equipmentList)
+                    if(equipmentList.isNotEmpty()){
                         equipmentList.reverse()
                         binding.rvEquipment.adapter = adapter
                         binding.rvEquipment.visibility = View.VISIBLE
                         binding.tvCarregando.visibility = View.GONE
                         binding.tvNotFound.visibility = View.GONE
+                    }
+                    else {
+                        println("IS EMPTY")
+                        binding.tvCarregando.visibility = View.GONE
+                        binding.tvNotFound.visibility = View.VISIBLE
                     }
                 }
             }
@@ -88,7 +94,6 @@ class EquipmentHistoryFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         })
         if (equipmentList.isEmpty()){
             println("IS EMPTY")

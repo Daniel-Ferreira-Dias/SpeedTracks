@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/content_description"
                 android:scaleType="fitXY"
-                android:background="@color/primary_logo"/>
+                android:background="@color/primary"/>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_settings_activity"

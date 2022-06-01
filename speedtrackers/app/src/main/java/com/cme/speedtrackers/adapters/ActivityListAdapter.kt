@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cme.speedtrackers.BottomNavigationActivity
+import com.cme.speedtrackers.EquipmentViewActivity
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.ItemActivitiesBinding
 import com.cme.speedtrackers.dialogs.ModalDisplayActivity
 import com.cme.speedtrackers.model.Atividade
 import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.database.*
-import java.lang.Exception
 import java.util.ArrayList
+
 
 class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : RecyclerView.Adapter<ActivityListAdapter.CustomViewHolder>() {
 
@@ -55,8 +56,13 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
 
         binding.cardView.setOnClickListener {
             var dialogInfo = ModalDisplayActivity(currentView)
-            val activity = context as BottomNavigationActivity
-            dialogInfo.show(activity.supportFragmentManager, ContentValues.TAG)
+            try {
+                val activity = context as BottomNavigationActivity
+                dialogInfo.show(activity.supportFragmentManager, ContentValues.TAG)
+            }catch (e:Exception){
+                val activity = context as EquipmentViewActivity
+                dialogInfo.show(activity.supportFragmentManager, ContentValues.TAG)
+            }
         }
     }
 

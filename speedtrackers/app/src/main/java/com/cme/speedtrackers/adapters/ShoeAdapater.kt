@@ -70,9 +70,8 @@ class ShoeAdapater : RecyclerView.Adapter<ShoeAdapater.HolderShoes> {
         nDbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas")
 
         loadShoe(model, holder)
-
+        holder.textViewMarcas.text = model.Shoe_Nome
     }
-
 
     override fun getItemCount(): Int {
         return shoesArrayList.size // number of records
@@ -94,7 +93,6 @@ class ShoeAdapater : RecyclerView.Adapter<ShoeAdapater.HolderShoes> {
                 } catch (e: Exception) {
                 }
                 holder.kmsText.text = model.KmTraveled.toString()
-                holder.textViewMarcas.text = model.Model_Nome
             }
 
             override fun onCancelled(error: DatabaseError) {

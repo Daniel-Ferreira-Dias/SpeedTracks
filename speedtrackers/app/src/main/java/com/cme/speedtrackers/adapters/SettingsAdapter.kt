@@ -1,19 +1,18 @@
 package com.cme.speedtrackers.adapters
 
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.cme.speedtrackers.AuthenticationActivity
-import com.cme.speedtrackers.LoginActivity
-import com.cme.speedtrackers.ProfileViewActivity
-import com.cme.speedtrackers.R
+import com.cme.speedtrackers.*
 import com.cme.speedtrackers.classes.SettingsClass
 import com.cme.speedtrackers.databinding.FragmentSettingsBinding
 import com.cme.speedtrackers.databinding.ItemSettingsBinding
+import com.cme.speedtrackers.dialogs.ModalSignOutConfirmation
 import java.util.ArrayList
 import com.google.firebase.auth.FirebaseAuth
 
@@ -49,9 +48,9 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
         // set ClickListener
         binding.btnAction.setOnClickListener {
             if (currentView.id == 7){
-                FirebaseAuth.getInstance().signOut() // User sign out
-                var intent = Intent(context, AuthenticationActivity::class.java)
-                context.startActivity(intent)
+                var dialog = ModalSignOutConfirmation()
+                val activity = context as BottomNavigationActivity
+                dialog.show(activity.supportFragmentManager, ContentValues.TAG)
             }
             if (currentView.id == 1){
                 var intent = Intent(context, ProfileViewActivity::class.java)

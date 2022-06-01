@@ -8,6 +8,7 @@
     android:paddingBottom="5dp"
     android:paddingTop="@dimen/dp_3"
     android:background="@color/white">
+
     <RelativeLayout
         android:id="@+id/rl_header"
         android:layout_width="match_parent"
@@ -17,21 +18,21 @@
             android:id="@+id/tv_nome_atividade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Corrida no Porto"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_3"
-            android:textStyle="bold"
-            android:textSize="17sp"
+            android:text="Corrida no Porto"
             android:textColor="@color/colorTextBlack"
-            android:layout_centerHorizontal="true" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/ib_go_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:src="@drawable/close"
-            android:layout_alignParentEnd="true"/>
+            android:src="@drawable/close" />
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/rl_info"

@@ -52,6 +52,12 @@
 
     <style name="btn_style" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@null</item>
+        <item name="rippleColor">@color/primary</item>
+    </style>
+    <style name="btn_style2" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="rippleColor">@color/primary</item>
+        <item name="color">@color/primary</item>
     </style>
 
 

@@ -58,7 +58,7 @@ class AddEquipmentToActivityAdapter(private var equipmentList: ArrayList<Shoes>)
 
         // set Item to Value
         setModeloNameAndImage(currentView, holder)
-        currentView.Model_Nome?.let { holder.tvName.setText(it) }
+        currentView.Shoe_Nome?.let { holder.tvName.setText(it) }
         loadImage(holder, currentView.ImageURL?.toString())
 
         //click Handler

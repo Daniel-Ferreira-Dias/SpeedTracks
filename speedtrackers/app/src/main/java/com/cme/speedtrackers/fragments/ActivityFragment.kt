@@ -91,6 +91,7 @@ class ActivityFragment : Fragment() {
                             activityList.add(atividadeData!!)
                         }
                     }
+                    adapter.setFilteredList(activityList)
                     if(activityList.isNotEmpty()){
                         activityList.reverse()
                         binding.rvActivity.adapter = adapter
@@ -98,10 +99,19 @@ class ActivityFragment : Fragment() {
                         binding.tvCarregando.visibility = View.GONE
                         binding.tvNotFound.visibility = View.GONE
                     }
+                    else {
+                        println("IS EMPTY")
+                        binding.tvCarregando.visibility = View.GONE
+                        binding.tvNotFound.visibility = View.VISIBLE
+                    }
+                }
+                if (activityList.isEmpty()){
+                    adapter.setFilteredList(activityList)
+                    binding.tvCarregando.visibility = View.GONE
+                    binding.tvNotFound.visibility = View.VISIBLE
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-
             }
         })
         if (activityList.isEmpty()){

@@ -94,12 +94,18 @@ class EquipmentListFragment : Fragment() {
                             }
                         }
                     }
-                    if(!equipmentList.isEmpty()){
+                    adapter.setFilteredList(equipmentList)
+                    if(equipmentList.isNotEmpty()){
                         equipmentList.reverse()
                         binding.rvEquipment.adapter = adapter
                         binding.rvEquipment.visibility = View.VISIBLE
                         binding.tvCarregando.visibility = View.GONE
                         binding.tvNotFound.visibility = View.GONE
+                    }
+                    if (equipmentList.isEmpty()){
+                        println("IS EMPTY")
+                        binding.tvCarregando.visibility = View.GONE
+                        binding.tvNotFound.visibility = View.VISIBLE
                     }
                 }
             }

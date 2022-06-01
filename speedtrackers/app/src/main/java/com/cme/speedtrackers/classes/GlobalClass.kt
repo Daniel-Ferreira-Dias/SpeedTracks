@@ -16,5 +16,6 @@ class GlobalClass : Application() {
         var activityShoe = Shoes()
         var currentDialog = BottomSheetShoesFragment()
         var shoe_Imagem = ""
+        var New_Name = ""
     }
 }

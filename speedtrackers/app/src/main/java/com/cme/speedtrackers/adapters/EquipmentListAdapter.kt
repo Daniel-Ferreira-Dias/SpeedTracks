@@ -1,11 +1,13 @@
 package com.cme.speedtrackers.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cme.speedtrackers.EquipmentViewActivity
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.ItemEquipmentListBinding
 import com.cme.speedtrackers.model.Modelos
@@ -45,34 +47,25 @@ class EquipmentListAdapter(private var equipmentList: ArrayList<Shoes>) : Recycl
         val currentView = equipmentList[position] // Current ViewItem
 
         // set Item to Value
-        setModeloNameAndImage(currentView.Model_ID, currentView.Brand_ID, holder, currentView)
+        setImage(holder, currentView)
         holder.tvData.setText(getDataStringFormatted(currentView.FirstUsage.toString()))
+        holder.tvName.text = currentView?.Shoe_Nome.toString()
         currentView.KmTraveled?.toString().let { holder.tvDistancia.setText(it) }
+
+        binding.cardView.setOnClickListener {
+            var intent = Intent(context, EquipmentViewActivity::class.java)
+            intent.putExtra("List", equipmentList)
+            intent.putExtra("Position", position)
+            println(position)
+            context.startActivity(intent)
+        }
     }
 
-    private fun setModeloNameAndImage(
-        modeloID: String?,
-        marcaID: String?,
+    private fun setImage(
         holder: EquipmentListAdapter.CustomViewHolder,
         currentItem: Shoes
     ) {
-        dbRef = FirebaseDatabase.getInstance().getReference("Marcas/${marcaID}/Modelos/${modeloID}")
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var model = snapshot.getValue(Modelos::class.java)
-                    if (model?.Imagem_Modelo.toString().length.compareTo(10) <= 0 ){
-                        FirebaseDatabase.getInstance().getReference("Sapatilhas").child(currentItem.Shoe_ID.toString()).child("ImageURL")
-                            .setValue(model?.Imagem_Modelo.toString())
-                    }
-                    holder.tvName.text = model?.Nome_Modelo.toString()
-                    loadImage(holder, model?.Imagem_Modelo.toString())
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+        loadImage(holder, currentItem.ImageURL)
     }
 
     //Carregar uma imagem recebendo o URL
@@ -84,8 +77,6 @@ class EquipmentListAdapter(private var equipmentList: ArrayList<Shoes>) : Recycl
         } catch (e: Exception) {
         }
     }
-
-
 
     // Set items Variables
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

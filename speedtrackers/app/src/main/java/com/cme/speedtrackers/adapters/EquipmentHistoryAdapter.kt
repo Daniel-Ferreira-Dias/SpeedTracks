@@ -43,26 +43,14 @@ class EquipmentHistoryAdapter(private var equipmentList: ArrayList<Shoes>) : Rec
         val currentView = equipmentList[position] // Current ViewItem
 
         // set Item to Value
-        setModeloNameAndImage(currentView.Model_ID, currentView.Brand_ID, holder)
+        setImage(holder, currentView)
         holder.tvData.setText(getDataStringFormatted(currentView.FirstUsage.toString()))
         currentView.KmTraveled?.toString().let { holder.tvDistancia.setText(it) }
+        holder.tvName.text = currentView.Shoe_Nome.toString()
     }
 
-    private fun setModeloNameAndImage(modeloID: String?, marcaID:String?, holder: EquipmentHistoryAdapter.CustomViewHolder) {
-        dbRef = FirebaseDatabase.getInstance().getReference("Marcas/${marcaID}/Modelos/${modeloID}")
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
-                    var model = snapshot.getValue(Modelos::class.java)
-                    println(model?.Nome_Modelo)
-                    holder.tvName.text = model?.Nome_Modelo.toString()
-                    println("Modelo: ${model?.Nome_Modelo} de id ${model?.ID_Modelo} - $modeloID")
-                    loadImage(holder, model?.Imagem_Modelo.toString())
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+    private fun setImage(holder: EquipmentHistoryAdapter.CustomViewHolder, currentView: Shoes) {
+        loadImage(holder, currentView.ImageURL.toString())
     }
     //Carregar uma imagem recebendo o URL
     private fun loadImage(holder: EquipmentHistoryAdapter.CustomViewHolder, imageURL: String) {

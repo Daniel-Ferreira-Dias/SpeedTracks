@@ -40,6 +40,9 @@ class HomeFragment : Fragment() {
 
         //TYPE YOUR CODE HERE
         binding.tvNotFoundShoes.visibility = View.GONE
+        binding.tvNotFoundActivity.visibility = View.GONE
+
+
         activityList = arrayListOf<Atividade>()
         binding.activityEquipament.layoutManager = LinearLayoutManager(requireContext())
         binding.activityEquipament.hasFixedSize()
@@ -89,18 +92,18 @@ class HomeFragment : Fragment() {
                         break
                     }
                 }
+                if (activityList.isEmpty()){
+                    binding.tvNotFoundActivity.visibility = View.VISIBLE
+                }
+                else{
+                    binding.tvNotFoundActivity.visibility = View.GONE
+                }
                 binding.activityEquipament.adapter = activityAdapater
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-        if (activityList.isEmpty()){
-            binding.tvNotFoundActivity.visibility = View.VISIBLE
-        }
-        else{
-            binding.tvNotFoundActivity.visibility = View.GONE
-        }
     }
 
     private fun getUserShoes() {

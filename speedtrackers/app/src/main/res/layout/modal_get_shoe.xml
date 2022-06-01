@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bottomsheet_color_corner"
-    android:orientation="vertical"
-    tools:context=".dialogs.BottomSheetShoesFragment">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_main"
@@ -46,7 +44,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-       android:layout_below="@id/view"
+        android:layout_below="@id/view"
         android:layout_marginStart="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_20"
         android:layout_marginEnd="@dimen/dp_20"
@@ -60,8 +58,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_below="@id/searchView">
+        android:layout_height="200dp"
+        android:layout_below="@id/searchView"
+        android:layout_marginBottom="@dimen/dp_20">
 
         <TextView
             android:id="@+id/tv_not_found"
@@ -75,8 +74,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_equipment"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            tools:listitem="@layout/bottom_sheet_shoes_item" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/simple_shoe_list_item"/>
 
     </RelativeLayout>
 </RelativeLayout>

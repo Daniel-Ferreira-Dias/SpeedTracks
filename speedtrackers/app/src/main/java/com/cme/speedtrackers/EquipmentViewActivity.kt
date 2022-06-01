@@ -12,6 +12,7 @@ import com.cme.speedtrackers.adapters.ActivityListAdapter
 import com.cme.speedtrackers.databinding.ActivityEquipmentViewBinding
 import com.cme.speedtrackers.dialogs.ModalChangeName
 import com.cme.speedtrackers.dialogs.ModalConfirmRemoval
+import com.cme.speedtrackers.dialogs.ModalGetShoe
 import com.cme.speedtrackers.model.Atividade
 import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.auth.FirebaseAuth
@@ -63,6 +64,10 @@ class EquipmentViewActivity : AppCompatActivity() {
         }
         binding.btnEdit.setOnClickListener {
             var dialog = ModalChangeName(list[currentPosition], list, currentPosition, this@EquipmentViewActivity)
+            dialog.show(supportFragmentManager, ContentValues.TAG)
+        }
+        binding.btnNomeModelo.setOnClickListener {
+            var dialog = ModalGetShoe(list, currentPosition, this@EquipmentViewActivity)
             dialog.show(supportFragmentManager, ContentValues.TAG)
         }
     }
@@ -153,8 +158,10 @@ class EquipmentViewActivity : AppCompatActivity() {
         }
 
         binding.btnRemove.visibility = View.VISIBLE
+        binding.floatingBtn.visibility = View.VISIBLE
         if (binding.tvStatus.text == "Removido"){
             binding.btnRemove.visibility = View.GONE
+            binding.floatingBtn.visibility = View.GONE
         }
 
         loadImage(binding.ivImagem, list[position].ImageURL)

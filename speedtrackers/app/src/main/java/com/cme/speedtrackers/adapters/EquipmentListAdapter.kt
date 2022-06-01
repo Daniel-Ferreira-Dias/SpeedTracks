@@ -5,6 +5,8 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cme.speedtrackers.EquipmentViewActivity
@@ -23,6 +25,7 @@ class EquipmentListAdapter(private var equipmentList: ArrayList<Shoes>) : Recycl
     private lateinit var binding: ItemEquipmentListBinding //View Binding
     private lateinit var context: Context //Context from Parent
     private lateinit var dbRef: DatabaseReference
+    private var lastPosition = -1
 
     public fun setFilteredList(filteredList: ArrayList<Shoes>) {
         this.equipmentList = filteredList
@@ -45,6 +48,12 @@ class EquipmentListAdapter(private var equipmentList: ArrayList<Shoes>) : Recycl
     // Overriding views with items values and deploy click listeners
     override fun onBindViewHolder(holder: EquipmentListAdapter.CustomViewHolder, position: Int) {
         val currentView = equipmentList[position] // Current ViewItem
+        if (holder.adapterPosition > lastPosition){
+            var anim: Animation = AnimationUtils.loadAnimation(context, R.anim.slide_in_row)
+            binding.cardView.startAnimation(anim)
+            lastPosition = holder.adapterPosition
+        }
+
 
         // set Item to Value
         setImage(holder, currentView)

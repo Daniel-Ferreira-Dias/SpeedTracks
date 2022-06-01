@@ -8,12 +8,14 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground">
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/icon_image_view"
@@ -27,7 +29,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius_bottom_left="20dip"
-            app:riv_corner_radius_bottom_right="20dip" />
+            app:riv_corner_radius_bottom_right="20dip"
+            android:clickable="true" />
 
 
         <View

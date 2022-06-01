@@ -50,8 +50,6 @@ class BottomSheetShoesFragment : BottomSheetDialogFragment() {
         // Sapatos
         equipmentList = ArrayList()
         adapter = AddEquipmentToActivityAdapter(equipmentList)
-
-
         binding.rvEquipment.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvEquipment.adapter = adapter
 
@@ -66,7 +64,6 @@ class BottomSheetShoesFragment : BottomSheetDialogFragment() {
         binding.tvNotFound.visibility = View.VISIBLE
         binding.rvEquipment.visibility = View.VISIBLE
         binding.searchView.clearFocus()
-
         binding.searchView.setOnClickListener {
             dialog!!.getWindow()!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         }

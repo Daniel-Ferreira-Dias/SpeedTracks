@@ -10,12 +10,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cme.speedtrackers.BottomNavigationActivity
 import com.cme.speedtrackers.ModelosActivity
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.GridLayoutModelosItemBinding
 import com.cme.speedtrackers.databinding.GridLayoutShoesBinding
 import com.cme.speedtrackers.dialogs.BottomSheetColorFragment
+import com.cme.speedtrackers.dialogs.ModalSimpleShoeView
 import com.cme.speedtrackers.fragments.HomeFragment
 import com.cme.speedtrackers.model.Marcas
 import com.cme.speedtrackers.model.Modelos
@@ -31,6 +33,7 @@ class ShoeAdapater : RecyclerView.Adapter<ShoeAdapater.HolderShoes> {
 
     //arraylist to hold pdfs
     private var shoesArrayList: ArrayList<Shoes>
+    private lateinit var atividade: BottomNavigationActivity
 
     //viewbinding row_pdf_user.xml
     private lateinit var binding: GridLayoutShoesBinding
@@ -63,14 +66,17 @@ class ShoeAdapater : RecyclerView.Adapter<ShoeAdapater.HolderShoes> {
         val model = shoesArrayList[position]
         val brand_id = model.Brand_ID
 
-
-
-
         mDbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas")
         nDbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas")
 
         loadShoe(model, holder)
         holder.textViewMarcas.text = model.Shoe_Nome
+
+        binding.iconImageView.setOnClickListener {
+            var dialog = ModalSimpleShoeView(shoesArrayList[position])
+            val activity = context as BottomNavigationActivity
+            dialog.show(activity.supportFragmentManager, ContentValues.TAG)
+        }
     }
 
     override fun getItemCount(): Int {

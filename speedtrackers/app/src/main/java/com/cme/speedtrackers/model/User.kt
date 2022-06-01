@@ -1,10 +1,12 @@
 package com.example.bookapplicationv1.classes
 
-class User {
+import java.io.Serializable
+
+class User : Serializable {
     var userName: String? = null
     var userFirstName: String? = null
     var userLastName: String? = null
-    var userEmail: String? = null
+    var userEmail: String? = "TESTEEE"
     var userType: String? = null
     var userTimestamp: Long? = null
     var userVerified: Boolean? = null

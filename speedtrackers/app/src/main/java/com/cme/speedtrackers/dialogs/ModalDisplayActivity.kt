@@ -8,11 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ImageView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.DialogFragment.STYLE_NORMAL
+import com.bumptech.glide.Glide
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.FragmentModalDisplayActivityBinding
 import com.cme.speedtrackers.model.Atividade
+import java.lang.Exception
 
 
 class ModalDisplayActivity(var atividade: Atividade) : DialogFragment() {
@@ -31,6 +34,7 @@ class ModalDisplayActivity(var atividade: Atividade) : DialogFragment() {
         binding = FragmentModalDisplayActivityBinding.inflate(inflater, container, false)
 
         //TYPE YOUR CODE
+        loadImage(binding.ivMapa, atividade.MapURL)
         binding.tvDia.text = atividade.Data
         binding.tvExercicio.text = atividade.TipoExercicio
         binding.tvNomeAtividade.text = atividade.NomeAtividade
@@ -39,6 +43,7 @@ class ModalDisplayActivity(var atividade: Atividade) : DialogFragment() {
         var distancia: String = "${atividade.DistanciaPercorrida} km"
         binding.tvDuracao.text = duracao
         binding.tvDistancia.text = distancia
+
 
         return binding.root
     }
@@ -55,8 +60,14 @@ class ModalDisplayActivity(var atividade: Atividade) : DialogFragment() {
             WindowManager.LayoutParams.WRAP_CONTENT
         )
     }
-
-
+    private fun loadImage(imageV: ImageView, imageURL: String) {
+        try {
+            Glide.with(this).load(imageURL)
+                .placeholder(R.drawable.progress_animation)
+                .into(imageV)
+        } catch (e: Exception) {
+        }
+    }
     private fun setupClickListeners(view: View) {
         binding.ibGoBack.setOnClickListener {
             dismiss()

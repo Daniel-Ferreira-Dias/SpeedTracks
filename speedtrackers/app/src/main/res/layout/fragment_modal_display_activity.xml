@@ -7,7 +7,7 @@
     android:paddingStart="16dp"
     android:paddingBottom="5dp"
     android:paddingTop="@dimen/dp_3"
-    android:background="@color/white">
+    android:background="#F9F7F5">
 
     <RelativeLayout
         android:id="@+id/rl_header"
@@ -43,14 +43,17 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_map"
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="300dp"
             app:cardCornerRadius="@dimen/dp_20"
-            android:elevation="@dimen/dp_10">
+            android:elevation="@dimen/dp_20">
 
             <ImageView
+                android:id="@+id/iv_mapa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/mapa" />
+                android:src="@drawable/mapa4"
+                android:scaleType="fitXY"/>
+
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout

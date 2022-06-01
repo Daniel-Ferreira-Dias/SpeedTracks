@@ -12,6 +12,7 @@ import com.cme.speedtrackers.adapters.ActivityListAdapter
 import com.cme.speedtrackers.databinding.ActivityEquipmentViewBinding
 import com.cme.speedtrackers.dialogs.ModalChangeName
 import com.cme.speedtrackers.dialogs.ModalConfirmRemoval
+import com.cme.speedtrackers.dialogs.ModalCreateActivity
 import com.cme.speedtrackers.dialogs.ModalGetShoe
 import com.cme.speedtrackers.model.Atividade
 import com.cme.speedtrackers.model.Shoes
@@ -68,6 +69,13 @@ class EquipmentViewActivity : AppCompatActivity() {
         }
         binding.btnNomeModelo.setOnClickListener {
             var dialog = ModalGetShoe(list, currentPosition, this@EquipmentViewActivity)
+            dialog.show(supportFragmentManager, ContentValues.TAG)
+        }
+
+        binding.floatingBtn.isEnabled = true
+        binding.floatingBtn.isClickable = true
+        binding.floatingBtn.setOnClickListener {
+            var dialog = ModalCreateActivity(list[currentPosition])
             dialog.show(supportFragmentManager, ContentValues.TAG)
         }
     }

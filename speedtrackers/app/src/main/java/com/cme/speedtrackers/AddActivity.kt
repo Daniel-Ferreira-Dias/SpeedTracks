@@ -17,6 +17,7 @@ import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.ActivityAddBinding
 import com.cme.speedtrackers.dialogs.BottomSheetColorFragment
 import com.cme.speedtrackers.dialogs.BottomSheetShoesFragment
+import com.cme.speedtrackers.model.Atividade
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.lang.Exception
@@ -218,6 +219,7 @@ class AddActivity : AppCompatActivity() {
 
     private fun addActivity() {
         // set up data
+        var ativi = Atividade()
         val hashMap = HashMap<String, Any>()
         hashMap["NomeAtividade"] = nome
         hashMap["TipoExercicio"] = tipo
@@ -227,6 +229,7 @@ class AddActivity : AppCompatActivity() {
         hashMap["Shoe_ID"] = shoeID
         hashMap["ID"] = id
         hashMap["User_UID"] = userUID
+        hashMap["MapURL"] = ativi.MapURL
         hashMap["ImageURL"] = compObj.activityShoe.ImageURL
 
         // Save to DB

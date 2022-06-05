@@ -121,7 +121,7 @@ class ModelosActivity : AppCompatActivity() {
         // loop through the array list to obtain the required value
         for (item in modelosList) {
 
-            if (item.Nome_Modelo.toString().lowercase().filterNot { it.isWhitespace() }.contains(e.lowercase().filterNot { it.isWhitespace() })) {
+            if (item.Nome_Modelo.lowercase().filterNot { it.isWhitespace() }.contains(e.lowercase().filterNot { it.isWhitespace() })) {
                 filteredItem.add(item)
             }
         }

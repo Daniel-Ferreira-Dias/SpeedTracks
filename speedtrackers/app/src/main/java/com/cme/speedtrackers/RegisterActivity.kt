@@ -5,20 +5,22 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.TextPaint
+import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Patterns
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
+import com.cme.speedtrackers.adapters.PasswordStrength
 import com.cme.speedtrackers.databinding.ActivityRegisterBinding
 import com.example.bookapplicationv1.classes.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(), TextWatcher {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
@@ -27,6 +29,7 @@ class RegisterActivity : AppCompatActivity() {
     private var pass = ""
     private var confirmPass = ""
     private var userName = ""
+    private var passwordconfirmed = false
 
     // database
     private lateinit var database : DatabaseReference
@@ -38,6 +41,11 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+
+        if (binding.editPassword.text.toString().isEmpty()) {
+            binding.passwordStrength.text = ""
+            binding.progressBar.isVisible = false
+        }
 
 
         //checkbox
@@ -65,6 +73,19 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Tem que concordar com os termos e condição", Toast.LENGTH_SHORT).show()
             }
         }
+
+        binding.editPassword.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                if (!passwordconfirmed && binding.editPassword.text.toString().isNotEmpty()) {
+                    binding.editPassword.error = "Por favor escolha uma password mais segura"
+                }
+
+            }
+            binding.progressBar.isVisible = true
+
+        }
+
+        binding.editPassword.addTextChangedListener(this)
     }
 
     // Terms
@@ -153,5 +174,49 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Conta criada sem sucesso...", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+    override fun onTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+        updatePasswordStrengthView(s.toString())
+    }
+
+    override fun afterTextChanged(p0: Editable?) {}
+
+    private fun updatePasswordStrengthView(password: String) {
+
+        if (TextView.VISIBLE != binding.passwordStrength.visibility)
+            return
+
+        if (password == "") {
+            binding.passwordStrength.text = ""
+            binding.progressBar.progress = 0
+            return
+        }
+
+        val str = PasswordStrength.calculateStrength(password)
+        binding.passwordStrength.text = str.getText(this)
+        binding.passwordStrength.setTextColor(str.color)
+        passwordconfirmed = str.getText(this) != "Weak"
+
+        binding.progressBar.progressDrawable.setColorFilter(
+            str.color,
+            android.graphics.PorterDuff.Mode.SRC_IN
+        )
+        when {
+            str.getText(this) == "Weak" -> {
+                binding.progressBar.progress = 25
+            }
+            str.getText(this) == "Medium" -> {
+                binding.progressBar.progress = 50
+            }
+            str.getText(this) == "Strong" -> {
+                binding.progressBar.progress = 75
+            }
+            else -> {
+                binding.progressBar.progress = 100
+            }
+        }
     }
 }

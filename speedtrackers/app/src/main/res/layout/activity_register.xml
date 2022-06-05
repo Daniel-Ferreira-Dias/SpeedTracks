@@ -126,7 +126,6 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/edit_text_background"
-            android:drawableEnd="@drawable/ic_baseline_lock_24"
             android:drawableTint="@color/colorTextBlack"
             android:fontFamily="@font/seg_ui_semibold"
             android:hint="@string/password_insert"
@@ -159,6 +158,20 @@
             app:layout_constraintStart_toStartOf="@+id/editPassword"
             app:layout_constraintTop_toBottomOf="@+id/editPassword" />
 
+
+        <TextView
+            android:id="@+id/password_strength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/weak"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/editPassword"
+            app:layout_constraintEnd_toEndOf="@+id/editPassword"
+            app:layout_constraintHorizontal_bias="0.947"
+            app:layout_constraintStart_toStartOf="@+id/editPassword"
+            app:layout_constraintTop_toTopOf="@+id/editPassword"
+            app:layout_constraintVertical_bias="0.515" />
 
         <EditText
             android:id="@+id/editPasswordConfirm"

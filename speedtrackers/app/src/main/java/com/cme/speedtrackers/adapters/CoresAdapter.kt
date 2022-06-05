@@ -1,5 +1,6 @@
 package com.cme.speedtrackers.adapters
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -57,18 +58,11 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
         val id = model.ID_Cor
 
         loadImage(model, holder)
-
-
         holder.imageViewMarcas.setOnClickListener {
             compObj.Color_ID = model.ID_Cor.toString()
             if (compObj.Color_ID == "") {
                 Toast.makeText(context, "Tem que selecionar uma cor", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(
-                    context,
-                    "${model.Nome_Cor} " + " ${compObj.Color_ID}",
-                    Toast.LENGTH_SHORT
-                ).show()
                 val intent = Intent(context, ResumeShoeActivity::class.java)
                 context.startActivity(intent)
             }
@@ -82,8 +76,6 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.HolderCores> {
 
     inner class HolderCores(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewMarcas = binding.iconImageView
-
-
     }
 
 

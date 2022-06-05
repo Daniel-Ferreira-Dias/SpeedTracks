@@ -1,5 +1,6 @@
 package com.cme.speedtrackers.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.cme.speedtrackers.MarcasActivity
 import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.databinding.FragmentEquipmentListBinding
 import com.cme.speedtrackers.model.Shoes
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 
@@ -29,6 +33,7 @@ class EquipmentListFragment : Fragment() {
 
         //Type your code
         binding.tvNotFound.visibility = View.GONE
+        binding.tvCarregando.visibility = View.GONE
         binding.rvEquipment.hasFixedSize()
         binding.rvEquipment.layoutManager = LinearLayoutManager(requireContext())
 
@@ -51,6 +56,23 @@ class EquipmentListFragment : Fragment() {
             }
         })
 
+        binding.floatingBtn.isEnabled = true
+        binding.floatingBtn.setOnClickListener {
+            val intent = Intent(this.requireContext(), MarcasActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.rvEquipment.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0 || dy < 0 && binding.floatingBtn.isShown()) binding.floatingBtn.hide()
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) binding.floatingBtn.show()
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+        })
+
         return binding.root
     }
 
@@ -65,31 +87,41 @@ class EquipmentListFragment : Fragment() {
                 if (snapshot.exists()){
                     for (equiSnap in snapshot.children){
                         val equipData = equiSnap.getValue(Shoes::class.java)
-
                         if (equipData?.EquipamentoAtivo == true){
-                            equipmentList.add(equipData)
-                            /*if (equipData?.UserUID == FirebaseAuth.getInstance().uid){
-                            equipmentList.add(equipData!!)
-                        }*/
+                            if (equipData?.Shoe_User_UID == FirebaseAuth.getInstance().uid){
+                                equipmentList.add(equipData!!)
+                                adapter.setFilteredList(equipmentList)
+                            }
                         }
                     }
-                    if (equipmentList.size == 0){
-                        //binding.rvEquipment.visibility = View.VISIBLE
-                        binding.tvCarregando.visibility = View.GONE
-                        binding.tvNotFound.visibility = View.VISIBLE
-                    }
-                    else{
+                    adapter.setFilteredList(equipmentList)
+                    if(equipmentList.isNotEmpty()){
+                        equipmentList.reverse()
                         binding.rvEquipment.adapter = adapter
                         binding.rvEquipment.visibility = View.VISIBLE
                         binding.tvCarregando.visibility = View.GONE
                         binding.tvNotFound.visibility = View.GONE
                     }
+                    if (equipmentList.isEmpty()){
+                        println("IS EMPTY")
+                        binding.tvCarregando.visibility = View.GONE
+                        binding.tvNotFound.visibility = View.VISIBLE
+                    }
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-
+                println("Couldnt...")
             }
         })
+        if (equipmentList.isEmpty()){
+            println("IS EMPTY")
+            binding.tvCarregando.visibility = View.GONE
+            binding.tvNotFound.visibility = View.VISIBLE
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        binding.searchView.clearFocus()
     }
 
     private  fun filter(e: String) {

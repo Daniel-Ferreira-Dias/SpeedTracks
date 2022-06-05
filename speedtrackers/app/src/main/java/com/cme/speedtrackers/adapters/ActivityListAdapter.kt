@@ -1,20 +1,22 @@
 package com.cme.speedtrackers.adapters
 
+import android.content.ContentValues
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cme.speedtrackers.BottomNavigationActivity
+import com.cme.speedtrackers.EquipmentViewActivity
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.databinding.ItemActivitiesBinding
-import com.cme.speedtrackers.databinding.ItemEquipmentListBinding
+import com.cme.speedtrackers.dialogs.ModalDisplayActivity
 import com.cme.speedtrackers.model.Atividade
-import com.cme.speedtrackers.model.Modelos
 import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.database.*
-import java.lang.Exception
 import java.util.ArrayList
+
 
 class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : RecyclerView.Adapter<ActivityListAdapter.CustomViewHolder>() {
 
@@ -46,33 +48,22 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
         val currentView = activityList[position] // Current ViewItem
 
         // set Item to Value
-        setModeloNameAndImage(currentView.Shoe_ID, holder, currentView)
+        loadImage(holder, currentView.ImageURL)
         currentView.NomeAtividade?.let { holder.tvName.setText(it) }
-        currentView.Duracao?.let { holder.tvDuracao.setText(it) }
+        currentView.Duracao?.toString().let { holder.tvDuracao.setText(it) }
         currentView.DistanciaPercorrida?.toString().let { holder.tvDistancia.setText(it) }
-    }
+        holder.tvData.setText(getDataStringFormatted(currentView.Data))
 
-    private fun setModeloNameAndImage(
-        shoeID: Long?,
-        holder: ActivityListAdapter.CustomViewHolder,
-        currentItem: Atividade
-    ) {
-        dbRef = FirebaseDatabase.getInstance().getReference("Sapatilhas/${shoeID}")
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var model = snapshot.getValue(Shoes::class.java)
-                    /*if (model?.ImageURL.toString().length.compareTo(10) <= 0 ){
-                        FirebaseDatabase.getInstance().getReference("Sapatilhas").child(currentItem.Shoe_ID.toString()).child("ImageURL")
-                            .setValue(model?.Imagem_Modelo.toString())
-                    }*/
-                    loadImage(holder, model?.ImageURL.toString())
-                }
+        binding.cardView.setOnClickListener {
+            var dialogInfo = ModalDisplayActivity(currentView)
+            try {
+                val activity = context as BottomNavigationActivity
+                dialogInfo.show(activity.supportFragmentManager, ContentValues.TAG)
+            }catch (e:Exception){
+                val activity = context as EquipmentViewActivity
+                dialogInfo.show(activity.supportFragmentManager, ContentValues.TAG)
             }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+        }
     }
 
     //Carregar uma imagem recebendo o URL
@@ -85,11 +76,39 @@ class ActivityListAdapter(private var activityList: ArrayList<Atividade>) : Recy
         }
     }
 
+    private fun getDataStringFormatted(string: String) : String{
+        var result: String = ""
+        var replacedString = string.replace("-", "")
+        var dia = replacedString.subSequence(0, 2)
+        var mes = replacedString.subSequence(2, 4)
+        var ano = replacedString.subSequence(4, 8)
+        var mesName = ""
+
+        when (mes){
+            "01" -> mesName = "Jan"
+            "02" -> mesName = "Fev"
+            "03" -> mesName = "Mar"
+            "04" -> mesName = "Abr"
+            "05" -> mesName = "Maio"
+            "06" -> mesName = "Jun"
+            "07" -> mesName = "Jul"
+            "08" -> mesName = "Ago"
+            "09" -> mesName = "Set"
+            "10" -> mesName = "Out"
+            "11" -> mesName = "Nov"
+            "12" -> mesName = "Dez"
+        }
+
+        result = "$dia, $mesName de $ano"
+        return result
+    }
+
     // Set items Variables
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvName = binding.tvName
         val tvDistancia = binding.tvDistacia
         val tvDuracao = binding.tvDuracao
         val ivImagem = binding.ivImagem
+        val tvData = binding.tvData
     }
 }

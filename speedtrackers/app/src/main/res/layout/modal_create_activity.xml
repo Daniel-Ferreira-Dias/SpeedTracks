@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tv_nome_atividade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_3"
+            android:text="Criar Atividade"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/ib_go_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:src="@drawable/close" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_header"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Nome da Atividade"
+            android:textColorHint="@color/Cinza"
+            app:boxStrokeColor="@color/primary"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/primary">
+
+            <EditText
+                android:id="@+id/et_nome_atividade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_firsName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_username"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Tipo de Atividade"
+            android:textColorHint="@color/Cinza"
+            app:boxStrokeColor="@color/primary"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/primary">
+
+            <EditText
+                android:id="@+id/et_tipo_atividade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_lastName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_firsName"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Duração da Atividade"
+            android:textColorHint="@color/Cinza"
+            app:boxStrokeColor="@color/primary"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/primary">
+
+            <EditText
+                android:id="@+id/et_duracao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:inputType="number"
+                android:padding="16dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_sample2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:text="min" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_lastName"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Distância Percorrida"
+            android:textColorHint="@color/Cinza"
+            app:boxStrokeColor="@color/primary"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/primary">
+
+            <EditText
+                android:id="@+id/et_distacia_percorrida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:inputType="numberDecimal"
+                android:padding="16dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_sample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:text="kilometros" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_date"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_email"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:textColorHint="@color/Cinza"
+            app:boxStrokeColor="@color/primary"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/primary">
+
+            <Button
+                android:id="@+id/et_date"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/ripple_button_stroke"
+                android:drawableEnd="@drawable/arrow_down"
+                android:text="Selecione a Data"
+                android:textAlignment="center"
+                android:textColor="@color/primary"
+                android:textSize="17sp"
+                app:backgroundTint="@null" />
+
+            <TextView
+                android:id="@+id/text_sample3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data da Atividade" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_botoes"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/fields"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/btn_style2"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ripple_button"
+            android:backgroundTintMode="add"
+            android:enabled="true"
+            android:text="Confirmar" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/btn_save"
+            android:background="@drawable/ripple_button_stroke"
+            android:clickable="true"
+            android:text="Cancelar"
+            android:textColor="@color/primary"
+            app:backgroundTint="@null" />
+
+    </RelativeLayout>
+</RelativeLayout>

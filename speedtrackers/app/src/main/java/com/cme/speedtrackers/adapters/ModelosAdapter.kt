@@ -71,6 +71,7 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
         binding.selectModel.setOnClickListener { v ->
             compObj.Model_Name = model.Nome_Modelo
             compObj.Model_ID = model.ID_Modelo.toString()
+            compObj.ImageURL = model.Imagem_Modelo
             compObj.shoe_Imagem = model.Imagem_Modelo
 
             Log.d("Inseriu", compObj.Model_ID)
@@ -82,8 +83,6 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
             val ft = context.supportFragmentManager.beginTransaction()
             dialog.arguments = bundle
             dialog.show(ft, ContentValues.TAG)
-
-            Toast.makeText(context, "Selecionaste o modelo ${GlobalClass.Model_Name}!", Toast.LENGTH_SHORT).show()
         }
 
     }

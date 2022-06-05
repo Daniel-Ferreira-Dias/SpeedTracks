@@ -16,15 +16,15 @@
             <RelativeLayout
                 android:id="@+id/constraint_icon"
                 android:layout_width="70dp"
-                android:layout_height="50dp"
+                android:layout_height="72dp"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/iv_edit_my_profile"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:src="@drawable/settings"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -35,16 +35,17 @@
                 android:id="@+id/constraint_text"
                 android:layout_width="280dp"
                 android:layout_marginEnd="0dp"
-                android:layout_height="50dp"
+                android:layout_height="72dp"
                 android:layout_toEndOf="@id/constraint_icon">
 
                 <TextView
                     android:id="@+id/tv_edit_my_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_3"
                     android:text="@string/edit_my_profile"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/sp_15"
+                    android:textSize="17sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/tv_description"
@@ -52,14 +53,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/notifications_desc"
                     android:textColor="@color/black"
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="normal"
                     android:layout_below="@id/tv_edit_my_profile"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="30dp"
-                android:layout_height="50dp"
+                android:layout_height="72dp"
                 android:layout_toEndOf="@id/constraint_text"
                 android:layout_alignParentEnd="true"
                 android:gravity="center_vertical">
@@ -79,7 +80,6 @@
                 android:layout_alignBottom="@id/constraint_text"
                 android:layout_marginStart="70dp"
                 android:gravity="bottom">
-
                 <View
                     android:id="@+id/view_line"
                     android:layout_width="match_parent"

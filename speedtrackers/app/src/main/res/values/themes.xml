@@ -19,8 +19,6 @@
         <item name="colorPrimary">@color/WhiteGray</item>
         <item name="colorOnPrimary">@color/primary</item>
     </style>
-
-
     <style name="Button.White" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@android:color/white</item>
     </style>
@@ -39,7 +37,7 @@
 
     <style name="AppTheme.speedtrackers.ActionBar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/primary_logo</item>
+        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/WhiteGray</item>
     </style>
@@ -54,6 +52,12 @@
 
     <style name="btn_style" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@null</item>
+        <item name="rippleColor">@color/primary</item>
+    </style>
+    <style name="btn_style2" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@null</item>
+        <item name="rippleColor">@color/primary</item>
+        <item name="color">@color/primary</item>
     </style>
 
 
@@ -67,9 +71,14 @@
         <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
     </style>
 
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="dialogCornerRadius">@dimen/dp_20</item>
+        <item name="background">@null</item>
+    </style>
+
     <!-- Splash Screen -->
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/sneakerplug</item>
+        <!--<item name="android:windowBackground">@drawable/sneakerplug</item>-->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

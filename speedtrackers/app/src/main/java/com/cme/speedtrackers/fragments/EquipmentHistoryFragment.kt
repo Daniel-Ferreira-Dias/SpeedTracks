@@ -11,6 +11,7 @@ import com.cme.speedtrackers.adapters.EquipmentHistoryAdapter
 import com.cme.speedtrackers.adapters.EquipmentListAdapter
 import com.cme.speedtrackers.databinding.FragmentEquipmentHistoryBinding
 import com.cme.speedtrackers.model.Shoes
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.ArrayList
 
@@ -69,22 +70,23 @@ class EquipmentHistoryFragment : Fragment() {
                     for (equiSnap in snapshot.children){
                         val equipData = equiSnap.getValue(Shoes::class.java)
                         if (equipData?.EquipamentoAtivo == false){
-                            /*if (equipData?.UserUID == FirebaseAuth.getInstance().uid){
-                            equipmentList.add(equipData!!)
-                        }*/
-                            equipmentList.add(equipData!!)
+                            if (equipData?.Shoe_User_UID == FirebaseAuth.getInstance().uid){
+                                equipmentList.add(equipData!!)
+                            }
                         }
                     }
-                    if (equipmentList.size == 0){
-                        //binding.rvEquipment.visibility = View.VISIBLE
-                        binding.tvCarregando.visibility = View.GONE
-                        binding.tvNotFound.visibility = View.VISIBLE
-                    }
-                    else{
+                    adapter.setFilteredList(equipmentList)
+                    if(equipmentList.isNotEmpty()){
+                        equipmentList.reverse()
                         binding.rvEquipment.adapter = adapter
                         binding.rvEquipment.visibility = View.VISIBLE
                         binding.tvCarregando.visibility = View.GONE
                         binding.tvNotFound.visibility = View.GONE
+                    }
+                    else {
+                        println("IS EMPTY")
+                        binding.tvCarregando.visibility = View.GONE
+                        binding.tvNotFound.visibility = View.VISIBLE
                     }
                 }
             }
@@ -92,8 +94,12 @@ class EquipmentHistoryFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         })
+        if (equipmentList.isEmpty()){
+            println("IS EMPTY")
+            binding.tvCarregando.visibility = View.GONE
+            binding.tvNotFound.visibility = View.VISIBLE
+        }
     }
 
     private  fun filter(e: String) {

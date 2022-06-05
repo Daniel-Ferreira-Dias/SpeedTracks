@@ -28,10 +28,8 @@ class EquipmentFragment : Fragment() {
 
         //Type YOUR CODE HERE
         setUpBar()
-        binding.floatingBtn.setOnClickListener {
-            val intent = Intent(this.requireContext(), MarcasActivity::class.java)
-            startActivity(intent)
-        }
+
+
         return binding.root
     }
 
@@ -48,30 +46,14 @@ class EquipmentFragment : Fragment() {
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab) {
                 binding.viewPager.currentItem = tab.position
-                if (tab.position == 0){
-                    binding.floatingBtn.isEnabled = true
-                }
-                if (tab.position == 1){
-                    binding.floatingBtn.visibility = View.GONE
-                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
-                if (tab.position == 0){
-                    binding.floatingBtn.isEnabled = false
-                }
-                if (tab.position == 1){
-                    binding.floatingBtn.visibility = View.VISIBLE
-                }
+
             }
 
             override fun onTabReselected(tab: TabLayout.Tab) {
-                if (tab.position == 0){
-                    binding.floatingBtn.isEnabled = true
-                }
-                if (tab.position == 1){
-                    binding.floatingBtn.visibility = View.GONE
-                }
+
             }
 
         })

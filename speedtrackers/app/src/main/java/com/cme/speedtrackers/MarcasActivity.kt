@@ -38,9 +38,7 @@ class MarcasActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             onBackPressed()
         }
-
     }
-
     private fun loadMarcas(){
         val ref = FirebaseDatabase.getInstance().getReference("Marcas")
             ref.addValueEventListener(object : ValueEventListener {

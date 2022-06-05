@@ -31,7 +31,6 @@ class BottomSheetColorFragment : BottomSheetDialogFragment {
     val compObj = GlobalClass.Companion
 
     var modeloId = ""
-
     var modeloId_GlobalClass = ""
     var modeloName_GlobalClass = ""
     var brandName_GlobalClass = ""
@@ -56,7 +55,7 @@ class BottomSheetColorFragment : BottomSheetDialogFragment {
         brandName_GlobalClass = compObj.Brand_Name
         brandId_GlobalClass = compObj.Brand_ID
 
-        // Marcas
+        // Cores
         coresList = ArrayList()
         coreAdapter = CoresAdapter(requireContext(), coresList)
         coresRecyclerView = view.findViewById(R.id.colorRecycler)
@@ -94,6 +93,4 @@ class BottomSheetColorFragment : BottomSheetDialogFragment {
             }
         })
     }
-
-
 }

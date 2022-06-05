@@ -16,6 +16,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class ResumeShoeActivity : AppCompatActivity() {
@@ -31,6 +34,7 @@ class ResumeShoeActivity : AppCompatActivity() {
     var modelId = ""
     var corId = ""
     var corNome = ""
+    var corURL = ""
     var shoeSize = ""
 
     // Get user
@@ -129,11 +133,12 @@ class ResumeShoeActivity : AppCompatActivity() {
         ref.child(corId)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val imagem_cor = "${snapshot.child("Imagem_Cor").value}"
+                    val imagem_cor = "${snapshot.child("Imagem_Cor").value.toString()}"
                     val nome_cor = "${snapshot.child("Nome_Cor").value}"
 
                     binding.colorName.text = nome_cor
                     corNome = nome_cor
+                    corURL = imagem_cor
                     try {
                         Glide.with(this@ResumeShoeActivity).load(imagem_cor)
                             .placeholder(R.drawable.progress_animation)
@@ -154,15 +159,19 @@ class ResumeShoeActivity : AppCompatActivity() {
         val hashMap = HashMap<String, Any>()
         hashMap["Brand_Nome"] = compObj.Brand_Name
         hashMap["Model_Nome"] = compObj.Model_Name
+        hashMap["Shoe_Nome"] = compObj.Model_Name
         hashMap["Color_Nome"] = corNome
         hashMap["Brand_ID"] = marcaId
         hashMap["Model_ID"] = modelId
-        hashMap["Shoe_Size"] = shoeSize.toLong()
+        hashMap["Shoe_Size"] = shoeSize.toInt()
         hashMap["Shoe_ID"] = timestamp
         hashMap["Shoe_TimeStamp"] = timestamp
         hashMap["Shoe_User_UID"] = mAuth.uid.toString()
         hashMap["ImageURL"] = compObj.shoe_Imagem
+        hashMap["ColorURL"] = corURL
         hashMap["KmTraveled"] = 0.0
+        hashMap["FirstUsage"] = getCurrentDate()
+        hashMap["EquipamentoAtivo"] = true
 
         // Save to DB
         val ref = FirebaseDatabase.getInstance().getReference("Sapatilhas")
@@ -173,5 +182,11 @@ class ResumeShoeActivity : AppCompatActivity() {
                 startActivity(Intent(this, BottomNavigationActivity::class.java))
                 finish()
             }
+
+    }
+    private fun getCurrentDate(): String{
+        val sdf = SimpleDateFormat("dd-MM-yyyy")
+        val currentDate = sdf.format(Date())
+        return currentDate
     }
 }

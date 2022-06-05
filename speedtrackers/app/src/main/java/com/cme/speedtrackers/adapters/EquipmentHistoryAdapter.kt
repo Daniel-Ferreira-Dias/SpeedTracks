@@ -43,26 +43,14 @@ class EquipmentHistoryAdapter(private var equipmentList: ArrayList<Shoes>) : Rec
         val currentView = equipmentList[position] // Current ViewItem
 
         // set Item to Value
-        setModeloNameAndImage(currentView.Model_ID, currentView.Brand_ID, holder)
-        currentView.FirstUsage?.let { holder.tvData.setText(it) }
+        setImage(holder, currentView)
+        holder.tvData.setText(getDataStringFormatted(currentView.FirstUsage.toString()))
         currentView.KmTraveled?.toString().let { holder.tvDistancia.setText(it) }
+        holder.tvName.text = currentView.Shoe_Nome.toString()
     }
 
-    private fun setModeloNameAndImage(modeloID: String?, marcaID:String?, holder: EquipmentHistoryAdapter.CustomViewHolder) {
-        dbRef = FirebaseDatabase.getInstance().getReference("Marcas/${marcaID}/Modelos/${modeloID}")
-        dbRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
-                    var model = snapshot.getValue(Modelos::class.java)
-                    println(model?.Nome_Modelo)
-                    holder.tvName.text = model?.Nome_Modelo.toString()
-                    println("Modelo: ${model?.Nome_Modelo} de id ${model?.ID_Modelo} - $modeloID")
-                    loadImage(holder, model?.Imagem_Modelo.toString())
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+    private fun setImage(holder: EquipmentHistoryAdapter.CustomViewHolder, currentView: Shoes) {
+        loadImage(holder, currentView.ImageURL.toString())
     }
     //Carregar uma imagem recebendo o URL
     private fun loadImage(holder: EquipmentHistoryAdapter.CustomViewHolder, imageURL: String) {
@@ -79,5 +67,31 @@ class EquipmentHistoryAdapter(private var equipmentList: ArrayList<Shoes>) : Rec
         val tvDistancia = binding.tvDistacia
         val tvData = binding.tvFirstUseDate
         val ivImagem = binding.ivImagem
+    }
+
+    private fun getDataStringFormatted(string: String) : String{
+        var result: String = ""
+        var replacedString = string.replace("-", "")
+        var dia = replacedString.subSequence(0, 2)
+        var mes = replacedString.subSequence(2, 4)
+        var ano = replacedString.subSequence(4, 8)
+        var mesName = ""
+        when (mes){
+            "01" -> mesName = "Jan"
+            "02" -> mesName = "Fev"
+            "03" -> mesName = "Mar"
+            "04" -> mesName = "Abr"
+            "05" -> mesName = "Maio"
+            "06" -> mesName = "Jun"
+            "07" -> mesName = "Jul"
+            "08" -> mesName = "Ago"
+            "09" -> mesName = "Set"
+            "10" -> mesName = "Out"
+            "11" -> mesName = "Nov"
+            "12" -> mesName = "Dez"
+        }
+
+        result = "$dia, $mesName de $ano"
+        return result
     }
 }

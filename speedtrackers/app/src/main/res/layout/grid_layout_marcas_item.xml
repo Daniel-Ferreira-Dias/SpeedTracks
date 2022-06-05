@@ -13,9 +13,12 @@
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
+        android:id="@+id/rl_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="8dp">
+        android:paddingBottom="8dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/icon_image_view"
@@ -44,17 +47,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/selectBrand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title_text_view"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/button_primary_background"
-            android:elevation="4dp"
-            android:fontFamily="@font/seg_ui_semibold"
-            android:text="Selecionar" />
 
     </RelativeLayout>
 

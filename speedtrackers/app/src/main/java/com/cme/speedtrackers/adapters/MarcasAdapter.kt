@@ -76,7 +76,7 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
 
         loadImage(model, holder)
 
-        binding.selectBrand.setOnClickListener {
+        binding.rlClick.setOnClickListener {
             compObj.Brand_Name = marcasArrayList[position].Nome
             compObj.Brand_ID = marcasArrayList[position].ID.toString()
             val bundle = Bundle()
@@ -85,7 +85,6 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
             intent.putExtra("marcaId", compObj.Brand_ID) // Loads respective brand
             context.startActivity(intent)
         }
-
     }
 
     override fun getItemCount(): Int {

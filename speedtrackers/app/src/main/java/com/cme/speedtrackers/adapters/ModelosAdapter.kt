@@ -73,7 +73,7 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
         loadImage(model, holder)
 
         // Handle Click
-        binding.selectModel.setOnClickListener { v ->
+        binding.rlClick.setOnClickListener { v ->
             compObj.Model_Name = model.Nome_Modelo
             compObj.Model_ID = model.ID_Modelo.toString()
             compObj.ImageURL = model.Imagem_Modelo

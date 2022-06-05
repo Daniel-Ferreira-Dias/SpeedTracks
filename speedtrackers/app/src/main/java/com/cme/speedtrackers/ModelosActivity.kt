@@ -2,6 +2,7 @@ package com.cme.speedtrackers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -47,6 +48,7 @@ class ModelosActivity : AppCompatActivity() {
 
         //Gets intent
         marcaId = intent.getStringExtra("marcaId")!!
+        Log.e("CONFIRM marca ID", marcaId)
 
         //Global
         marcaId_Global = compObj.Brand_ID

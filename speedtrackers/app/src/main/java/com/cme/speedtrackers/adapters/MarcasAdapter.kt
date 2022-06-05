@@ -2,6 +2,7 @@ package com.cme.speedtrackers.adapters
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,21 +52,22 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderMarcas {
         // inflate layout
         binding = GridLayoutMarcasItemBinding.inflate(LayoutInflater.from(context), parent, false)
-
         return HolderMarcas(binding.root)
     }
 
     public fun setFilteredList(filteredList: java.util.ArrayList<Marcas>) {
         this.marcasArrayList = filteredList
+        Log.e("DATACHANGE", "${marcasArrayList.size}, ${marcasArrayList[0].ID}")
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: HolderMarcas, position: Int) {
         // get data
-        val model = marcasArrayList[position]
-        val marcaId = model.ID
-        val name = model.Nome
-        val image = model.Imagem
+        var model = marcasArrayList[position]
+        var marcaId = model.ID
+        Log.e("ID:", "$marcaId")
+        var name = model.Nome
+        var image = model.Imagem
 
         mDbRef = FirebaseDatabase.getInstance().getReference("Marcas")
 
@@ -74,16 +76,13 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
 
         loadImage(model, holder)
 
-
         binding.selectBrand.setOnClickListener {
-            compObj.Brand_Name = model.Nome
-            compObj.Brand_ID = model.ID.toString()
-
+            compObj.Brand_Name = marcasArrayList[position].Nome
+            compObj.Brand_ID = marcasArrayList[position].ID.toString()
             val bundle = Bundle()
-            bundle.putString("marcaId", marcaId.toString())
-
+            bundle.putString("marcaId", compObj.Brand_ID)
             val intent = Intent(context, ModelosActivity::class.java)
-            intent.putExtra("marcaId", marcaId.toString()) // Loads respective brand
+            intent.putExtra("marcaId", compObj.Brand_ID) // Loads respective brand
             context.startActivity(intent)
         }
 
@@ -97,7 +96,6 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
         val imageViewMarcas = binding.iconImageView
         val textViewMarcas = binding.titleTextView
     }
-
 
     private fun loadImage(model: Marcas, holder: HolderMarcas) {
         mDbRef.child(model.ID.toString())

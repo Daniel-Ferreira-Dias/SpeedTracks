@@ -2,6 +2,7 @@ package com.cme.speedtrackers
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -65,7 +66,7 @@ class MarcasActivity : AppCompatActivity() {
 
 
     private fun loadMarcas(){
-        val ref = FirebaseDatabase.getInstance().getReference("Marcas")
+        var ref = FirebaseDatabase.getInstance().getReference("Marcas")
             ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 marcasList.clear()
@@ -77,7 +78,6 @@ class MarcasActivity : AppCompatActivity() {
                 marcasRecyclerView.adapter = adapter
                 adapter.setFilteredList(marcasList)
                 if(marcasList.isNotEmpty()){
-                    marcasList.reverse()
                     binding.marcaRecyclerView.adapter = adapter
                     binding.marcaRecyclerView.visibility = View.VISIBLE
                     binding.tvCarregando.visibility = View.GONE
@@ -105,6 +105,7 @@ class MarcasActivity : AppCompatActivity() {
 
             if (item.Nome.lowercase().filterNot { it.isWhitespace() }.contains(e.lowercase().filterNot { it.isWhitespace() })) {
                 filteredItem.add(item)
+                Log.e("ADD", "${item.Nome}")
             }
         }
         println("Lista - $filteredItem")
@@ -113,6 +114,7 @@ class MarcasActivity : AppCompatActivity() {
             binding.marcaRecyclerView.clearFocus()
             binding.marcaRecyclerView.visibility = View.GONE
             binding.tvNotFound.visibility = View.VISIBLE
+            adapter.setFilteredList(marcasList)
         }
         else{
             adapter.setFilteredList(filteredItem)

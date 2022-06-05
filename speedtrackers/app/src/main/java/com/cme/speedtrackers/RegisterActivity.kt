@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity(), TextWatcher {
     private var passwordconfirmed = false
 
     // database
-    private lateinit var database : DatabaseReference
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,17 +60,20 @@ class RegisterActivity : AppCompatActivity(), TextWatcher {
 
         // Already has an account
         binding.loginHereTextView.setOnClickListener {
-            val intent = Intent(this, OptionActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
         // Register
         binding.registerButton.setOnClickListener {
-            if (isTicked){
+            if (isTicked) {
                 checkConditions()
-            }
-            else{
-                Toast.makeText(this, "Tem que concordar com os termos e condição", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Tem que concordar com os termos e condição",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -89,10 +92,10 @@ class RegisterActivity : AppCompatActivity(), TextWatcher {
     }
 
     // Terms
-    private fun termAndConditions(){
+    private fun termAndConditions() {
         val spannableString = SpannableString("Declaro que li e aceito os termos e condições")
 
-        val clickableSpan = object : ClickableSpan(){
+        val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 Toast.makeText(this@RegisterActivity, "Incompleto...", Toast.LENGTH_SHORT).show()
             }
@@ -116,7 +119,7 @@ class RegisterActivity : AppCompatActivity(), TextWatcher {
 
         if (email.isEmpty()) {
             Toast.makeText(this, "Insira o seu email...", Toast.LENGTH_SHORT).show()
-        }else if (userName.isEmpty()){
+        } else if (userName.isEmpty()) {
             Toast.makeText(this, "Insira o seu nome de utilizador...", Toast.LENGTH_SHORT).show()
         } else if (pass.isEmpty()) {
             Toast.makeText(this, "Insira a sua password...", Toast.LENGTH_SHORT).show()

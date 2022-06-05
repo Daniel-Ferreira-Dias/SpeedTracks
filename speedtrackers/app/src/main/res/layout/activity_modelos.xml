@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/modelosActive"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFFFFF"
-    android:id="@+id/modelosActive"
+    android:orientation="vertical"
     tools:context=".OptionActivity">
 
     <View
@@ -20,14 +20,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
+
     <TextView
         android:id="@+id/fragmentName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Adicionar Modelo"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Adicionar Modelo"
         android:translationZ="1dp"
         app:layout_constraintBottom_toBottomOf="@+id/navigation_view"
         app:layout_constraintEnd_toEndOf="@+id/navigation_view"
@@ -40,21 +41,66 @@
         android:layout_height="40dp"
         android:background="@drawable/ic_baseline_arrow_back_24"
         android:backgroundTint="@color/white"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/navigation_view"
         app:layout_constraintEnd_toStartOf="@+id/fragmentName"
-        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/tv_not_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="20dp"
+        android:text="Não existe nenhum modelo com este nome"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <TextView
+        android:id="@+id/tv_carregando"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:text="Carregando o teu equipamento..."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/ripple_button_stroke"
+        android:elevation="@dimen/dp_10"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search..."
+        android:searchIcon="@null"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentName"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation_view">
+        app:layout_constraintTop_toBottomOf="@+id/navigation_view">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/modelosRecyclerView"
@@ -64,7 +110,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/grid_layout_marcas_item"/>
+            tools:listitem="@layout/grid_layout_marcas_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

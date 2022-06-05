@@ -14,6 +14,7 @@ import com.cme.speedtrackers.R
 import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.GridLayoutMarcasItemBinding
 import com.cme.speedtrackers.model.Marcas
+import com.cme.speedtrackers.model.Modelos
 import com.cme.speedtrackers.model.Shoes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -52,6 +53,11 @@ class MarcasAdapter : RecyclerView.Adapter<MarcasAdapter.HolderMarcas> {
         binding = GridLayoutMarcasItemBinding.inflate(LayoutInflater.from(context), parent, false)
 
         return HolderMarcas(binding.root)
+    }
+
+    public fun setFilteredList(filteredList: java.util.ArrayList<Marcas>) {
+        this.marcasArrayList = filteredList
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: HolderMarcas, position: Int) {

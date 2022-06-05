@@ -12,13 +12,13 @@
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginEnd="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_20"
-        android:iconifiedByDefault="false"
-        android:searchIcon="@null"
-        android:queryHint="Search..."
+        android:layout_marginEnd="@dimen/dp_20"
         android:background="@drawable/ripple_button_stroke"
-        android:elevation="@dimen/dp_10"/>
+        android:elevation="@dimen/dp_10"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search..."
+        android:searchIcon="@null" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -52,6 +52,11 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
         return HolderModelos(binding.root)
     }
 
+    public fun setFilteredList(filteredList: java.util.ArrayList<Modelos>) {
+        this.modelosArrayList = filteredList
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: HolderModelos, position: Int) {
         // get data
         val model = modelosArrayList[position]

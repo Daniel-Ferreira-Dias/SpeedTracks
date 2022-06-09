@@ -4,13 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_add_marca.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_equipment_view.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_login2.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_modelos.xml" value="0.2955575702629193" />
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/bottom_sheet_colour_fragment.xml" value="0.2955575702629193" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/bottom_sheet_shoes_fragment.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/bottom_sheet_shoes_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_activity.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_equipment.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_equipment_history.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_equipment_list.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_home.xml" value="0.2955575702629193" />
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_modal_display_activity.xml" value="0.25" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_settings.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/fragment_shop.xml" value="0.33" />
         <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_activities_home.xml" value="0.2955575702629193" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_marcas_item.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_modelos_item.xml" value="0.2955575702629193" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_shoes.xml" value="0.2955575702629193" />
+        <entry key="..\:/Users/danie/Speedtrackers/speedtrackers/app/src/main/res/layout/grid_layout_shop.xml" value="0.33" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/add.xml" value="0.2575" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/color_selector_tab_item.xml" value="0.2275" />
         <entry key="..\:/Users/misae/Desktop/3ºAno/2ºSemestre/Computação Móvel na Empresa/Trabalho 4/Speedtrackers/speedtrackers/app/src/main/res/drawable/edit.xml" value="0.2575" />

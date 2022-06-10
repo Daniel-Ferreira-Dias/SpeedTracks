@@ -80,6 +80,9 @@ private fun addItemsToList(): ArrayList<SettingsClass> {
     settingsList.add(SettingsClass(5, R.string.terms_conditions, R.drawable.clipboard, R.string.terms_conditions_desc))
     settingsList.add(SettingsClass(6, R.string.privacy_policy, R.drawable.verified, R.string.privacy_policy_desc))
     settingsList.add(SettingsClass(7, R.string.sign_out, R.drawable.logout, R.string.sign_out_desc))
+    settingsList.add(SettingsClass(8, R.string.Adicionar_marca, R.drawable.ic_baseline_add_24, R.string.Add_Marca))
+    settingsList.add(SettingsClass(9, R.string.Adicionar_Modelo, R.drawable.ic_baseline_add_24, R.string.Add_Modelo))
+    settingsList.add(SettingsClass(10, R.string.Adicionar_shop, R.drawable.ic_baseline_add_shopping_cart_24, R.string.Add_Shop))
 
     return settingsList
 }

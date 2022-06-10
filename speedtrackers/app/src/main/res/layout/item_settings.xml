@@ -23,9 +23,8 @@
                     android:id="@+id/iv_edit_my_profile"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
                     android:src="@drawable/settings"
+                    android:layout_centerVertical="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -70,6 +69,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:padding="5dp"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/next" />
             </RelativeLayout>
 
@@ -80,15 +80,16 @@
                 android:layout_alignBottom="@id/constraint_text"
                 android:layout_marginStart="70dp"
                 android:gravity="bottom">
+
                 <View
                     android:id="@+id/view_line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginEnd="@dimen/dp_20"
                     android:background="@color/WhiteGray"
                     android:backgroundTint="@color/WhiteGray"
                     android:foregroundGravity="center"
-                    android:foregroundTint="@color/WhiteGray"
-                    android:layout_marginEnd="@dimen/dp_20"/>
+                    android:foregroundTint="@color/WhiteGray" />
 
             </RelativeLayout>
         </RelativeLayout>

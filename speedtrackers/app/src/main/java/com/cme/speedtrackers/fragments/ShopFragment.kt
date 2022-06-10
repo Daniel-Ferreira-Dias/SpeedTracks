@@ -39,6 +39,7 @@ class ShopFragment : Fragment() {
         binding.rvShop.adapter = shopAdapter
 
         getShop()
+        getQt()
 
         return binding.root
     }
@@ -59,5 +60,18 @@ class ShopFragment : Fragment() {
                     TODO("Not yet implemented")
                 }
             })
+    }
+
+    private fun getQt() {
+        val dbRef = FirebaseDatabase.getInstance().getReference("Shop")
+        dbRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val totalProducts = "${snapshot.child("Total").value}".toInt()
+                binding.tvQtProdutos.text = totalProducts.toString()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 }

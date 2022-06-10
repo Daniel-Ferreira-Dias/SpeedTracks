@@ -86,6 +86,14 @@ class ShoeFromShopDetailActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnCart.setOnClickListener {
+            Toast.makeText(this, "Adicionado ao carrinho", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnComprar.setOnClickListener {
+            Toast.makeText(this, "Sapatilha comprada com sucesso", Toast.LENGTH_SHORT).show()
+        }
+
 
         setContentView(binding.root)
     }

@@ -36,4 +36,9 @@
         <item name="android:textColorSecondaryInverse">#009688</item>
 
     </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#3D3B3B</item>
+        <item name="colorControlActivated">#CAAE49</item>
+    </style>
 </resources>

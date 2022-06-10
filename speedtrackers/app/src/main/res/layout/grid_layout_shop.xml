@@ -65,10 +65,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.115"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icon_image_view"
-            app:layout_constraintVertical_bias="0.211" />
+            app:layout_constraintVertical_bias="0.196" />
 
         <TextView
             android:id="@+id/tv_Price_Euro"
@@ -82,10 +82,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.010"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/tv_Price"
             app:layout_constraintTop_toBottomOf="@+id/icon_image_view"
-            app:layout_constraintVertical_bias="0.737" />
+            app:layout_constraintVertical_bias="0.606" />
 
         <TextView
             android:id="@+id/tv_Price"
@@ -99,10 +99,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icon_image_view"
-            app:layout_constraintVertical_bias="0.737" />
+            app:layout_constraintVertical_bias="0.606" />
 
         <TextView
             android:id="@+id/tv_Warning_Stock"
@@ -116,8 +116,42 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.886"
+            app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_image_view"
+            app:layout_constraintVertical_bias="0.218" />
+
+        <TextView
+            android:id="@+id/reviewTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:gravity="center"
+            android:text="Total Reviews"
+            android:textColor="#8A7D7A"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_image_view"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <RatingBar
+            android:id="@+id/userRating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:theme="@style/RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:focusable="false"
+            android:isIndicator="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.354"
+            app:layout_constraintStart_toEndOf="@+id/reviewTv"
             app:layout_constraintTop_toBottomOf="@+id/icon_image_view"
             app:layout_constraintVertical_bias="1.0" />
 

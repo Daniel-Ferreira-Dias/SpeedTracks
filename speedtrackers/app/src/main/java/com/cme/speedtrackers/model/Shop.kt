@@ -10,13 +10,14 @@ class Shop {
     var Imagem_Marca: String = ""
     var Preço: Long = 0
     var Stock: Long = 0
+    var Descrição: String = ""
 
     constructor()
 
     constructor(
         ID_Modelo: Long, Imagem_Modelo: String, Nome_Modelo: String,
         ID_Marca: Long, Nome_Marca: String, Imagem_Marca: String,
-        Preço: Long, Stock: Long,
+        Preço: Long, Stock: Long, Descrição: String,
     ) {
         this.ID_Modelo = ID_Modelo
         this.Imagem_Modelo = Imagem_Modelo
@@ -26,5 +27,6 @@ class Shop {
         this.Imagem_Marca = Imagem_Marca
         this.Preço = Preço
         this.Stock = Stock
+        this.Descrição = Descrição
     }
 }

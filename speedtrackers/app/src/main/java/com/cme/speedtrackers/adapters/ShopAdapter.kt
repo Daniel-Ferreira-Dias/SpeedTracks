@@ -11,9 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.cme.speedtrackers.BottomNavigationActivity
-import com.cme.speedtrackers.EquipmentViewActivity
-import com.cme.speedtrackers.ModelosActivity
+import com.cme.speedtrackers.*
 import com.cme.speedtrackers.R
 import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.GridLayoutModelosItemBinding
@@ -47,6 +45,12 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
     //firebase database
     private lateinit var mDbRef: DatabaseReference
 
+    //final rate
+    //rating
+    private var totalRating = 0
+    private var currentRating = 0F
+    private var finalrating = 0F
+
     // GlobalClass
     val compObj = GlobalClass.Companion
 
@@ -74,15 +78,17 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
         }
 
         binding.rlClick.setOnClickListener {
-            //var intent = Intent(context, EquipmentViewActivity::class.java)
-            //intent.putExtra("List", equipmentList)
-            //intent.putExtra("Position", position)
-            //context.startActivity(intent)
+            val intent = Intent(context, ShoeFromShopDetailActivity::class.java)
+            intent.putExtra("List", model.ID_Modelo.toString())
+            intent.putExtra("Marca", model.ID_Marca.toString())
+            context.startActivity(intent)
         }
 
 
         mDbRef = FirebaseDatabase.getInstance().getReference("Shop").child("Modelos")
         loadShoe(model, holder)
+        loadRating(model, holder)
+        holder.rating.rating = finalrating
 
     }
 
@@ -96,6 +102,7 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
         val marcaView = binding.iconBrandView
         val preço = binding.tvPrice
         val warning_tv = binding.tvWarningStock
+        val rating = binding.userRating
     }
 
     private fun loadShoe(model: Shop, holder: ShopAdapter.HolderShop) {
@@ -123,6 +130,28 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
 
             override fun onCancelled(error: DatabaseError) {
             }
+        })
+    }
+
+    private fun loadRating(model: Shop, holder: ShopAdapter.HolderShop) {
+        val mref = FirebaseDatabase.getInstance().getReference("Marcas").child(model.ID_Marca.toString()).child("Modelos")
+        mref.child(model.ID_Modelo.toString()).child("Reviews").addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val booktotalrating = "${snapshot.child("totalreviews").value}"
+                val bookcurrentraing = "${snapshot.child("atualreviews").value}"
+
+                totalRating = booktotalrating.toInt()
+                currentRating = bookcurrentraing.toFloat()
+
+                //final rating
+                finalrating = currentRating / totalRating
+
+                holder.rating.rating = finalrating
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
         })
     }
 

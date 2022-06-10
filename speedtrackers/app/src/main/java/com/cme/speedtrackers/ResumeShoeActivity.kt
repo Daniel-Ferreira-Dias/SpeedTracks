@@ -173,6 +173,7 @@ class ResumeShoeActivity : AppCompatActivity() {
         hashMap["FirstUsage"] = getCurrentDate()
         hashMap["EquipamentoAtivo"] = true
 
+
         // Save to DB
         val ref = FirebaseDatabase.getInstance().getReference("Sapatilhas")
         ref.child(timestamp.toString())
@@ -182,6 +183,7 @@ class ResumeShoeActivity : AppCompatActivity() {
                 startActivity(Intent(this, BottomNavigationActivity::class.java))
                 finish()
             }
+
 
     }
     private fun getCurrentDate(): String{

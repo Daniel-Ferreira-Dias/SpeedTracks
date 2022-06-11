@@ -85,6 +85,16 @@
     <string name="content_description">image</string>
     <string name="title_settings">Settings</string>
 
+    <!--    Marcas-->
+    <string-array name="Marcas">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
     <!--    Tamanhos-->
     <string-array name="Tamanho">
         <item>37</item>
@@ -102,5 +112,8 @@
         <item>43</item>
         <item>43.5</item>
     </string-array>
+
+
+
 
 </resources>

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SpeedTrackers"
         tools:targetApi="31">
         <activity
+            android:name=".AddModelActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddMarcaActivity"
             android:exported="false" />
         <activity

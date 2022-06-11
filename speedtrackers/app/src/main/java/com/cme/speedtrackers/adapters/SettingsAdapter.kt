@@ -56,6 +56,14 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
                 var intent = Intent(context, ProfileViewActivity::class.java)
                 context.startActivity(intent)
             }
+            if (currentView.id == 8){
+                var intent = Intent(context, AddMarcaActivity::class.java)
+                context.startActivity(intent)
+            }
+            if (currentView.id == 9){
+                var intent = Intent(context, AddModelActivity::class.java)
+                context.startActivity(intent)
+            }
         }
     }
 

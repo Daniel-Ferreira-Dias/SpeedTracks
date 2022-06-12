@@ -12,10 +12,11 @@ class User : Serializable {
     var userVerified: Boolean? = null
     var userUID : String?= null
     var userProfilePic: String?= null
+    var isAdmin: Boolean?= null
 
     constructor(){}
 
-    constructor(userName: String?, userEmail: String?, userType: String?, userTimestamp: Long?, userVerified: Boolean?, userUID: String?, userProfilePic: String?){
+    constructor(userName: String?, userEmail: String?, userType: String?, userTimestamp: Long?, userVerified: Boolean?, userUID: String?, userProfilePic: String?, isAdmin: Boolean?){
         this.userName = userName
         this.userEmail = userEmail
         this.userType = userType
@@ -23,5 +24,14 @@ class User : Serializable {
         this.userVerified = userVerified
         this.userUID = userUID
         this.userProfilePic = userProfilePic
+        if (isAdmin != null){
+            this.isAdmin = isAdmin
+        }
+        else {
+            this.isAdmin = false
+        }
+        this.userFirstName = null
+        this.userLastName = null
+
     }
 }

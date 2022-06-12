@@ -168,7 +168,7 @@ class RegisterActivity : AppCompatActivity(), TextWatcher {
         val userProfile = ""
 
         database = FirebaseDatabase.getInstance().getReference("Users")
-        val User = User(userName, email, userType, timestamp, userVerified, uid, userProfile)
+        val User = User(userName, email, userType, timestamp, userVerified, uid, userProfile, false)
         database.child(uid).setValue(User).addOnSuccessListener {
             Toast.makeText(this, "Conta criada com sucesso...", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this@RegisterActivity, OptionActivity::class.java))

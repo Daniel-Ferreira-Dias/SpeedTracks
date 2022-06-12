@@ -49,13 +49,12 @@
         app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toEndOf="@+id/tv_Qt_Produtos"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.484" />
+        app:layout_constraintVertical_bias="0.54" />
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
         android:layout_margin="5dp"
         android:background="@drawable/ripple_button_stroke"
         android:elevation="@dimen/dp_10"
@@ -66,14 +65,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_edit"
         app:layout_constraintVertical_bias="0.066" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Shop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

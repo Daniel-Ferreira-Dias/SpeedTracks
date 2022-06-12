@@ -12,6 +12,7 @@ import android.widget.RatingBar
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.cme.speedtrackers.R
+import com.cme.speedtrackers.compObj
 import com.cme.speedtrackers.databinding.FragmentDialogCommentBinding
 import com.cme.speedtrackers.databinding.FragmentEquipmentHistoryBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -124,6 +125,7 @@ class CustomCommentFragment : BottomSheetDialogFragment() {
         hashMap["comment"] = "$comment"
         hashMap["uid"] = "${mAuth.uid}"
         hashMap["rating"] = "$modeloRating"
+        hashMap["userPhoto"] = compObj.currentUser.userProfilePic.toString()
 
 
         val mref = FirebaseDatabase.getInstance().getReference("Comentários")

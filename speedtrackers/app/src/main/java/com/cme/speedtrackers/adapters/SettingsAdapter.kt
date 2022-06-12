@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cme.speedtrackers.*
+import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.classes.SettingsClass
 import com.cme.speedtrackers.databinding.FragmentSettingsBinding
 import com.cme.speedtrackers.databinding.ItemSettingsBinding
@@ -22,6 +24,7 @@ class SettingsAdapter() : RecyclerView.Adapter<SettingsAdapter.CustomViewHolder>
     private lateinit var binding: ItemSettingsBinding //View Binding
     private val listOfSettings = addItemsToList() // List of Settings Items
     private lateinit var context: Context //Context from Parent
+    val compObj = GlobalClass.Companion
 
 
     // Number of rows in display
@@ -91,6 +94,12 @@ private fun addItemsToList(): ArrayList<SettingsClass> {
     settingsList.add(SettingsClass(8, R.string.Adicionar_marca, R.drawable.ic_baseline_add_24, R.string.Add_Marca))
     settingsList.add(SettingsClass(9, R.string.Adicionar_Modelo, R.drawable.ic_baseline_add_24, R.string.Add_Modelo))
     settingsList.add(SettingsClass(10, R.string.Adicionar_shop, R.drawable.ic_baseline_add_shopping_cart_24, R.string.Add_Shop))
+
+    if (compObj.currentUser.isAdmin == false){
+        settingsList.removeAt(9)
+        settingsList.removeAt(8)
+        settingsList.removeAt(7)
+    }
 
     return settingsList
 }

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cme.speedtrackers.R
+import com.cme.speedtrackers.classes.GlideLoader
 import com.cme.speedtrackers.databinding.RowCommentsBinding
 import com.example.bookapplicationv1.classes.ModelComment
 import com.google.firebase.auth.FirebaseAuth
@@ -55,6 +56,8 @@ class AdapterComment : RecyclerView.Adapter<AdapterComment.HolderComment> {
         val uid = model.uid
         val timestamp = model.timestamp
         val rating = model.rating
+        val photo = model.userPhoto
+
 
         // format time stamp
         val date = formatTimeStamp(timestamp.toLong())
@@ -63,6 +66,9 @@ class AdapterComment : RecyclerView.Adapter<AdapterComment.HolderComment> {
         holder.commentTimeStamp.text = date
         holder.userComment.text = comment
         holder.userRating.rating = rating.toFloat()
+
+        GlideLoader(context).loadUserPicture(photo, holder.profilePic)
+
 
         // to get picture, load user details
         loadUserDetails(model, holder)

@@ -7,6 +7,7 @@ class ModelComment {
     var comment = ""
     var uid = ""
     var rating = ""
+    var userPhoto = ""
 
     constructor()
 

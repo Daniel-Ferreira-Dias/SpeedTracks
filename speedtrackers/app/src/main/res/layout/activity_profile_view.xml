@@ -66,7 +66,8 @@
                 android:layout_margin="@dimen/settings_user_picture_margin"
                 android:contentDescription="@string/content_description"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_user_placeholder"/>
+                android:src="@drawable/ic_user_placeholder"
+                android:clickable="false" />
 
             <View
                 android:layout_width="match_parent"
@@ -122,7 +123,6 @@
                     android:padding="16dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:text="First name"
                     android:enabled="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,8 +146,7 @@
                     android:padding="16dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:enabled="false"
-                    android:text="Last Name"/>
+                    android:enabled="false" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

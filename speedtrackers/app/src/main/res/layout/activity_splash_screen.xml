@@ -9,9 +9,10 @@
     android:background="#0b1e3e">
 
     <ImageView
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_width="wrap_content"
+        android:layout_height="359dp"
         android:layout_gravity="center"
-        android:src="@drawable/logo_no_background"/>
+        android:scaleType="centerInside"
+        android:src="@drawable/sneakerplug" />
 
 </FrameLayout>

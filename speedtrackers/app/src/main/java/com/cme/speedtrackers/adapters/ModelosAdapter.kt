@@ -74,15 +74,12 @@ class ModelosAdapter : RecyclerView.Adapter<ModelosAdapter.HolderModelos> {
 
         // Handle Click
         binding.rlClick.setOnClickListener { v ->
-            compObj.Model_Name = model.Nome_Modelo
-            compObj.Model_ID = model.ID_Modelo.toString()
-            compObj.ImageURL = model.Imagem_Modelo
-            compObj.shoe_Imagem = model.Imagem_Modelo
-
-            Log.d("Inseriu", compObj.Model_ID)
+            compObj.Model_Name = modelosArrayList[position].Nome_Modelo
+            compObj.Model_ID = modelosArrayList[position].ID_Modelo.toString()
+            compObj.ImageURL = modelosArrayList[position].Imagem_Modelo
+            compObj.shoe_Imagem = modelosArrayList[position].Imagem_Modelo
 
             val bundle = Bundle()
-            bundle.putString("modeloId", id.toString())
 
             val dialog = BottomSheetColorFragment()
             val ft = context.supportFragmentManager.beginTransaction()

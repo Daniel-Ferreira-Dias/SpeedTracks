@@ -3,6 +3,7 @@ package com.cme.speedtrackers
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.cme.speedtrackers.classes.GlobalClass
@@ -40,6 +41,13 @@ class ResumeShoeActivity : AppCompatActivity() {
     // Get user
     private val mAuth = FirebaseAuth.getInstance()
 
+    override fun onResume() {
+        super.onResume()
+        val tamanhos = resources.getStringArray(R.array.Tamanho)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, tamanhos)
+        binding.AutoCompleteText.setAdapter(arrayAdapter)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResumeShoeBinding.inflate(layoutInflater)
@@ -49,6 +57,13 @@ class ResumeShoeActivity : AppCompatActivity() {
         modelId = compObj.Model_ID
         corId = compObj.Color_ID
 
+
+
+        val tamanhos = resources.getStringArray(R.array.Tamanho)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, tamanhos)
+        binding.AutoCompleteText.setAdapter(arrayAdapter)
+
+        binding.AutoCompleteText.inputType = 0
 
         loadBrand()
         loadColor()
@@ -65,9 +80,9 @@ class ResumeShoeActivity : AppCompatActivity() {
         }
 
         binding.addShoe.setOnClickListener {
-            shoeSize = binding.ShoeSize.text.toString()
+            shoeSize = binding.AutoCompleteText.text.toString()
 
-            if (shoeSize.isEmpty()){
+            if (shoeSize.isEmpty() || shoeSize == "Tamanho"){
                 Toast.makeText(this, "Insira o tamanho da sapatilha", Toast.LENGTH_SHORT).show()
             }else{
                 if (mAuth.currentUser != null) {

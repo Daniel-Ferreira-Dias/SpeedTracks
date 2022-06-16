@@ -202,24 +202,37 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.063" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/ShoeSize"
-        android:inputType="numberDecimal"
-        android:layout_width="70dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/textinput_white"
-        android:padding="4dp"
-        android:textAlignment="center"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:gravity="center"
+        android:hint="Tamanho"
+        android:inputType="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintVertical_bias="0.2">
 
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.216" />
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/AutoCompleteText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:text="Tamanho"
+            android:gravity="center"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

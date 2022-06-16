@@ -19,6 +19,6 @@ class GlobalClass : Application() {
         var shoe_Imagem = ""
         var New_Name = ""
         var currentUser = User()
-        var isAdmin: Boolean?= null
+        var isAdmin= ""
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import com.cme.speedtrackers.classes.GlobalClass
 import com.cme.speedtrackers.databinding.ActivitySplashScreenBinding
@@ -29,6 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
         val auth = firebaseAuth.currentUser?.uid
         id = auth.toString()
 
+        checkUserType()
         Handler().postDelayed({
             checkUser()
         }, 2000)
@@ -43,7 +45,8 @@ class SplashScreenActivity : AppCompatActivity() {
             startActivity(Intent(this, WelcomeActivity::class.java))
             finish()
         } else{
-            checkUserType()
+            startActivity(Intent(this@SplashScreenActivity, BottomNavigationActivity::class.java))
+            finish()
         }
     }
 
@@ -53,10 +56,11 @@ class SplashScreenActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userType = "${snapshot.child("userType").value}"
                 if (userType == "Admin"){
-                    compObj.isAdmin = true
+                    compObj.isAdmin = "Admin"
+                }else{
+                    compObj.isAdmin = "Normal Type"
                 }
-                startActivity(Intent(this@SplashScreenActivity, BottomNavigationActivity::class.java))
-                finish()
+                Log.d("ADMIN", compObj.isAdmin.toString())
             }
             override fun onCancelled(error: DatabaseError) {
             }

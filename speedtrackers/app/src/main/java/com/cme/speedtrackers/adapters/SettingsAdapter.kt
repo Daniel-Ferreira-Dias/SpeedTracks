@@ -99,7 +99,7 @@ private fun addItemsToList(): ArrayList<SettingsClass> {
     settingsList.add(SettingsClass(9, R.string.Adicionar_Modelo, R.drawable.ic_baseline_add_24, R.string.Add_Modelo))
     settingsList.add(SettingsClass(10, R.string.Adicionar_shop, R.drawable.ic_baseline_add_shopping_cart_24, R.string.Add_Shop))
 
-    if (compObj.isAdmin == false){
+    if (compObj.isAdmin != "Admin"){
         settingsList.removeAt(9)
         settingsList.removeAt(8)
         settingsList.removeAt(7)

@@ -11,7 +11,7 @@
         style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Username"
         android:textColor="@color/primary"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,23 +19,35 @@
         app:layout_constraintHorizontal_bias="0.009"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
+        app:layout_constraintVertical_bias="0.018" />
 
     <TextView
         android:id="@+id/textView3"
         style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:text="Olá"
         android:textColor="@color/primary"
         android:textSize="20sp"
-        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.018" />
+
+    <ImageView
+        android:id="@+id/adminShield"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_shield_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintStart_toEndOf="@+id/userName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.019" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shoeRecycler"
@@ -67,37 +79,37 @@
         android:id="@+id/tv_not_found_activity"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
         android:text="Adicione a sua atividade para poder visualiza-la aqui"
         android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintHorizontal_bias="0.004"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView4"
-        app:layout_constraintVertical_bias="0.045"
-        android:layout_margin="@dimen/dp_10"
-        android:visibility="gone"/>
+        app:layout_constraintVertical_bias="0.045" />
 
     <TextView
         android:id="@+id/tv_not_found_shoes"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
         android:text="Adicione o seu equipamento para poder visualiza-lo aqui"
         android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text1"
-        app:layout_constraintVertical_bias="0.045"
-        android:layout_margin="@dimen/dp_10"
-        android:visibility="gone"/>
+        app:layout_constraintVertical_bias="0.045" />
 
     <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="O seu calçado mais usado"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_marginStart="5dp"
+        android:text="O seu calçado mais usado"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/shoeRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"
@@ -109,6 +121,8 @@
         android:id="@+id/seeMoreShoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:text="Ver mais"
         android:textColor="@color/primary"
         android:textSize="14sp"
@@ -117,9 +131,7 @@
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userName"
-        app:layout_constraintVertical_bias="0.636"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"/>
+        app:layout_constraintVertical_bias="0.636" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activityEquipament"
@@ -135,6 +147,8 @@
         android:id="@+id/seeMoreActivities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:text="Ver mais"
         android:textColor="@color/primary"
         android:textSize="14sp"
@@ -143,9 +157,7 @@
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/shoeRecycler"
-        app:layout_constraintVertical_bias="0.55"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"/>
+        app:layout_constraintVertical_bias="0.55" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,6 +41,7 @@ class HomeFragment : Fragment() {
         //TYPE YOUR CODE HERE
         binding.tvNotFoundShoes.visibility = View.GONE
         binding.tvNotFoundActivity.visibility = View.GONE
+        binding.adminShield.visibility = View.GONE
 
 
         activityList = arrayListOf<Atividade>()
@@ -154,7 +155,14 @@ class HomeFragment : Fragment() {
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val userName = "${snapshot.child("userName").value}"
+                    val userType = "${snapshot.child("userType").value}"
                     binding.userName.text = userName
+                    if (userType == "Admin"){
+                        binding.adminShield.visibility = View.VISIBLE
+                    }else{
+                        binding.adminShield.visibility = View.GONE
+                    }
+
                 }
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")

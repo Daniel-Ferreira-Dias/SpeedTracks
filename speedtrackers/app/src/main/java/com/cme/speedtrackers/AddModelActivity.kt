@@ -110,6 +110,8 @@ class AddModelActivity : AppCompatActivity() {
             Toast.makeText(this, "Insira o ID da Marca", Toast.LENGTH_SHORT).show()
         } else if (IDModel.isEmpty()) {
             Toast.makeText(this, "Insira o ID do Modelo", Toast.LENGTH_SHORT).show()
+        } else if (imageUri == null){
+            Toast.makeText(this, "Tem que inserir uma imagem", Toast.LENGTH_SHORT).show()
         } else {
             checkDataBase()
         }

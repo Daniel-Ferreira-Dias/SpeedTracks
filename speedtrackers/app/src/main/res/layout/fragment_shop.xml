@@ -60,22 +60,49 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.54" />
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/ripple_button_stroke"
-            android:elevation="@dimen/dp_10"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search..."
-            android:searchIcon="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.555"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_edit"
-            app:layout_constraintVertical_bias="0.066" />
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/ripple_button_stroke"
+                android:elevation="@dimen/dp_10"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search..."
+                android:searchIcon="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.555"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.066" />
+
+            <TextView
+                android:id="@+id/tv_not_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginEnd="20dp"
+                android:text="Não existe nenhum modelo com este nome"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchView"
+                app:layout_constraintVertical_bias="0.01" />
+
+            <TextView
+                android:id="@+id/tv_carregando"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_20"
+                android:text="Carregando o teu equipamento..."
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchView"
+                app:layout_constraintVertical_bias="0.01" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_Shop"

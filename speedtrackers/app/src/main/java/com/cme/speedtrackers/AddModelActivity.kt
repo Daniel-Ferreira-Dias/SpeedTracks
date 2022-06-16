@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.widget.addTextChangedListener
 import com.cme.speedtrackers.databinding.ActivityAddMarca2Binding
 import com.cme.speedtrackers.databinding.ActivityAddModelBinding
+import com.cme.speedtrackers.model.Marcas
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,10 +34,11 @@ class AddModelActivity : AppCompatActivity() {
     var IDModel = ""
 
     var uploadImageUrl = ""
+    val MarcasList = ArrayList<Int>()
 
     override fun onResume() {
         super.onResume()
-        val MarcasList = resources.getStringArray(R.array.Marcas)
+        loadMarcasId()
         val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, MarcasList)
         binding.etMarcaId.setAdapter(arrayAdapter)
     }
@@ -45,11 +48,11 @@ class AddModelActivity : AppCompatActivity() {
         binding = ActivityAddModelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val MarcasList = resources.getStringArray(R.array.Marcas)
-        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, MarcasList)
-        binding.etMarcaId.setAdapter(arrayAdapter)
-
         binding.etMarcaId.inputType = 0
+
+        binding.etMarcaId.addTextChangedListener {
+            IDMarca = binding.etMarcaId.text.toString()
+        }
 
         binding.ibAddImage.setOnClickListener {
             selectImage()
@@ -66,6 +69,20 @@ class AddModelActivity : AppCompatActivity() {
         binding.btnSave.setOnClickListener {
             checkConditions()
         }
+    }
+
+    private fun loadMarcasId(){
+        val mref = FirebaseDatabase.getInstance().getReference("Marcas")
+        mref.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children){
+                    val model = ds.getValue(Marcas::class.java)
+                    MarcasList.add(model!!.ID.toInt())
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
     }
 
     private fun uploadImage(){
@@ -106,7 +123,7 @@ class AddModelActivity : AppCompatActivity() {
 
         if (nomeModelo.isEmpty()) {
             Toast.makeText(this, "Insira o nome da Marca", Toast.LENGTH_SHORT).show()
-        } else if (IDMarca.isEmpty()) {
+        } else if (IDMarca.isEmpty() || IDMarca == "Marca ID") {
             Toast.makeText(this, "Insira o ID da Marca", Toast.LENGTH_SHORT).show()
         } else if (IDModel.isEmpty()) {
             Toast.makeText(this, "Insira o ID do Modelo", Toast.LENGTH_SHORT).show()

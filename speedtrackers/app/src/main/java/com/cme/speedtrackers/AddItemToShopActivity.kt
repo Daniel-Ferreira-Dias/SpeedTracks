@@ -132,7 +132,7 @@ class AddItemToShopActivity : AppCompatActivity() {
 
         if (nomeModelo.isEmpty()) {
             Toast.makeText(this, "Insira o nome do Modelo", Toast.LENGTH_SHORT).show()
-        } else if (IDMarca.isEmpty() || IDModel == "Marca ID") {
+        } else if (IDMarca.isEmpty() || IDMarca == "Marca ID") {
             Toast.makeText(this, "Insira o ID da Marca", Toast.LENGTH_SHORT).show()
         } else if (IDModel.isEmpty() || IDModel == "Modelo ID") {
             Toast.makeText(this, "Insira o ID do Modelo", Toast.LENGTH_SHORT).show()
@@ -175,6 +175,18 @@ class AddItemToShopActivity : AppCompatActivity() {
         hashMap["Preço"] = Price.toInt()
         hashMap["Stock"] = Stock.toInt()
         hashMap["Descrição"] = Descrição
+
+        val updateTotal = FirebaseDatabase.getInstance().getReference("Shop")
+        updateTotal.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var currentValue = "${snapshot.child("Total").value}".toInt()
+                val oldValue = currentValue
+                val newValue = oldValue + 1
+                updateTotal.child("Total").setValue(newValue)
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
 
         val mref = FirebaseDatabase.getInstance().getReference("Marcas").child(IDMarca)
         mref.addValueEventListener(object : ValueEventListener{

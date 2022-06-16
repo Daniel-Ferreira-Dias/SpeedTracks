@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
     android:layout_marginTop="20dp"
-    android:layout_marginRight="1dp"
+    android:layout_marginRight="5dp"
     android:layout_marginBottom="16dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
@@ -104,7 +104,7 @@
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icon_image_view"
-            app:layout_constraintVertical_bias="0.218" />
+            app:layout_constraintVertical_bias="0.546" />
 
         <TextView
             android:id="@+id/reviewTv"

@@ -70,6 +70,7 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
     override fun onBindViewHolder(holder: HolderShop, position: Int) {
         // get data
         val model = shopArrayList[position]
+        val price = model.Preço
 
         if (model.Stock < 10) {
             binding.tvWarningStock.visibility = View.VISIBLE
@@ -86,10 +87,12 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
 
 
         mDbRef = FirebaseDatabase.getInstance().getReference("Shop").child("Modelos")
-        loadShoe(model, holder)
         loadRating(model, holder)
         holder.rating.rating = finalrating
+        loadShoe(model, holder)
 
+        binding.tvPrice.text = model.Preço.toString()
+        binding.titleTextView.text = model.Nome_Modelo
     }
 
     override fun getItemCount(): Int {
@@ -121,11 +124,9 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
                         .into(holder.marcaView)
                 } catch (e: Exception) {
                 }
-
-                binding.titleTextView.text = model.Nome_Modelo
                 binding.tvPrice.text = model.Preço.toString()
-
-
+                Log.d("Preço", model.Preço.toString())
+                binding.titleTextView.text = model.Nome_Modelo
             }
 
             override fun onCancelled(error: DatabaseError) {

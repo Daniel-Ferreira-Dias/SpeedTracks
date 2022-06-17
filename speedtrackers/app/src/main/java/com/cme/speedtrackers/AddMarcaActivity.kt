@@ -1,5 +1,6 @@
 package com.cme.speedtrackers
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -27,6 +28,9 @@ class AddMarcaActivity : AppCompatActivity() {
     private var imageUri: Uri? = null
     var uploadImageUrl = ""
 
+    //progress dialog
+    private lateinit var progressDialog: ProgressDialog
+
     var nomeMarca = ""
     var IDMarca = ""
 
@@ -34,6 +38,11 @@ class AddMarcaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddMarca2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //setup progressdialog
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Por favor espere")
+        progressDialog.setCanceledOnTouchOutside(false)
 
 
         binding.ibAddImage.setOnClickListener {
@@ -73,6 +82,8 @@ class AddMarcaActivity : AppCompatActivity() {
     )
 
     private fun uploadImage() {
+        progressDialog.setMessage("Inserindo a Imagem...")
+        progressDialog.show()
         val storageReference = FirebaseStorage.getInstance().getReference("modelos")
         storageReference.child("modelos/").putFile(imageUri!!)
             .addOnSuccessListener { taskSnapshot ->
@@ -87,7 +98,6 @@ class AddMarcaActivity : AppCompatActivity() {
     private fun checkConditions() {
         IDMarca = binding.etMarcaId.text.toString()
         nomeMarca = binding.etNomeMarca.text.toString()
-
         if (nomeMarca.isEmpty()) {
             Toast.makeText(this, "Insira o nome da Marca", Toast.LENGTH_SHORT).show()
         } else if (IDMarca.toString().isEmpty()) {
@@ -101,17 +111,13 @@ class AddMarcaActivity : AppCompatActivity() {
     }
 
     private fun checkDataBase() {
+
         val dbRef = FirebaseDatabase.getInstance().getReference("Marcas")
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.hasChild(IDMarca)) {
-                    Toast.makeText(
-                        this@AddMarcaActivity,
-                        "Este ID já existe",
-                        Toast.LENGTH_SHORT
-                    ).show()
                 } else {
-                    addMarca()
+                    uploadImage()
                 }
             }
 
@@ -123,7 +129,8 @@ class AddMarcaActivity : AppCompatActivity() {
     }
 
     private fun addMarca() {
-
+        progressDialog.setMessage("Inserindo na base de dados...")
+        progressDialog.show()
         // set up data
         val hashMap = HashMap<String, Any>()
         hashMap["ID"] = IDMarca.toInt()
@@ -133,9 +140,10 @@ class AddMarcaActivity : AppCompatActivity() {
 
         // Save to DB
         val ref = FirebaseDatabase.getInstance().getReference("Marcas")
-        ref.child(IDMarca.toString())
+        ref.child(IDMarca)
             .setValue(hashMap)
             .addOnSuccessListener {
+                progressDialog.dismiss()
                 Toast.makeText(this, "Marca Adicionada com sucesso", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, BottomNavigationActivity::class.java))
                 finish()

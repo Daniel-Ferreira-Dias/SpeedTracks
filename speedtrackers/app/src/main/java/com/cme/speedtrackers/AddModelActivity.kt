@@ -1,6 +1,7 @@
 package com.cme.speedtrackers
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,9 @@ class AddModelActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddModelBinding
 
+    //progress dialog
+    private lateinit var progressDialog: ProgressDialog
+
     //image uri
     private var imageUri: Uri? = null
 
@@ -49,6 +53,12 @@ class AddModelActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.etMarcaId.inputType = 0
+
+        //setup progressdialog
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Por favor espere")
+        progressDialog.setCanceledOnTouchOutside(false)
+
 
         binding.etMarcaId.addTextChangedListener {
             IDMarca = binding.etMarcaId.text.toString()
@@ -86,6 +96,8 @@ class AddModelActivity : AppCompatActivity() {
     }
 
     private fun uploadImage(){
+        progressDialog.setMessage("Inserindo a Imagem...")
+        progressDialog.show()
         val storageReference = FirebaseStorage.getInstance().getReference("modelos")
         storageReference.child("modelos/").putFile(imageUri!!)
             .addOnSuccessListener { taskSnapshot ->
@@ -140,11 +152,6 @@ class AddModelActivity : AppCompatActivity() {
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.hasChild(IDModel)) {
-                    Toast.makeText(
-                        this@AddModelActivity,
-                        "Este ID já existe",
-                        Toast.LENGTH_SHORT
-                    ).show()
                 } else {
 
                     uploadImage()
@@ -159,7 +166,8 @@ class AddModelActivity : AppCompatActivity() {
     }
 
     private fun addModelo() {
-
+        progressDialog.setMessage("Inserindo na base de dados...")
+        progressDialog.show()
         // set up data
         val hashMap = HashMap<String, Any>()
         hashMap["ID_Modelo"] = IDModel.toInt()
@@ -182,6 +190,7 @@ class AddModelActivity : AppCompatActivity() {
         mref.child(IDMarca.toString()).child("Modelos").child(IDModel).child("Reviews")
             .setValue(secondhashMap)
             .addOnSuccessListener {
+                progressDialog.dismiss()
                 Toast.makeText(this, "Marca Adicionada com sucesso", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, BottomNavigationActivity::class.java))
                 finish()

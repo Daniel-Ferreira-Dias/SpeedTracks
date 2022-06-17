@@ -108,12 +108,6 @@ class ShopAdapter : RecyclerView.Adapter<ShopAdapter.HolderShop> {
         val rating = binding.userRating
     }
 
-    public fun setFilteredList(filteredList: java.util.ArrayList<Shop>) {
-        this.shopArrayList = filteredList
-        Log.e("DATACHANGE", "${shopArrayList.size}, ${shopArrayList[0].ID_Modelo}")
-        notifyDataSetChanged()
-    }
-
     private fun loadShoe(model: Shop, holder: ShopAdapter.HolderShop) {
         mDbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

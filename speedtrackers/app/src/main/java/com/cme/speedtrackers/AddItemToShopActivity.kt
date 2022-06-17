@@ -1,5 +1,6 @@
 package com.cme.speedtrackers
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,9 @@ class AddItemToShopActivity : AppCompatActivity() {
     var Stock = ""
     var Descrição = ""
 
+    //progress dialog
+    private lateinit var progressDialog: ProgressDialog
+
     var uploadImageUrl_Marca = ""
     var uploadImageUrl_Modelo = ""
 
@@ -65,6 +69,11 @@ class AddItemToShopActivity : AppCompatActivity() {
         binding.etMarcaId.inputType = 0
         binding.etModelId.inputType = 0
         binding.etModelName.inputType = 0
+
+        //setup progressdialog
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Por favor espere")
+        progressDialog.setCanceledOnTouchOutside(false)
 
         binding.etMarcaId.addTextChangedListener {
             IDMarca = binding.etMarcaId.text.toString()
@@ -166,7 +175,8 @@ class AddItemToShopActivity : AppCompatActivity() {
     }
 
     private fun addModelo() {
-
+        progressDialog.setMessage("Inserindo na base de dados...")
+        progressDialog.show()
         // set up data
         val hashMap = HashMap<String, Any>()
         hashMap["ID_Modelo"] = IDModel.toInt()
@@ -207,6 +217,7 @@ class AddItemToShopActivity : AppCompatActivity() {
                         ref.child(IDModel)
                             .setValue(hashMap)
                             .addOnSuccessListener {
+                                progressDialog.dismiss()
                                 Toast.makeText(this@AddItemToShopActivity, "Item adicionado com sucesso", Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this@AddItemToShopActivity, BottomNavigationActivity::class.java))
                                 finish()

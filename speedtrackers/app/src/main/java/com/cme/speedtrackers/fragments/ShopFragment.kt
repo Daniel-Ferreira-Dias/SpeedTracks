@@ -75,7 +75,6 @@ class ShopFragment : Fragment() {
                         shopList.add(model!!)
                     }
                     binding.rvShop.adapter = shopAdapter
-                    shopAdapter.setFilteredList(shopList)
                     if(shopList.isNotEmpty()){
                         binding.rvShop.adapter = shopAdapter
                         binding.rvShop.visibility = View.VISIBLE
@@ -119,10 +118,8 @@ class ShopFragment : Fragment() {
             binding.rvShop.clearFocus()
             binding.rvShop.visibility = View.GONE
             binding.tvNotFound.visibility = View.VISIBLE
-            shopAdapter.setFilteredList(shopList)
         }
         else{
-            shopAdapter.setFilteredList(filteredItem)
             binding.rvShop.visibility = View.VISIBLE
             binding.tvNotFound.visibility = View.GONE
         }

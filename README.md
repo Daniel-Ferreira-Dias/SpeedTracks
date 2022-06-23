@@ -1,5 +1,5 @@
 
-## Book Lovers
+## Speed Tracks
 Repositório de alojamento para o projeto desenvolvido em Conceção de Interfaces para Aplicações Móveis e de Computação Móvel da Licenciatura de Informática da Universidade da Maia - ISMAI.
 
 ## Descrição
@@ -26,7 +26,7 @@ justificar adequadamente, quer na apresentação do trabalho, quer no relatório
 ## Funcionalidade
 Todas as funcionalidades anteriormente descritas são demonstradas neste video.
 
-[![Watch the video]([https://i.imgur.com/kFVsqqi.png](https://i.imgur.com/V9Rwlii.png))]([https://www.youtube.com/watch?v=e-wTwXpY8XM&ab_channel=DanielDias](https://youtu.be/no1M3J3qG3g))
+[![Watch the video](https://i.imgur.com/V9Rwlii.png)](https://youtu.be/no1M3J3qG3g)
 
 ## Tecnologias Utilizadas
 

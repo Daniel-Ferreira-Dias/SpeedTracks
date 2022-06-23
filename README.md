@@ -26,7 +26,7 @@ justificar adequadamente, quer na apresentação do trabalho, quer no relatório
 ## Funcionalidade
 Todas as funcionalidades anteriormente descritas são demonstradas neste video.
 
-[![Watch the video](https://i.imgur.com/V9Rwlii.png)](https://youtu.be/no1M3J3qG3g)
+[![Watch the video](https://i.imgur.com/V9Rwlii.png)](https://www.youtube.com/watch?v=no1M3J3qG3g&ab_channel=DanielDias)
 
 ## Tecnologias Utilizadas
 
